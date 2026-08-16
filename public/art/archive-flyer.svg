@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#c2302a"/>
+  <rect x="40" y="40" width="720" height="420" fill="#efe4d2"/>
+  <text x="80" y="160" fill="#0b090a" font-size="48" font-family="Arial Black, sans-serif">NIGHT</text>
+  <text x="80" y="220" fill="#c2302a" font-size="32" font-family="monospace">SOUTHSIDE</text>
+  <rect x="80" y="280" width="200" height="18" fill="#0b090a"/>
+  <rect x="80" y="320" width="140" height="18" fill="#4a302c"/>
+</svg>

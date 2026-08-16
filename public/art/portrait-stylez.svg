@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Stylez portrait placeholder">
+  <!-- PLACEHOLDER ART: portrait-stylez — replace with Stylez game-world portrait -->
+  
+  <defs>
+    <linearGradient id="pr-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#020B11"/>
+      <stop offset="38%" stop-color="#061B2A"/>
+      <stop offset="72%" stop-color="#073C5A"/>
+      <stop offset="100%" stop-color="#020B11"/>
+    </linearGradient>
+    <radialGradient id="pr-moon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D9F7F5"/>
+      <stop offset="42%" stop-color="#00E5FF" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#00AEEA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pr-wet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#073C5A"/>
+      <stop offset="40%" stop-color="#061B2A"/>
+      <stop offset="100%" stop-color="#010508"/>
+    </linearGradient>
+    <linearGradient id="pr-fog" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00AEEA" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00E5FF" stop-opacity=".12"/>
+      <stop offset="100%" stop-color="#020B11" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="pr-neon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F20BA8"/>
+      <stop offset="100%" stop-color="#FF2AC3"/>
+    </linearGradient>
+    <filter id="pr-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.18"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="pr-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="600" height="800" fill="#020B11"/>
+  <rect x="0" y="0" width="600" height="800" fill="#061B2A"/>
+  <circle cx="80" cy="120" r="120" fill="#F20BA8" opacity=".18"/>
+  <circle cx="540" cy="160" r="140" fill="#00E5FF" opacity=".16"/>
+  <rect x="40" y="80" width="160" height="100" fill="#010508" stroke="#19E642" stroke-opacity=".4"/>
+  <rect x="400" y="70" width="160" height="110" fill="#010508" stroke="#F20BA8" stroke-opacity=".4"/>
+  <rect x="50" y="90" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="74" y="90" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="98" y="90" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="122" y="90" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="146" y="90" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="170" y="90" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="50" y="118" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="74" y="118" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="98" y="118" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="122" y="118" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="146" y="118" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="170" y="118" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="50" y="146" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="74" y="146" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="98" y="146" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="122" y="146" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="146" y="146" width="18" height="18" fill="#62FF5B" opacity=".35"/><rect x="170" y="146" width="18" height="18" fill="#62FF5B" opacity=".35"/>
+  <ellipse cx="300" cy="730" rx="160" ry="30" fill="#000" opacity=".5"/>
+  <rect x="170" y="430" width="260" height="280" fill="#0b0b0b"/>
+  <path d="M150 430 L450 430 L500 760 L100 760 Z" fill="#111"/>
+  <rect x="210" y="430" width="180" height="40" fill="#1a1a1a"/>
+  <circle cx="300" cy="300" r="92" fill="#1c140f"/>
+  <path d="M210 300 Q300 210 390 300 L370 250 Q300 190 230 250 Z" fill="#0a0a0a"/>
+  <circle cx="270" cy="295" r="7" fill="#00E5FF"/>
+  <circle cx="332" cy="295" r="7" fill="#19E642"/>
+  <path d="M270 340 Q300 356 330 340" fill="none" stroke="#F20BA8" stroke-width="3"/>
+  <rect x="262" y="390" width="76" height="10" fill="#C9A227"/>
+  <circle cx="300" cy="408" r="8" fill="#C9A227"/>
+  <rect x="0" y="0" width="600" height="800" fill="none" stroke="#19E642" stroke-width="8" opacity=".25"/>
+  <rect width="600" height="800" filter="url(#pr-grain)"/>
+</svg>

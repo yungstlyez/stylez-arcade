@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#060114"/>
+  <rect x="70" y="140" width="260" height="120" rx="8" fill="#0050ff"/>
+  <rect x="70" y="140" width="80" height="120" fill="#7cff4a"/>
+  <text x="200" y="210" fill="#f4fff8" font-size="22" font-family="monospace">METRO</text>
+</svg>

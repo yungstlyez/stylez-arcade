@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#060114"/>
+  <rect x="80" y="80" width="640" height="340" fill="#0c1c4e" stroke="#f4fff8" stroke-width="6"/>
+  <text x="400" y="250" text-anchor="middle" fill="#ff2453" font-size="64" font-family="monospace">STYLEZ</text>
+  <text x="400" y="300" text-anchor="middle" fill="#7cff4a" font-size="16" font-family="monospace">PRESS START</text>
+</svg>

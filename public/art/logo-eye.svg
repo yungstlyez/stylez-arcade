@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Winged eye emblem">
+  <!-- PLACEHOLDER ART: logo-eye — winged-eye emblem -->
+  <defs>
+    <filter id="eg" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="128" height="128" fill="none"/>
+  <g filter="url(#eg)" fill="none" stroke="#19E642" stroke-width="3">
+    <path d="M8 64 C28 40 28 40 46 52 C34 58 22 62 8 64 C22 66 34 70 46 76 C28 88 28 88 8 64Z"/>
+    <path d="M120 64 C100 40 100 40 82 52 C94 58 106 62 120 64 C106 66 94 70 82 76 C100 88 100 88 120 64Z"/>
+  </g>
+  <ellipse cx="64" cy="64" rx="28" ry="18" fill="#061B2A" stroke="#62FF5B" stroke-width="3"/>
+  <circle cx="64" cy="64" r="10" fill="#00E5FF"/>
+  <circle cx="64" cy="64" r="4" fill="#020B11"/>
+  <circle cx="61" cy="61" r="2" fill="#D9F7F5"/>
+  <path d="M36 64 Q64 44 92 64 Q64 84 36 64" fill="none" stroke="#00E5FF" stroke-width="1.5" opacity=".7"/>
+</svg>

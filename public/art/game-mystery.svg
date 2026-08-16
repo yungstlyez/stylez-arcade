@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img">
+  <!-- PLACEHOLDER ART: env-mystery-silhouette — locked cabinet / unknown character -->
+  
+  <defs>
+    <linearGradient id="my-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#020B11"/>
+      <stop offset="38%" stop-color="#061B2A"/>
+      <stop offset="72%" stop-color="#073C5A"/>
+      <stop offset="100%" stop-color="#020B11"/>
+    </linearGradient>
+    <radialGradient id="my-moon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D9F7F5"/>
+      <stop offset="42%" stop-color="#00E5FF" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#00AEEA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="my-wet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#073C5A"/>
+      <stop offset="40%" stop-color="#061B2A"/>
+      <stop offset="100%" stop-color="#010508"/>
+    </linearGradient>
+    <linearGradient id="my-fog" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00AEEA" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00E5FF" stop-opacity=".12"/>
+      <stop offset="100%" stop-color="#020B11" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="my-neon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F20BA8"/>
+      <stop offset="100%" stop-color="#FF2AC3"/>
+    </linearGradient>
+    <filter id="my-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.18"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="my-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="1000" fill="#020B11"/>
+  <rect width="800" height="1000" fill="#061B2A" opacity=".7"/>
+  <circle cx="400" cy="280" r="180" fill="#321052" opacity=".45"/>
+  <circle cx="400" cy="280" r="90" fill="#F20BA8" opacity=".12"/>
+  <ellipse cx="400" cy="820" rx="160" ry="28" fill="#000" opacity=".6"/>
+  <path d="M250 820 L280 430 L400 220 L520 430 L550 820 Z" fill="#010508"/>
+  <path d="M310 430 L400 250 L490 430 L470 800 L330 800 Z" fill="#041018"/>
+  <circle cx="400" cy="300" r="48" fill="#0a0a0a"/>
+  <circle cx="388" cy="292" r="6" fill="#00E5FF" opacity=".7"/>
+  <circle cx="414" cy="292" r="6" fill="#19E642" opacity=".35"/>
+  <text x="400" y="930" text-anchor="middle" fill="#FF2AC3" font-size="64" font-family="monospace">???</text>
+  <rect width="800" height="1000" fill="url(#my-fog)"/>
+  <rect width="800" height="1000" filter="url(#my-grain)"/>
+</svg>

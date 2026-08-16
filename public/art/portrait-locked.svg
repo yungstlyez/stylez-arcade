@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Locked character">
+  <rect width="600" height="800" fill="#060114"/>
+  <rect x="80" y="120" width="440" height="560" fill="none" stroke="#f4fff8" stroke-width="4"/>
+  <circle cx="300" cy="300" r="70" fill="#0c1c4e" stroke="#7cff4a" stroke-width="4"/>
+  <rect x="210" y="390" width="180" height="160" fill="#0c1c4e" stroke="#7cff4a" stroke-width="4"/>
+  <text x="300" y="700" text-anchor="middle" fill="#00f5ff" font-size="48" font-family="monospace">???</text>
+</svg>
