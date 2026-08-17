@@ -539,6 +539,32 @@ body {
   }
 }
 
+.social-banner {
+  overflow: hidden;
+  border-bottom: 1px solid rgba(242, 11, 168, 0.35);
+  background: rgba(6, 27, 42, 0.88);
+}
+
+.social-marquee {
+  display: flex;
+  width: max-content;
+  animation: social-marquee 32s linear infinite;
+}
+
+.social-marquee:hover,
+.social-marquee:focus-within {
+  animation-play-state: paused;
+}
+
+@keyframes social-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes scan-y {
   0% {
     transform: translateY(-120%);
@@ -575,8 +601,13 @@ body {
   .pulse-dot,
   .scanlines,
   .hud-scan::after,
-  .achieve-pulse {
+  .achieve-pulse,
+  .social-marquee {
     animation: none !important;
+  }
+
+  .social-banner {
+    overflow-x: auto;
   }
 
   .hud-lift:hover,

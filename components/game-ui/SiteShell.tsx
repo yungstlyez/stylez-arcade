@@ -14,6 +14,7 @@ import { TopBar } from "@/components/game-ui/TopBar";
 import { WorldBackdrop } from "@/components/game-ui/WorldBackdrop";
 import { GlobalAudioPlayer } from "@/components/audio/GlobalAudioPlayer";
 import { LibraryOverlay } from "@/components/music/LibraryOverlay";
+import { SocialsBanner } from "@/components/hub/SocialsBanner";
 import { usePlayer } from "@/components/player/PlayerProvider";
 import { cn } from "@/lib/cn";
 import { usePathname } from "next/navigation";
@@ -76,6 +77,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 setHudOpen((open) => !(open && hudPath === pathname));
               }}
             />
+            <SocialsBanner />
             {isMenuOpen ? (
               <div id="mobile-menu" className="border-b border-cyan/20 bg-navy p-3 lg:hidden">
                 <GameMenu onNavigate={() => setMenuOpen(false)} />

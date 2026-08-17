@@ -2,10 +2,11 @@
 
 import { LogoMark } from "@/components/game-ui/LogoMark";
 import { achievements } from "@/data/achievements";
-import { transmissions } from "@/data/transmissions";
+import { hubSocials } from "@/data/socials";
 import { usePlayer } from "@/components/player/PlayerProvider";
 import { xpFromSave } from "@/lib/xp";
 import { cn } from "@/lib/cn";
+import { cueUiSound } from "@/lib/ui-sound";
 import Link from "next/link";
 
 export function RightRail({ compact = false }: { compact?: boolean }) {
@@ -44,27 +45,43 @@ export function RightRail({ compact = false }: { compact?: boolean }) {
         </ul>
       </section>
 
-      <section className="hud-panel-pink flex min-h-0 flex-1 flex-col overflow-hidden p-3">
-        <div className="flex items-center justify-between">
-          <p className="hud-label text-pink">TRANSMISSIONS</p>
-          <p className="flex items-center gap-1 hud-label text-magenta">
-            <i className="pulse-dot size-1.5 bg-magenta" />
+      <section className="hud-panel-pink flex min-h-0 flex-1 flex-col overflow-hidden p-3.5">
+        <div className="flex items-center justify-between gap-2">
+          <p className="hud-label text-[11px] text-pink">SOCIALS</p>
+          <p className="flex items-center gap-1.5 hud-label text-[11px] text-magenta">
+            <i className="pulse-dot size-2 bg-magenta" />
             LIVE
           </p>
         </div>
-        <ul className="mt-3 min-h-0 flex-1 space-y-2.5 overflow-auto">
-          {transmissions.slice(0, 4).map((item) => (
-            <li key={item.id}>
-              <Link href={item.href} className="block hover:text-lime">
-                <p className="font-display text-[12px] text-mist">{item.title}</p>
-                <p className="font-hud text-[10px] text-magenta">{item.ago ?? item.tag}</p>
-              </Link>
+        <ul className="mt-4 flex min-h-0 flex-1 flex-col justify-between gap-4">
+          {hubSocials.map((item) => (
+            <li key={item.id} className="min-w-0">
+              <p className="flex flex-wrap gap-x-2 gap-y-0.5">
+                {item.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    onMouseEnter={() => cueUiSound("hover")}
+                    className="hud-label text-[10px] text-pink hover:text-lime"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </p>
+              <a
+                href={item.links[0].href}
+                target="_blank"
+                rel="noreferrer"
+                onMouseEnter={() => cueUiSound("hover")}
+                className="mt-1 block w-full break-words font-display text-[1.45rem] font-semibold leading-[1.05] tracking-[-0.03em] text-mist hover:text-lime xl:text-[1.7rem]"
+              >
+                {item.handle}
+              </a>
             </li>
           ))}
         </ul>
-        <Link href="/online" className="mt-auto pt-3 hud-label text-pink">
-          VIEW ALL
-        </Link>
       </section>
 
       <section className="hud-panel-green hud-scan achieve-pulse relative shrink-0 p-3">

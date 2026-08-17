@@ -5,6 +5,8 @@ export const site = {
   phrase: "STYLEZ WILL SAVE US",
   byline: "BY CALLMESTYLEZ",
   instagram: "@stylezflew",
+  twitch: "@stylezflew",
+  tiktok: "@notcallmestylez",
   chronicleHandle: "@stylezchroniclez",
   featuredReleaseSlug: "flatbed-freestyle",
   featuredGameSlug: "flatbed-run",

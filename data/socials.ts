@@ -1,9 +1,5 @@
 import type { SocialNetwork } from "@/types";
 
-/**
- * Central social config. Spotify and SoundCloud are live Callmestylez profiles.
- * TikTok, Twitch, and YouTube stay on standby until those handles are confirmed.
- */
 export const socials: SocialNetwork[] = [
   {
     id: "instagram",
@@ -14,30 +10,36 @@ export const socials: SocialNetwork[] = [
     signal: "LIVE",
   },
   {
-    id: "chroniclez",
-    label: "Stylez Chroniclez",
+    id: "twitch",
+    label: "Twitch",
+    handle: "@stylezflew",
+    href: "https://twitch.tv/stylezflew",
+    network: "NIGHT STREAM",
+    signal: "LIVE",
+  },
+  {
+    id: "tiktok",
+    label: "TikTok",
+    handle: "@notcallmestylez",
+    href: "https://www.tiktok.com/@notcallmestylez",
+    network: "CLIP FEED",
+    signal: "LIVE",
+  },
+  {
+    id: "chroniclez-ig",
+    label: "Chroniclez IG",
     handle: "@stylezchroniclez",
     href: "https://instagram.com/stylezchroniclez",
     network: "SHORT SIGNAL",
     signal: "LIVE",
   },
   {
-    id: "tiktok",
-    label: "TikTok",
-    handle: "@stylezflew",
-    href: "https://www.tiktok.com/@stylezflew",
-    network: "CLIP FEED",
-    signal: "STANDBY",
-    placeholder: true,
-  },
-  {
-    id: "twitch",
-    label: "Twitch",
-    handle: "stylezflew",
-    href: "https://twitch.tv/stylezflew",
-    network: "NIGHT STREAM",
-    signal: "OFFLINE",
-    placeholder: true,
+    id: "chroniclez-tiktok",
+    label: "Chroniclez TikTok",
+    handle: "@stylezchroniclez",
+    href: "https://www.tiktok.com/@stylezchroniclez",
+    network: "SHORT SIGNAL",
+    signal: "LIVE",
   },
   {
     id: "spotify",
@@ -48,15 +50,6 @@ export const socials: SocialNetwork[] = [
     signal: "LIVE",
   },
   {
-    id: "youtube",
-    label: "YouTube",
-    handle: "Callmestylez",
-    href: "https://youtube.com/@stylezflew",
-    network: "BROADCAST",
-    signal: "STANDBY",
-    placeholder: true,
-  },
-  {
     id: "soundcloud",
     label: "SoundCloud",
     handle: "Callmestylez",
@@ -65,3 +58,39 @@ export const socials: SocialNetwork[] = [
     signal: "LIVE",
   },
 ];
+
+export const hubSocials = [
+  {
+    id: "music",
+    title: "Music Platforms",
+    handle: "Callmestylez",
+    links: [
+      { label: "Spotify", href: "https://open.spotify.com/artist/7BgBZqsMY03cdXtiIi6n1o" },
+      { label: "SoundCloud", href: "https://soundcloud.com/user-363377229" },
+    ],
+  },
+  {
+    id: "main",
+    title: "Instagram / Twitch",
+    handle: "@stylezflew",
+    links: [
+      { label: "Instagram", href: "https://instagram.com/stylezflew" },
+      { label: "Twitch", href: "https://twitch.tv/stylezflew" },
+    ],
+  },
+  {
+    id: "tiktok",
+    title: "TikTok",
+    handle: "@notcallmestylez",
+    links: [{ label: "TikTok", href: "https://www.tiktok.com/@notcallmestylez" }],
+  },
+  {
+    id: "chroniclez",
+    title: "Chroniclez",
+    handle: "@stylezchroniclez",
+    links: [
+      { label: "Instagram", href: "https://instagram.com/stylezchroniclez" },
+      { label: "TikTok", href: "https://www.tiktok.com/@stylezchroniclez" },
+    ],
+  },
+] as const;
