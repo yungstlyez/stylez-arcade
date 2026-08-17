@@ -1,6 +1,8 @@
 "use client";
 
 import { AudioProvider } from "@/components/audio/AudioProvider";
+import { LibraryProvider } from "@/components/music/LibraryProvider";
+import { ComingSoonProvider } from "@/components/game-ui/ComingSoonProvider";
 import { PlayerProvider, usePlayer } from "@/components/player/PlayerProvider";
 import type { ReactNode } from "react";
 
@@ -12,7 +14,11 @@ function AudioBridge({ children }: { children: ReactNode }) {
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
     <PlayerProvider>
-      <AudioBridge>{children}</AudioBridge>
+      <AudioBridge>
+        <LibraryProvider>
+          <ComingSoonProvider>{children}</ComingSoonProvider>
+        </LibraryProvider>
+      </AudioBridge>
     </PlayerProvider>
   );
 }

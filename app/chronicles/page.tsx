@@ -1,6 +1,4 @@
-import { ChronicleCard } from "@/components/chronicles/ChronicleCard";
-import { SectionTitle } from "@/components/game-ui/SectionTitle";
-import { getChronicles } from "@/lib/content";
+import { ComingSoonScreen } from "@/components/game-ui/ComingSoonScreen";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,20 +7,10 @@ export const metadata: Metadata = {
 };
 
 export default function ChroniclesPage() {
-  const entries = getChronicles();
-
   return (
-    <div>
-      <SectionTitle
-        kicker="SAVE FILES"
-        title="STYLEZ CHRONICLES"
-        subtitle="Mission logs. Field notes. The nights that would otherwise vanish into the timeline."
-      />
-      <div className="grid gap-4 md:grid-cols-2">
-        {entries.map((entry) => (
-          <ChronicleCard key={entry.id} chronicle={entry} />
-        ))}
-      </div>
-    </div>
+    <ComingSoonScreen
+      title="CHRONICLES"
+      blurb="Mission logs and field notes will live here. The nights are still being written."
+    />
   );
 }

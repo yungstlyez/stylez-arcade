@@ -2,6 +2,7 @@
 
 import { BottomNav } from "@/components/game-ui/BottomNav";
 import { BrandLockup } from "@/components/game-ui/BrandLockup";
+import { ComingSoonOverlay } from "@/components/game-ui/ComingSoonOverlay";
 import { CrtOverlay } from "@/components/game-ui/CrtOverlay";
 import { GameMenu } from "@/components/game-ui/GameMenu";
 import { GrainOverlay } from "@/components/game-ui/GrainOverlay";
@@ -12,6 +13,7 @@ import { UnlockToasts } from "@/components/game-ui/SecretUnlockNotification";
 import { TopBar } from "@/components/game-ui/TopBar";
 import { WorldBackdrop } from "@/components/game-ui/WorldBackdrop";
 import { GlobalAudioPlayer } from "@/components/audio/GlobalAudioPlayer";
+import { LibraryOverlay } from "@/components/music/LibraryOverlay";
 import { usePlayer } from "@/components/player/PlayerProvider";
 import { cn } from "@/lib/cn";
 import { usePathname } from "next/navigation";
@@ -49,7 +51,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
       {!titleScreen ? (
         <div className="app-shell">
-          <aside className="hidden h-full w-56 shrink-0 flex-col border-r border-cyan/20 bg-navy/80 xl:w-64 lg:flex">
+          <aside className="relative z-50 hidden h-full w-56 shrink-0 flex-col border-r border-cyan/20 bg-navy/80 xl:w-64 lg:flex">
             <BrandLockup />
             <div className="min-h-0 flex-1 overflow-auto px-2 pb-2">
               <GameMenu />
@@ -59,7 +61,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </div>
           </aside>
 
-          <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+          <div className="relative flex min-h-0 min-w-0 flex-1 flex-col">
             <TopBar
               menuOpen={isMenuOpen}
               hudOpen={isHudOpen}
@@ -82,12 +84,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <main
               id="main"
               className={cn(
-                "page-pad relative w-full flex-1 px-3 py-3 sm:px-4 lg:px-5",
+                "page-pad relative flex w-full flex-1 flex-col px-3 py-3 sm:px-4 lg:px-5",
                 isHub ? "min-h-0 lg:overflow-hidden lg:py-3" : "min-h-0 overflow-auto",
               )}
             >
               {children}
             </main>
+            <LibraryOverlay />
+            <ComingSoonOverlay />
           </div>
         </div>
       ) : (

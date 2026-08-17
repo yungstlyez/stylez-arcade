@@ -100,7 +100,7 @@ export function HomeHub() {
 
       <div className="hub-mid">
         <Link
-          href={`/chronicles/${chronicle.slug}`}
+          href="/chronicles"
           className="hud-panel hud-lift flex min-h-0 flex-col overflow-hidden"
           onMouseEnter={() => cueUiSound("hover")}
         >
@@ -140,7 +140,7 @@ export function HomeHub() {
         </article>
 
         <Link
-          href={`/world/locations/${southside?.slug ?? "southside"}`}
+          href="/world"
           className="hud-panel-pink hud-lift relative min-h-[12rem] overflow-hidden"
           onMouseEnter={() => cueUiSound("hover")}
         >
