@@ -39,7 +39,7 @@ export function RetroModal({
           <div className="absolute inset-0 bg-void/50" />
         </div>
         <div className="flex items-center justify-between border-b border-cyan/20 bg-navy px-4 py-2">
-          <h2 id="retro-modal-title" className="font-display text-sm tracking-wide text-mist">
+          <h2 id="retro-modal-title" className="font-display text-[11px] text-mist">
             {title}
           </h2>
           <PixelButton variant="ghost" onClick={onClose} className="min-h-9 px-3">

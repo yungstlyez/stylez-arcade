@@ -43,7 +43,7 @@ export default async function ChroniclePage({ params }: SlugParams) {
         CHRONICLE {padChronicle(entry.number)}
       </p>
       <p className="mt-2 font-hud text-[10px] tracking-[0.18em] text-muted">{formatDate(entry.date)}</p>
-      <h1 className="mt-3 font-display text-4xl uppercase leading-none sm:text-5xl">{entry.title}</h1>
+      <h1 className="mt-3 font-display text-2xl uppercase leading-snug sm:text-3xl">{entry.title}</h1>
       <p className="mt-4 max-w-2xl text-sm leading-7 text-muted">{entry.excerpt}</p>
       <div className="mt-8 max-w-2xl space-y-5 text-base leading-8 text-cream/90">
         {entry.content.split("\n\n").map((paragraph) => (

@@ -5,7 +5,7 @@ import { SoundCloudOnlyTag } from "@/components/music/SoundCloudOnlyTag";
 import { GameWindow } from "@/components/game-ui/GameWindow";
 import { ReturnLink } from "@/components/game-ui/ReturnLink";
 import { RelatedList } from "@/components/world/RelatedList";
-import { getRelease, getReleases, resolveCharacters, resolveChronicles, resolveLocations } from "@/lib/content";
+import { getRelease, getReleases, releaseToTrack, resolveCharacters, resolveChronicles, resolveLocations } from "@/lib/content";
 import type { SlugParams } from "@/types/pages";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -57,6 +57,7 @@ export default async function ReleasePage({ params }: SlugParams) {
               <SoundCloudEmbed
                 url={release.streamingLinks.soundcloud}
                 title={release.title}
+                track={releaseToTrack(release)}
                 className="size-full"
               />
             </div>
@@ -84,7 +85,7 @@ export default async function ReleasePage({ params }: SlugParams) {
               {release.type} · {release.year} · {release.era}
               {release.rarity ? ` · ${release.rarity}` : ""}
             </p>
-            <h1 className="mt-2 font-display text-4xl uppercase leading-none sm:text-5xl">
+            <h1 className="mt-2 font-display text-2xl uppercase leading-snug sm:text-3xl">
               <ListenLink release={release}>{release.title}</ListenLink>
             </h1>
             {release.subtitle ? <p className="mt-2 text-muted">{release.subtitle}</p> : null}
@@ -129,7 +130,7 @@ export default async function ReleasePage({ params }: SlugParams) {
               <ul className="space-y-3">
                 {release.alternateVersions.map((version) => (
                   <li key={version.title}>
-                    <p className="font-display text-lg uppercase">{version.title}</p>
+                    <p className="font-display text-sm uppercase leading-snug">{version.title}</p>
                     <p className="text-sm text-muted">{version.note}</p>
                   </li>
                 ))}

@@ -18,7 +18,7 @@ export function PixelButton({ variant = "primary", className, children, onClick,
   } as const;
 
   const classes = cn(
-    "hud-press inline-flex min-h-10 items-center justify-center gap-2 border px-4 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.16em] disabled:cursor-not-allowed disabled:opacity-50",
+    "hud-press inline-flex min-h-10 items-center justify-center gap-2 border px-4 py-2 font-display text-[10px] uppercase disabled:cursor-not-allowed disabled:opacity-50",
     styles[variant],
     className,
   );

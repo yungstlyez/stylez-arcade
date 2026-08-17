@@ -24,19 +24,19 @@ export default function AchievementsPage() {
         <div className="grid grid-cols-3 gap-3 p-4 text-center">
           <div>
             <p className="hud-label text-cyan">LEVEL</p>
-            <p className="font-display text-4xl text-green">{String(save.level).padStart(2, "0")}</p>
+            <p className="font-display text-2xl text-green">{String(save.level).padStart(2, "0")}</p>
           </div>
           <div>
             <p className="hud-label text-cyan">TOKENS</p>
-            <p className="font-display text-4xl text-green">{save.tokens}</p>
+            <p className="font-display text-2xl text-green">{save.tokens}</p>
           </div>
           <div>
             <p className="hud-label text-cyan">SECRETS</p>
-            <p className="font-display text-4xl text-green">{save.eggs.length}</p>
+            <p className="font-display text-2xl text-green">{save.eggs.length}</p>
           </div>
         </div>
       </div>
-      <h2 className="mb-3 font-display text-3xl uppercase">ACHIEVEMENTS</h2>
+      <h2 className="mb-3 font-display text-xl uppercase leading-snug">ACHIEVEMENTS</h2>
       <div className="grid gap-3">
         {achievements.map((item) => {
           const unlocked = save.achievements.includes(item.id);
@@ -49,7 +49,7 @@ export default function AchievementsPage() {
                 <StageArt seed={item.id} />
               </div>
               <div className="py-3 pr-4">
-                <p className="font-display text-2xl uppercase">{item.name}</p>
+                <p className="font-display text-sm uppercase leading-snug">{item.name}</p>
                 <p className="text-sm text-muted">{item.description}</p>
               </div>
               <p className="ml-auto pr-4 font-hud text-base tracking-wide text-green">
@@ -59,7 +59,7 @@ export default function AchievementsPage() {
           );
         })}
       </div>
-      <h2 className="mt-8 mb-3 font-display text-3xl uppercase">COLLECTIBLES</h2>
+      <h2 className="mt-8 mb-3 font-display text-xl uppercase leading-snug">COLLECTIBLES</h2>
       <div className="grid gap-3 sm:grid-cols-2">
         {collectibles.map((item) => {
           const found = save.collectibles.includes(item.id);
@@ -71,7 +71,7 @@ export default function AchievementsPage() {
               </div>
               <div className="p-4">
                 <p className="hud-label text-lime">{item.rarity.toUpperCase()}</p>
-                <h3 className="font-display text-2xl uppercase">{item.name}</h3>
+                <h3 className="font-display text-sm uppercase leading-snug">{item.name}</h3>
                 <p className="mt-1 text-sm text-muted">{item.description}</p>
                 <p className="mt-2 font-hud text-base text-cyan">{found ? "IN INVENTORY" : "MISSING"}</p>
               </div>

@@ -67,7 +67,7 @@ export function LibraryOverlay() {
           >
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-cyan/20 pb-3">
               <div>
-                <h2 id="library-title" className="font-display text-2xl uppercase text-mist sm:text-3xl">
+                <h2 id="library-title" className="font-display text-lg uppercase leading-snug text-mist sm:text-xl">
                   {site.title}
                 </h2>
                 <p className="mt-1 hud-label text-lime">{site.byline}</p>

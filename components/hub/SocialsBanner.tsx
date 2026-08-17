@@ -39,7 +39,7 @@ function BannerTrack({ duplicate = false }: { duplicate?: boolean }) {
               target="_blank"
               rel="noreferrer"
               onMouseEnter={() => cueUiSound("hover")}
-              className="mt-0.5 font-display text-xl font-semibold leading-none tracking-[-0.03em] text-mist hover:text-lime"
+              className="mt-0.5 font-display text-sm leading-snug text-mist hover:text-lime"
             >
               {item.handle}
             </a>

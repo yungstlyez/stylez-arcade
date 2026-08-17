@@ -18,7 +18,7 @@ export function ChronicleCard({ chronicle }: { chronicle: Chronicle }) {
           <p className="hud-label text-cyan">CHRONICLE {padChronicle(chronicle.number)}</p>
           <p className="font-hud text-[10px] text-lime">{formatDate(chronicle.date)}</p>
         </div>
-        <h3 className="mt-3 font-display text-2xl uppercase leading-tight">{chronicle.title}</h3>
+        <h3 className="mt-3 font-display text-sm uppercase leading-snug">{chronicle.title}</h3>
         <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{chronicle.excerpt}</p>
         <p className="mt-4 font-display text-[11px] tracking-[0.16em] text-cyan">OPEN FILE</p>
       </div>

@@ -35,7 +35,7 @@ export default async function LocationPage({ params }: SlugParams) {
       <LocationTracker slug={location.slug} />
       <ReturnLink href="/world/locations" />
       <p className="font-hud text-[10px] tracking-[0.28em] text-gold">WELCOME TO {location.name}.</p>
-      <h1 className="mt-2 font-display text-5xl uppercase">{location.name}</h1>
+      <h1 className="mt-2 font-display text-2xl uppercase leading-snug sm:text-3xl">{location.name}</h1>
       <div className="relative mt-6 overflow-hidden border-2 border-line">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={location.image} alt={`${location.name} art`} className="w-full object-cover" />

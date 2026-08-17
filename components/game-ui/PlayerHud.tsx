@@ -46,7 +46,7 @@ export function PlayerHud({ className, compact = false }: { className?: string; 
         </span>
         <div className="min-w-0">
           <p className="hud-label text-mist">PLAYER 1</p>
-          <p className="mt-1 font-display text-sm tracking-[0.14em] text-lime">
+          <p className="mt-1 font-display text-[11px] text-lime">
             LEVEL {String(save.level).padStart(2, "0")}
           </p>
         </div>

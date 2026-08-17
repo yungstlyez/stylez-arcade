@@ -33,7 +33,7 @@ export function ReleaseCard({ release, featured = false }: { release: Release; f
             {release.type} • {release.year}
             {release.rarity ? ` • ${release.rarity}` : ""}
           </p>
-          <h3 className="mt-1 font-display text-2xl uppercase leading-tight">
+          <h3 className="mt-1 font-display text-sm uppercase leading-snug">
             <ListenLink release={release}>{release.title}</ListenLink>
           </h3>
           {release.subtitle ? <p className="mt-1 text-sm text-muted">{release.subtitle}</p> : null}

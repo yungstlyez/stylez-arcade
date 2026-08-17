@@ -25,7 +25,7 @@ export default function LorePage() {
             </div>
             <div className="p-5">
               <p className="hud-label text-lime">LORE FILE</p>
-              <h2 className="mt-2 font-display text-2xl uppercase">{entry.title}</h2>
+              <h2 className="mt-2 font-display text-sm uppercase leading-snug">{entry.title}</h2>
               <p className="mt-2 text-sm leading-6 text-muted">{entry.excerpt}</p>
               <p className="mt-4 font-display text-[11px] tracking-[0.18em] text-cyan">OPEN FILE</p>
             </div>

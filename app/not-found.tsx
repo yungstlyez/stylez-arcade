@@ -8,7 +8,7 @@ export default function NotFound() {
       <div className="absolute inset-0 bg-void/75" />
       <div className="relative px-6 py-16">
         <p className="hud-label text-lime">ERROR 404</p>
-        <h1 className="mt-3 font-display text-5xl uppercase">FILE NOT FOUND</h1>
+        <h1 className="mt-3 font-display text-2xl uppercase leading-snug sm:text-3xl">FILE NOT FOUND</h1>
         <p className="mt-3 max-w-sm text-sm text-muted">
           This sector is empty, locked, or not written yet. Return to Southside.
         </p>

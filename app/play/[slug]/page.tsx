@@ -32,7 +32,7 @@ export default async function GamePage({ params }: SlugParams) {
     <article>
       <ReturnLink href="/play" />
       <p className="font-hud text-[10px] tracking-[0.24em] text-gold">{statusLabel(game.status)}</p>
-      <h1 className="mt-2 font-display text-5xl uppercase">{game.name}</h1>
+      <h1 className="mt-2 font-display text-2xl uppercase leading-snug sm:text-3xl">{game.name}</h1>
       <p className="mt-4 max-w-2xl text-sm leading-7 text-muted">{game.description}</p>
       <div className="mt-6">
         <GameViewport gameId={game.id} locked={game.status !== "live"} label="LOCKED" art={game.thumbnail} />
@@ -46,12 +46,12 @@ export default async function GamePage({ params }: SlugParams) {
                   href={soundtrackHref}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-display text-xl uppercase text-gold"
+                  className="font-display text-sm uppercase leading-snug text-gold"
                 >
                   {soundtrack.title}
                 </a>
               ) : (
-                <Link href={`/music/${soundtrack.slug}`} className="font-display text-xl uppercase text-gold">
+                <Link href={`/music/${soundtrack.slug}`} className="font-display text-sm uppercase leading-snug text-gold">
                   {soundtrack.title}
                 </Link>
               )}

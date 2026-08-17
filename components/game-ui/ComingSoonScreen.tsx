@@ -32,7 +32,7 @@ export function ComingSoonScreen({
         <p className="mt-4 hud-label text-lime">FILE LOCKED</p>
         <h1
           id="coming-soon-title"
-          className="mt-2 font-display text-4xl font-semibold uppercase tracking-[0.08em] text-mist sm:text-5xl"
+          className="mt-2 font-display text-2xl uppercase leading-snug text-mist sm:text-3xl"
         >
           {title}
         </h1>

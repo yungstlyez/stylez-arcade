@@ -26,7 +26,7 @@ export function RightRail({ compact = false }: { compact?: boolean }) {
             <img src="/art/portrait-stylez.svg" alt="" className="size-14 object-cover" />
           </span>
           <div>
-            <p className="font-display text-sm text-lime">LEVEL {String(save.level).padStart(2, "0")}</p>
+            <p className="font-display text-[11px] text-lime">LEVEL {String(save.level).padStart(2, "0")}</p>
             <p className="font-hud text-[11px] text-cyan">
               STYLEZ TOKENS {String(save.tokens).padStart(3, "0")}
             </p>
@@ -75,7 +75,7 @@ export function RightRail({ compact = false }: { compact?: boolean }) {
                 target="_blank"
                 rel="noreferrer"
                 onMouseEnter={() => cueUiSound("hover")}
-                className="mt-1 block w-full break-words font-display text-[1.45rem] font-semibold leading-[1.05] tracking-[-0.03em] text-mist hover:text-lime xl:text-[1.7rem]"
+                className="mt-1 block w-full break-words font-display text-[0.85rem] leading-snug text-mist hover:text-lime xl:text-[0.95rem]"
               >
                 {item.handle}
               </a>
@@ -97,7 +97,7 @@ export function RightRail({ compact = false }: { compact?: boolean }) {
                 </p>
               </div>
             </div>
-            <p className="mt-3 font-display text-sm tracking-[0.12em] text-lime">+10 TOKENS</p>
+            <p className="mt-3 font-display text-[11px] text-lime">+10 TOKENS</p>
           </>
         ) : (
           <p className="mt-3 text-sm text-muted">No signal yet. Press start.</p>

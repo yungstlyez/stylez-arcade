@@ -42,6 +42,10 @@ export function getFeaturedRelease(): Release {
   return releases.find((item) => item.slug === site.featuredReleaseSlug) ?? releases[0];
 }
 
+export function getLatestSpotifyRelease(): Release | undefined {
+  return releases.find((item) => !item.soundcloudOnly && Boolean(item.streamingLinks.spotify));
+}
+
 export function getCharacters(): Character[] {
   return characters;
 }

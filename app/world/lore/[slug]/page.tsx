@@ -33,7 +33,7 @@ export default async function LoreEntryPage({ params }: SlugParams) {
     <article>
       <ReturnLink href="/world/lore" />
       <p className="hud-label text-lime">LORE FILE</p>
-      <h1 className="mt-2 font-display text-4xl uppercase sm:text-5xl">{entry.title}</h1>
+      <h1 className="mt-2 font-display text-2xl uppercase leading-snug sm:text-3xl">{entry.title}</h1>
       <div className="relative mt-6 h-48 overflow-hidden border border-cyan/25 sm:h-64">
         <StageArt seed={entry.id} />
         <div className="absolute inset-0 bg-gradient-to-t from-void/50 to-transparent" />

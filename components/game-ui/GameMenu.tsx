@@ -72,7 +72,7 @@ export function GameMenu({ onNavigate }: { onNavigate?: () => void }) {
                   <span className="flex items-center gap-2">
                     <span
                       className={cn(
-                        "block font-display text-[12px] font-semibold tracking-[0.16em]",
+                        "block font-display text-[11px]",
                         active ? "text-lime" : "text-mist",
                       )}
                     >

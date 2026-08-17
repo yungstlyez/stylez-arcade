@@ -66,7 +66,7 @@
   --color-ocean: var(--ocean);
   --color-green-deep: var(--green-deep);
   --font-sans: var(--font-ibm);
-  --font-display: var(--font-orbitron), var(--font-hud);
+  --font-display: var(--font-pixel), ui-monospace, monospace;
   --font-pixel: var(--font-pixel);
   --font-hud: var(--font-hud);
 }
@@ -95,8 +95,11 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   letter-spacing: 0.04em;
+  line-height: 1.45;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
 }
 
 .font-hud {
@@ -395,9 +398,10 @@ body {
 }
 
 .hud-label {
-  font-family: var(--font-pixel), ui-monospace, monospace;
-  font-size: 8px;
-  letter-spacing: 0.18em;
+  font-family: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
@@ -504,7 +508,7 @@ body {
     height: 100%;
     min-height: 0;
     grid-template-columns: minmax(0, 1fr) 16.75rem;
-    grid-template-rows: minmax(210px, 1.28fr) minmax(170px, 1fr) minmax(150px, 0.92fr);
+    grid-template-rows: minmax(210px, 1.1fr) minmax(210px, 1.1fr) minmax(150px, 0.95fr) minmax(130px, 0.85fr);
     gap: 0.7rem;
   }
 
@@ -514,15 +518,21 @@ body {
     min-height: 0;
   }
 
-  .hub-mid {
+  .hub-spotify {
     grid-column: 1;
     grid-row: 2;
     min-height: 0;
   }
 
-  .hub-bot {
+  .hub-mid {
     grid-column: 1;
     grid-row: 3;
+    min-height: 0;
+  }
+
+  .hub-bot {
+    grid-column: 1;
+    grid-row: 4;
     min-height: 0;
   }
 

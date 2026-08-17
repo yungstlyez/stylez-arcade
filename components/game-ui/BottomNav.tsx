@@ -52,7 +52,7 @@ export function BottomNav() {
                   }
                 }}
                 className={cn(
-                  "flex min-h-14 flex-col items-center justify-center gap-1 font-display text-[10px] tracking-[0.12em]",
+                  "flex min-h-14 flex-col items-center justify-center gap-1 font-display text-[9px]",
                   active ? "bg-green/10 text-lime" : "text-muted",
                 )}
               >

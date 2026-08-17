@@ -15,7 +15,7 @@ export function LocationCard({ location }: { location: LocationRecord }) {
       </div>
       <div className="p-4">
         <p className="hud-label text-pink">LOCATION FILE</p>
-        <h3 className="mt-1 font-display text-2xl uppercase">{location.name}</h3>
+        <h3 className="mt-1 font-display text-sm uppercase leading-snug">{location.name}</h3>
         <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{location.description}</p>
         <p className="mt-3 font-display text-[11px] tracking-[0.16em] text-pink">ENTER</p>
       </div>

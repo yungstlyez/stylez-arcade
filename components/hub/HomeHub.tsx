@@ -7,6 +7,7 @@ import { ListenLink } from "@/components/music/ListenLink";
 import { MusicLibrary } from "@/components/music/MusicLibrary";
 import { SoundCloudEmbed } from "@/components/music/SoundCloudEmbed";
 import { SoundCloudOnlyTag } from "@/components/music/SoundCloudOnlyTag";
+import { SpotifyEmbed } from "@/components/music/SpotifyEmbed";
 import { currentMission } from "@/data/transmissions";
 import { site } from "@/data/site";
 import { formatDate, formatTime } from "@/lib/cn";
@@ -17,9 +18,11 @@ import {
   getGame,
   getGames,
   getLatestChronicle,
+  getLatestSpotifyRelease,
   getLocation,
   getReleases,
   listenHref,
+  releaseToTrack,
 } from "@/lib/content";
 import { CITY_SCENE } from "@/lib/placeholders";
 import Link from "next/link";
@@ -32,6 +35,8 @@ export function HomeHub() {
   const southside = getLocation(site.featuredLocationSlug);
   const featuredListen = listenHref(featured);
   const soundcloudUrl = featured.soundcloudOnly ? featured.streamingLinks.soundcloud : undefined;
+  const latestSpotify = getLatestSpotifyRelease();
+  const spotifyUrl = latestSpotify?.streamingLinks.spotify;
 
   return (
     <div className="hub-root mx-auto h-full max-w-[1920px]">
@@ -41,6 +46,8 @@ export function HomeHub() {
             <SoundCloudEmbed
               url={soundcloudUrl}
               title={featured.title}
+              track={releaseToTrack(featured)}
+              autoPlay
               className="absolute inset-0 size-full"
             />
           </div>
@@ -83,7 +90,7 @@ export function HomeHub() {
               <i className="pulse-dot size-2 bg-lime" />
               {featured.soundcloudOnly ? <SoundCloudOnlyTag /> : null}
             </p>
-            <h1 className="mt-1 font-display text-2xl font-semibold uppercase leading-tight tracking-[0.04em] text-mist sm:text-4xl">
+            <h1 className="mt-1 font-display text-xl uppercase leading-snug text-mist sm:text-2xl">
               <ListenLink release={featured}>{featured.title}</ListenLink>
             </h1>
             <p className="mt-2 font-hud text-[11px] tracking-[0.12em] text-muted">
@@ -121,6 +128,28 @@ export function HomeHub() {
       </section>
       )}
 
+      {latestSpotify && spotifyUrl ? (
+        <section className="hub-spotify hud-panel-green relative flex h-full min-h-0 flex-col overflow-hidden lg:min-h-[18rem]">
+          <div className="relative aspect-square w-full lg:aspect-auto lg:min-h-0 lg:flex-1">
+            <SpotifyEmbed
+              url={spotifyUrl}
+              title={latestSpotify.title}
+              track={releaseToTrack(latestSpotify)}
+              className="absolute inset-0 size-full"
+            />
+          </div>
+          <div className="flex shrink-0 items-center justify-between gap-3 border-t border-lime/25 bg-void/85 px-3 py-2">
+            <p className="hud-label text-lime">SPOTIFY</p>
+            <Link
+              href={`/music/${latestSpotify.slug}`}
+              className="hud-press inline-flex min-h-9 items-center border border-cyan/50 px-3 font-display text-[11px] font-semibold tracking-[0.16em] text-cyan hover:border-cyan"
+            >
+              OPEN FILE
+            </Link>
+          </div>
+        </section>
+      ) : null}
+
       <div className="hub-mid">
         <Link
           href="/chronicles"
@@ -146,7 +175,7 @@ export function HomeHub() {
 
         <article className="hud-panel-green hud-grid hud-scan relative flex min-h-0 flex-col items-center justify-center p-4 text-center">
           <p className="hud-label text-lime">MISSION 001</p>
-          <h2 className="mt-2 font-display text-lg font-semibold uppercase tracking-[0.08em] text-mist">
+          <h2 className="mt-2 font-display text-sm uppercase leading-snug text-mist">
             {currentMission.title}
           </h2>
           <p className="mt-2 text-sm text-muted">{currentMission.brief}</p>
@@ -176,7 +205,7 @@ export function HomeHub() {
           <div className="absolute inset-0 bg-gradient-to-t from-void via-void/35 to-transparent" />
           <div className="relative flex h-full min-h-[12rem] flex-col justify-end p-4">
             <p className="hud-label text-pink">ENTER THE WORLD</p>
-            <h2 className="mt-1 font-display text-2xl font-semibold uppercase text-mist">
+            <h2 className="mt-1 font-display text-sm uppercase leading-snug text-mist">
               {southside?.name ?? "SOUTHSIDE"}
             </h2>
             <p className="font-hud text-[11px] text-magenta">Queens, NY</p>

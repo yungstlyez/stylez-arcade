@@ -23,7 +23,7 @@ export function CharacterCard({ character }: { character: Character }) {
       </div>
       <div className="p-4">
         <p className="hud-label text-cyan">{character.alias}</p>
-        <h3 className="mt-1 font-display text-2xl uppercase">{character.name}</h3>
+        <h3 className="mt-1 font-display text-sm uppercase leading-snug">{character.name}</h3>
       </div>
     </Link>
   );

@@ -36,7 +36,7 @@ export default async function ItemPage({ params }: SlugParams) {
         <img src={item.image} alt={`${item.name} art`} className="pixelated border border-cyan/30 object-cover" />
         <div>
           <p className="font-hud text-[10px] tracking-[0.22em] text-gold">{item.rarity.toUpperCase()}</p>
-          <h1 className="mt-2 font-display text-4xl uppercase">{item.name}</h1>
+          <h1 className="mt-2 font-display text-2xl uppercase leading-snug sm:text-3xl">{item.name}</h1>
           <p className="mt-4 max-w-xl text-sm leading-7 text-muted">{item.description}</p>
           <div className="mt-6 grid gap-4">
             <RelatedList

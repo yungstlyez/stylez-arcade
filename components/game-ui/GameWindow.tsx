@@ -40,7 +40,7 @@ export function GameWindow({
       <header className="flex items-center justify-between gap-3 border-b border-cyan/20 px-3 py-2">
         <div className="min-w-0">
           {eyebrow ? <p className="hud-label text-lime">{eyebrow}</p> : null}
-          <h2 className="truncate font-display text-sm font-semibold tracking-[0.14em] text-mist">{title}</h2>
+          <h2 className="truncate font-display text-[11px] text-mist">{title}</h2>
         </div>
         {actions}
       </header>

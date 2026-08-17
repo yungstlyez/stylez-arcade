@@ -46,7 +46,7 @@ export default async function CharacterPage({ params }: SlugParams) {
         <div className="space-y-5">
           <header>
             <p className="font-hud text-[10px] tracking-[0.22em] text-muted">{character.alias}</p>
-            <h1 className="mt-2 font-display text-5xl uppercase">{character.name}</h1>
+            <h1 className="mt-2 font-display text-2xl uppercase leading-snug sm:text-3xl">{character.name}</h1>
             <p className="mt-2 font-hud text-[10px] tracking-[0.16em] text-gold">
               FIRST APPEARANCE · {character.firstAppearance}
             </p>

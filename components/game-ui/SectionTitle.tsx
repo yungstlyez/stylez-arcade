@@ -14,7 +14,7 @@ export function SectionTitle({
   return (
     <header className={cn("mb-6", className)}>
       {kicker ? <p className="hud-label text-lime">{kicker}</p> : null}
-      <h1 className="mt-1 font-display text-3xl font-semibold uppercase tracking-[0.08em] text-mist sm:text-4xl">
+      <h1 className="mt-1 font-display text-xl uppercase leading-snug text-mist sm:text-2xl">
         {title}
       </h1>
       {subtitle ? (

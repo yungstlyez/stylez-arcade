@@ -10,7 +10,7 @@ export function ItemCard({ item }: { item: ItemRecord }) {
       </div>
       <div className="p-4">
         <p className="hud-label text-lime">{item.rarity.toUpperCase()}</p>
-        <h3 className="mt-1 font-display text-2xl uppercase">{item.name}</h3>
+        <h3 className="mt-1 font-display text-sm uppercase leading-snug">{item.name}</h3>
       </div>
     </Link>
   );
