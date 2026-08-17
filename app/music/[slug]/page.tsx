@@ -1,5 +1,6 @@
 import { PlayReleaseButton } from "@/components/music/PlayReleaseButton";
 import { ListenLink } from "@/components/music/ListenLink";
+import { SoundCloudEmbed } from "@/components/music/SoundCloudEmbed";
 import { SoundCloudOnlyTag } from "@/components/music/SoundCloudOnlyTag";
 import { GameWindow } from "@/components/game-ui/GameWindow";
 import { ReturnLink } from "@/components/game-ui/ReturnLink";
@@ -51,6 +52,15 @@ export default async function ReleasePage({ params }: SlugParams) {
               <SoundCloudOnlyTag className="absolute left-2 top-2 z-10" />
             ) : null}
           </div>
+          {release.soundcloudOnly && release.streamingLinks.soundcloud ? (
+            <div className="cover-frame mt-4 aspect-square overflow-hidden">
+              <SoundCloudEmbed
+                url={release.streamingLinks.soundcloud}
+                title={release.title}
+                className="size-full"
+              />
+            </div>
+          ) : null}
           <div className="mt-4 flex flex-wrap gap-2">
             <PlayReleaseButton release={release} />
             {Object.entries(release.streamingLinks).map(([key, href]) =>

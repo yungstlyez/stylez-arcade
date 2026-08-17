@@ -5,6 +5,7 @@ import { Waveform } from "@/components/hub/Waveform";
 import { RightRail } from "@/components/hub/RightRail";
 import { ListenLink } from "@/components/music/ListenLink";
 import { MusicLibrary } from "@/components/music/MusicLibrary";
+import { SoundCloudEmbed } from "@/components/music/SoundCloudEmbed";
 import { SoundCloudOnlyTag } from "@/components/music/SoundCloudOnlyTag";
 import { currentMission } from "@/data/transmissions";
 import { site } from "@/data/site";
@@ -30,9 +31,30 @@ export function HomeHub() {
   const mystery = getGames().find((item) => item.slug === "unknown-cabinet");
   const southside = getLocation(site.featuredLocationSlug);
   const featuredListen = listenHref(featured);
+  const soundcloudUrl = featured.soundcloudOnly ? featured.streamingLinks.soundcloud : undefined;
 
   return (
     <div className="hub-root mx-auto h-full max-w-[1920px]">
+      {soundcloudUrl ? (
+        <section className="hub-hero hud-panel-green relative flex h-full min-h-0 flex-col overflow-hidden lg:min-h-[18rem]">
+          <div className="relative aspect-square w-full lg:aspect-auto lg:min-h-0 lg:flex-1">
+            <SoundCloudEmbed
+              url={soundcloudUrl}
+              title={featured.title}
+              className="absolute inset-0 size-full"
+            />
+          </div>
+          <div className="flex shrink-0 items-center justify-between gap-3 border-t border-lime/25 bg-void/85 px-3 py-2">
+            <SoundCloudOnlyTag />
+            <Link
+              href={`/music/${featured.slug}`}
+              className="hud-press inline-flex min-h-9 items-center border border-cyan/50 px-3 font-display text-[11px] font-semibold tracking-[0.16em] text-cyan hover:border-cyan"
+            >
+              OPEN FILE
+            </Link>
+          </div>
+        </section>
+      ) : (
       <section className="hub-hero hud-panel-green relative min-h-[18rem] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -97,6 +119,7 @@ export function HomeHub() {
           </div>
         </div>
       </section>
+      )}
 
       <div className="hub-mid">
         <Link
