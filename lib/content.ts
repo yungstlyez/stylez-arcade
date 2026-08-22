@@ -131,6 +131,7 @@ export function releaseToTrack(release: Release): Track {
     cover: release.cover,
     src: release.audio,
     slug: release.slug,
+    preferExternal: Boolean(release.streamingLinks.soundcloud || release.streamingLinks.spotify),
   };
 }
 

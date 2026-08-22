@@ -1,6 +1,7 @@
 "use client";
 
 import { usePlayer } from "@/components/player/PlayerProvider";
+import { site } from "@/data/site";
 import { xpFromSave } from "@/lib/xp";
 import { cn } from "@/lib/cn";
 import Link from "next/link";
@@ -19,7 +20,7 @@ export function PlayerHud({ className, compact = false }: { className?: string; 
       >
         <span className="cover-frame size-8 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/art/portrait-stylez.svg" alt="" className="size-8 object-cover" />
+          <img src={site.portrait} alt="" className="size-8 object-cover" />
         </span>
         <span className="hidden sm:block">
           <span className="block font-hud text-[10px] text-lime">P1</span>
@@ -39,7 +40,7 @@ export function PlayerHud({ className, compact = false }: { className?: string; 
         <span className="cover-frame size-16 shrink-0 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/art/portrait-stylez.svg"
+            src={site.portrait}
             alt="Player 1 portrait"
             className="size-16 object-cover"
           />

@@ -99,6 +99,7 @@ export function SpotifyEmbed({
     if (!wrap || !id || !trackId) return;
     let cancelled = false;
     let controller: SpotifyEmbedController | null = null;
+    let player: ExternalPlayer | null = null;
     const host = document.createElement("div");
     host.style.width = "100%";
     host.style.height = "100%";
@@ -113,12 +114,13 @@ export function SpotifyEmbed({
         }
         controller = next;
         pausedRef.current = true;
-        const player: ExternalPlayer = {
+        const nextPlayer: ExternalPlayer = {
           play: () => next.play(),
           pause: () => next.pause(),
           seek: (seconds) => next.seek(seconds),
         };
-        audioRef.current.registerExternal(trackId, player);
+        player = nextPlayer;
+        audioRef.current.registerExternal(trackId, nextPlayer);
         if (trackRef.current) audioRef.current.adoptExternal(trackRef.current);
         next.addListener("playback_started", () => {
           if (trackRef.current) audioRef.current.reportExternalPlay(trackRef.current);
@@ -144,7 +146,7 @@ export function SpotifyEmbed({
 
     return () => {
       cancelled = true;
-      audioRef.current.unregisterExternal(trackId);
+      audioRef.current.unregisterExternal(trackId, player ?? undefined);
       controller?.destroy?.();
     };
   }, [trackId, url]);

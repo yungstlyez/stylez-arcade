@@ -10,8 +10,8 @@ export function UnlockToasts() {
   return (
     <div className="pointer-events-none fixed top-4 right-4 z-[60] flex w-[min(20rem,calc(100vw-2rem))] flex-col gap-2">
       <AnimatePresence>
-        {toasts.map((toast) => (
-          <ToastCard key={toast.id} toast={toast} onDone={() => dismissToast(toast.id)} />
+        {toasts.map((toast, index) => (
+          <ToastCard key={`${toast.id}-${index}`} toast={toast} onDone={() => dismissToast(toast.id)} />
         ))}
       </AnimatePresence>
     </div>

@@ -5,7 +5,7 @@ import { Waveform } from "@/components/hub/Waveform";
 import { RightRail } from "@/components/hub/RightRail";
 import { ListenLink } from "@/components/music/ListenLink";
 import { MusicLibrary } from "@/components/music/MusicLibrary";
-import { SoundCloudEmbed } from "@/components/music/SoundCloudEmbed";
+import { FeaturedSoundCloudSlot } from "@/components/music/FeaturedSoundCloud";
 import { SoundCloudOnlyTag } from "@/components/music/SoundCloudOnlyTag";
 import { SpotifyEmbed } from "@/components/music/SpotifyEmbed";
 import { currentMission } from "@/data/transmissions";
@@ -17,7 +17,6 @@ import {
   getFeaturedRelease,
   getGame,
   getGames,
-  getLatestChronicle,
   getLatestSpotifyRelease,
   getLocation,
   getReleases,
@@ -25,11 +24,13 @@ import {
   releaseToTrack,
 } from "@/lib/content";
 import { CITY_SCENE } from "@/lib/placeholders";
+import { useChronicles } from "@/components/chronicles/ChronicleProvider";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export function HomeHub() {
+  const { latest: chronicle } = useChronicles();
   const featured = getFeaturedRelease();
-  const chronicle = getLatestChronicle();
   const game = getGame(site.featuredGameSlug);
   const mystery = getGames().find((item) => item.slug === "unknown-cabinet");
   const southside = getLocation(site.featuredLocationSlug);
@@ -37,19 +38,27 @@ export function HomeHub() {
   const soundcloudUrl = featured.soundcloudOnly ? featured.streamingLinks.soundcloud : undefined;
   const latestSpotify = getLatestSpotifyRelease();
   const spotifyUrl = latestSpotify?.streamingLinks.spotify;
+  const [spotifyReady, setSpotifyReady] = useState(false);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setSpotifyReady(true), 700);
+    return () => window.clearTimeout(id);
+  }, []);
 
   return (
     <div className="hub-root mx-auto h-full max-w-[1920px]">
       {soundcloudUrl ? (
         <section className="hub-hero hud-panel-green relative flex h-full min-h-0 flex-col overflow-hidden lg:min-h-[18rem]">
           <div className="relative aspect-square w-full lg:aspect-auto lg:min-h-0 lg:flex-1">
-            <SoundCloudEmbed
-              url={soundcloudUrl}
-              title={featured.title}
-              track={releaseToTrack(featured)}
-              autoPlay
-              className="absolute inset-0 size-full"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={featured.cover}
+              alt={`${featured.title} cover art`}
+              className="absolute inset-0 size-full object-cover"
             />
+            <div className="absolute inset-x-0 bottom-0 h-[166px] bg-void/70">
+              <FeaturedSoundCloudSlot className="size-full" />
+            </div>
           </div>
           <div className="flex shrink-0 items-center justify-between gap-3 border-t border-lime/25 bg-void/85 px-3 py-2">
             <SoundCloudOnlyTag />
@@ -131,12 +140,16 @@ export function HomeHub() {
       {latestSpotify && spotifyUrl ? (
         <section className="hub-spotify hud-panel-green relative flex h-full min-h-0 flex-col overflow-hidden lg:min-h-[18rem]">
           <div className="relative aspect-square w-full lg:aspect-auto lg:min-h-0 lg:flex-1">
-            <SpotifyEmbed
-              url={spotifyUrl}
-              title={latestSpotify.title}
-              track={releaseToTrack(latestSpotify)}
-              className="absolute inset-0 size-full"
-            />
+            {spotifyReady ? (
+              <SpotifyEmbed
+                url={spotifyUrl}
+                title={latestSpotify.title}
+                track={releaseToTrack(latestSpotify)}
+                className="absolute inset-0 size-full"
+              />
+            ) : (
+              <div className="absolute inset-0 bg-void" />
+            )}
           </div>
           <div className="flex shrink-0 items-center justify-between gap-3 border-t border-lime/25 bg-void/85 px-3 py-2">
             <p className="hud-label text-lime">SPOTIFY</p>
@@ -151,27 +164,28 @@ export function HomeHub() {
       ) : null}
 
       <div className="hub-mid">
-        <Link
-          href="/chronicles"
-          className="hud-panel hud-lift flex min-h-0 flex-col overflow-hidden"
-          onMouseEnter={() => cueUiSound("hover")}
-        >
-          <div className="relative min-h-[7.5rem] flex-1 overflow-hidden">
+        <article className="hud-panel flex min-h-[11rem] flex-col overflow-hidden lg:min-h-0">
+          <div className="flex min-h-0 flex-1 items-start gap-4 overflow-auto p-4 sm:p-5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/art/env-studio-crt.svg"
-              alt="Studio transmission still"
-              className="absolute inset-0 h-full w-full object-cover"
+              src={site.portrait}
+              alt={site.artist}
+              className="pixelated size-14 shrink-0 object-cover sm:size-16"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-transparent" />
+            <div className="min-w-0 flex-1">
+              <p className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                <span className="font-display text-sm uppercase text-mist sm:text-base">{site.artist}</span>
+                <span className="font-hud text-[11px] tracking-[0.16em] text-cyan sm:text-xs">{site.instagram}</span>
+              </p>
+              <p className="mt-1 font-hud text-[11px] tracking-[0.12em] text-lime sm:text-xs">
+                CHRONICLE {padChronicle(chronicle.number)} · {formatDate(chronicle.date)}
+              </p>
+              <p className="mt-3 whitespace-pre-wrap text-base leading-7 text-mist sm:text-lg sm:leading-8">
+                {chronicle.content.trim() || chronicle.excerpt}
+              </p>
+            </div>
           </div>
-          <div className="p-3">
-            <p className="hud-label text-cyan">CHRONICLE {padChronicle(chronicle.number)}</p>
-            <p className="mt-1 font-hud text-[10px] text-lime">{formatDate(chronicle.date)}</p>
-            <p className="mt-2 line-clamp-2 text-sm text-muted">{chronicle.excerpt}</p>
-            <p className="mt-2 font-display text-[11px] tracking-[0.16em] text-cyan">OPEN FILE</p>
-          </div>
-        </Link>
+        </article>
 
         <article className="hud-panel-green hud-grid hud-scan relative flex min-h-0 flex-col items-center justify-center p-4 text-center">
           <p className="hud-label text-lime">MISSION 001</p>

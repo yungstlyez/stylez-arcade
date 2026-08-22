@@ -37,10 +37,31 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const [toasts, setToasts] = useState<UnlockToast[]>([]);
   const keys = useRef<string[]>([]);
+  const toastSeq = useRef(0);
+  const toastedAchievements = useRef(new Set<string>());
 
   const pushToast = useCallback((toast: UnlockToast) => {
-    setToasts((current) => [...current.slice(-3), toast]);
+    setToasts((current) => {
+      if (current.some((item) => item.id === toast.id)) return current;
+      return [...current.slice(-3), toast];
+    });
   }, []);
+
+  const toastAchievement = useCallback(
+    (id: string) => {
+      if (toastedAchievements.current.has(id)) return;
+      toastedAchievements.current.add(id);
+      toastSeq.current += 1;
+      const meta = achievementCatalog.find((item) => item.id === id);
+      pushToast({
+        id: `ach-${id}-${toastSeq.current}`,
+        kind: "achievement",
+        title: meta?.name ?? "ACHIEVEMENT",
+        body: meta?.description ?? "File unlocked.",
+      });
+    },
+    [pushToast],
+  );
 
   const commit = useCallback(
     (updater: (current: SaveData) => SaveData) => {
@@ -48,27 +69,109 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
         const next = updater(current);
         const before = new Set(current.achievements);
         const unlocked = evaluateAchievements(next);
+        const level = computeLevel({ ...next, achievements: unlocked });
+        const sameAchievements =
+          unlocked.length === current.achievements.length &&
+          unlocked.every((id) => before.has(id));
+        if (next === current && sameAchievements && level === current.level) {
+          return current;
+        }
         const withLevel: SaveData = {
           ...next,
           achievements: unlocked,
-          level: computeLevel({ ...next, achievements: unlocked }),
+          level,
         };
         persistSave(withLevel);
-        for (const id of unlocked) {
-          if (!before.has(id)) {
-            const meta = achievementCatalog.find((item) => item.id === id);
-            pushToast({
-              id: `ach-${id}-${Date.now()}`,
-              kind: "achievement",
-              title: meta?.name ?? "ACHIEVEMENT",
-              body: meta?.description ?? "File unlocked.",
-            });
-          }
+        const fresh = unlocked.filter((id) => !before.has(id));
+        if (fresh.length) {
+          queueMicrotask(() => {
+            for (const id of fresh) toastAchievement(id);
+          });
         }
         return withLevel;
       });
     },
-    [pushToast],
+    [toastAchievement],
+  );
+
+  const dismissToast = useCallback((id: string) => {
+    setToasts((current) => current.filter((toast) => toast.id !== id));
+  }, []);
+
+  const enterWorld = useCallback(() => {
+    commit((current) => (current.started ? current : { ...current, started: true }));
+  }, [commit]);
+
+  const visit = useCallback(
+    (path: string) => {
+      commit((current) =>
+        current.visited.includes(path) ? current : { ...current, visited: [...current.visited, path] },
+      );
+    },
+    [commit],
+  );
+
+  const readChronicle = useCallback(
+    (slug: string) => {
+      commit((current) =>
+        current.chroniclesRead.includes(slug)
+          ? current
+          : { ...current, chroniclesRead: [...current.chroniclesRead, slug] },
+      );
+    },
+    [commit],
+  );
+
+  const visitLocation = useCallback(
+    (slug: string) => {
+      commit((current) =>
+        current.locationsVisited.includes(slug)
+          ? current
+          : { ...current, locationsVisited: [...current.locationsVisited, slug] },
+      );
+    },
+    [commit],
+  );
+
+  const markListened = useCallback(
+    (slug: string) => {
+      commit((current) =>
+        current.listened.includes(slug) ? current : { ...current, listened: [...current.listened, slug] },
+      );
+    },
+    [commit],
+  );
+
+  const markGamePlayed = useCallback(
+    (slug: string) => {
+      commit((current) =>
+        current.gamesPlayed.includes(slug)
+          ? current
+          : { ...current, gamesPlayed: [...current.gamesPlayed, slug] },
+      );
+    },
+    [commit],
+  );
+
+  const discoverEgg = useCallback(
+    (id: string, toast?: Omit<UnlockToast, "id">) => {
+      commit((current) => {
+        if (current.eggs.includes(id)) return current;
+        return {
+          ...current,
+          eggs: [...current.eggs, id],
+          tokens: current.tokens + 1,
+          collectibles: current.collectibles.includes("southside-chip")
+            ? current.collectibles
+            : [...current.collectibles, "southside-chip"],
+        };
+      });
+      if (toast) {
+        toastSeq.current += 1;
+        pushToast({ ...toast, id: `${id}-${toastSeq.current}` });
+      }
+    },
+    [commit, pushToast],
   );
 
   useEffect(() => {
@@ -85,17 +188,12 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setSave(hydrated);
     persistSave(hydrated);
     setReady(true);
+    toastedAchievements.current = new Set(loaded.achievements);
     const fresh = hydrated.achievements.filter((id) => !loaded.achievements.includes(id));
     for (const id of fresh) {
-      const meta = achievementCatalog.find((item) => item.id === id);
-      pushToast({
-        id: `ach-${id}-${Date.now()}`,
-        kind: "achievement",
-        title: meta?.name ?? "ACHIEVEMENT",
-        body: meta?.description ?? "File unlocked.",
-      });
+      toastAchievement(id);
     }
-  }, [pushToast]);
+  }, [toastAchievement]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -136,56 +234,28 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       save,
       ready,
       toasts,
-      dismissToast: (id) => setToasts((current) => current.filter((toast) => toast.id !== id)),
-      enterWorld: () => commit((current) => ({ ...current, started: true })),
-      visit: (path) =>
-        commit((current) =>
-          current.visited.includes(path)
-            ? current
-            : { ...current, visited: [...current.visited, path] },
-        ),
-      readChronicle: (slug) =>
-        commit((current) =>
-          current.chroniclesRead.includes(slug)
-            ? current
-            : { ...current, chroniclesRead: [...current.chroniclesRead, slug] },
-        ),
-      visitLocation: (slug) =>
-        commit((current) =>
-          current.locationsVisited.includes(slug)
-            ? current
-            : { ...current, locationsVisited: [...current.locationsVisited, slug] },
-        ),
-      markListened: (slug) =>
-        commit((current) =>
-          current.listened.includes(slug)
-            ? current
-            : { ...current, listened: [...current.listened, slug] },
-        ),
-      markGamePlayed: (slug) =>
-        commit((current) =>
-          current.gamesPlayed.includes(slug)
-            ? current
-            : { ...current, gamesPlayed: [...current.gamesPlayed, slug] },
-        ),
-      discoverEgg: (id, toast) => {
-        commit((current) => {
-          if (current.eggs.includes(id)) return current;
-          return {
-            ...current,
-            eggs: [...current.eggs, id],
-            tokens: current.tokens + 1,
-            collectibles: current.collectibles.includes("southside-chip")
-              ? current.collectibles
-              : [...current.collectibles, "southside-chip"],
-          };
-        });
-        if (toast) {
-          pushToast({ ...toast, id: `${id}-${Date.now()}` });
-        }
-      },
+      dismissToast,
+      enterWorld,
+      visit,
+      readChronicle,
+      visitLocation,
+      markListened,
+      markGamePlayed,
+      discoverEgg,
     }),
-    [commit, pushToast, ready, save, toasts],
+    [
+      dismissToast,
+      discoverEgg,
+      enterWorld,
+      markGamePlayed,
+      markListened,
+      readChronicle,
+      ready,
+      save,
+      toasts,
+      visit,
+      visitLocation,
+    ],
   );
 
   return <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>;

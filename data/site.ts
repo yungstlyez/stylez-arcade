@@ -13,6 +13,7 @@ export const site = {
   featuredLocationSlug: "southside",
   title: "STYLEZ ARCADE",
   logo: "/art/logo-primary.png",
+  portrait: "/art/portrait-stylez.png",
   description:
     "You found it. The world Callmestylez exists inside — music, Southside, Chronicles, and whatever is still being written.",
 } as const;

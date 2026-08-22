@@ -4,6 +4,7 @@ import { LogoMark } from "@/components/game-ui/LogoMark";
 import { achievements } from "@/data/achievements";
 import { hubSocials } from "@/data/socials";
 import { usePlayer } from "@/components/player/PlayerProvider";
+import { site } from "@/data/site";
 import { xpFromSave } from "@/lib/xp";
 import { cn } from "@/lib/cn";
 import { cueUiSound } from "@/lib/ui-sound";
@@ -23,7 +24,7 @@ export function RightRail({ compact = false }: { compact?: boolean }) {
         <div className="mt-3 flex items-center gap-3">
           <span className="cover-frame size-14 shrink-0 overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/art/portrait-stylez.svg" alt="" className="size-14 object-cover" />
+            <img src={site.portrait} alt="" className="size-14 object-cover" />
           </span>
           <div>
             <p className="font-display text-[11px] text-lime">LEVEL {String(save.level).padStart(2, "0")}</p>

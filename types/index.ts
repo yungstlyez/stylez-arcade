@@ -121,6 +121,7 @@ export type Chronicle = {
   relatedSongs: string[];
   relatedCharacters: string[];
   relatedLocations: string[];
+  authored?: boolean;
 };
 
 export type GameStatus = "live" | "locked" | "beta";
@@ -203,6 +204,8 @@ export type Track = {
   cover: string;
   src: string;
   slug: string;
+  /** When true, never play the local placeholder file — wait for the embed. */
+  preferExternal?: boolean;
 };
 
 export type SaveData = {

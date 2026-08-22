@@ -1,6 +1,7 @@
 "use client";
 
 import { PixelIcon } from "@/components/game-ui/PixelIcon";
+import { useChronicles } from "@/components/chronicles/ChronicleProvider";
 import { site } from "@/data/site";
 import Link from "next/link";
 
@@ -15,6 +16,7 @@ export function TopBar({
   onHud?: () => void;
   hudOpen?: boolean;
 }) {
+  const { authorUnlocked, openTerminal } = useChronicles();
   return (
     <header className="flex h-12 shrink-0 items-center justify-between gap-3 border-b border-cyan/20 bg-navy/70 px-3 backdrop-blur-md">
       <div className="flex min-w-0 items-center gap-3">
@@ -37,6 +39,15 @@ export function TopBar({
             <span key={h} className="w-[3px] bg-lime" style={{ height: h }} />
           ))}
         </div>
+        {authorUnlocked ? (
+          <button
+            type="button"
+            className="border border-lime/40 px-2 py-1 font-hud text-[9px] tracking-[0.16em] text-lime hover:border-lime"
+            onClick={() => openTerminal()}
+          >
+            LOG
+          </button>
+        ) : null}
         <Link href="/online" className="p-2 text-cyan hover:text-lime" aria-label="Transmissions">
           <PixelIcon name="signal" />
         </Link>

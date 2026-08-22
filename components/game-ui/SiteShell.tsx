@@ -14,6 +14,9 @@ import { TopBar } from "@/components/game-ui/TopBar";
 import { WorldBackdrop } from "@/components/game-ui/WorldBackdrop";
 import { GlobalAudioPlayer } from "@/components/audio/GlobalAudioPlayer";
 import { LibraryOverlay } from "@/components/music/LibraryOverlay";
+import { FeaturedSoundCloudLayer } from "@/components/music/FeaturedSoundCloud";
+import { ChronicleReader } from "@/components/chronicles/ChronicleReader";
+import { ChronicleTerminal } from "@/components/chronicles/ChronicleTerminal";
 import { SocialsBanner } from "@/components/hub/SocialsBanner";
 import { usePlayer } from "@/components/player/PlayerProvider";
 import { cn } from "@/lib/cn";
@@ -31,10 +34,20 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const isMenuOpen = menuOpen && menuPath === pathname;
   const isHudOpen = hudOpen && hudPath === pathname;
   const isHub = pathname === "/";
+  const [fxReady, setFxReady] = useState(false);
 
   useEffect(() => {
     visit(pathname);
   }, [pathname, visit]);
+
+  useEffect(() => {
+    if (titleScreen) {
+      setFxReady(false);
+      return;
+    }
+    const id = window.setTimeout(() => setFxReady(true), 350);
+    return () => window.clearTimeout(id);
+  }, [titleScreen]);
 
   return (
     <>
@@ -45,9 +58,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
         Skip to content
       </a>
       <WorldBackdrop />
-      <CrtOverlay />
-      <ScanlineOverlay />
-      <GrainOverlay />
+      <FeaturedSoundCloudLayer />
+      {fxReady ? (
+        <>
+          <CrtOverlay />
+          <ScanlineOverlay />
+          <GrainOverlay />
+        </>
+      ) : null}
       <UnlockToasts />
 
       {!titleScreen ? (
@@ -94,6 +112,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </main>
             <LibraryOverlay />
             <ComingSoonOverlay />
+            <ChronicleReader />
+            <ChronicleTerminal />
           </div>
         </div>
       ) : (

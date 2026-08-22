@@ -3,7 +3,7 @@
 import { useAudio, type ExternalPlayer } from "@/components/audio/AudioProvider";
 import { cn } from "@/lib/cn";
 import type { Track } from "@/types";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 type SoundCloudWidget = {
   bind: (event: string, listener: (data?: { currentPosition?: number; loadedProgress?: number }) => void) => void;
@@ -86,12 +86,20 @@ export function SoundCloudEmbed({
   className?: string;
 }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<ExternalPlayer | null>(null);
+  const autoPlayRef = useRef(autoPlay);
+  autoPlayRef.current = autoPlay;
+  const initialAutoPlay = useRef(autoPlay);
   const audio = useAudio();
   const audioRef = useRef(audio);
   audioRef.current = audio;
   const trackRef = useRef(track);
   trackRef.current = track;
   const trackId = track?.id;
+  const src = useMemo(
+    () => soundCloudEmbedSrc(url, visual, initialAutoPlay.current),
+    [url, visual],
+  );
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -118,8 +126,9 @@ export function SoundCloudEmbed({
           seek: (seconds) => widget?.seekTo(seconds * 1000),
           setVolume: (volume) => widget?.setVolume(Math.round(volume * 100)),
         };
+        playerRef.current = player;
         audioRef.current.registerExternal(trackId, player);
-        if (autoPlay) widget.play();
+        if (autoPlayRef.current) widget.play();
       });
       widget.bind(events.PLAY, () => {
         if (trackRef.current) audioRef.current.reportExternalPlay(trackRef.current);
@@ -133,7 +142,8 @@ export function SoundCloudEmbed({
 
     return () => {
       cancelled = true;
-      audioRef.current.unregisterExternal(trackId);
+      audioRef.current.unregisterExternal(trackId, playerRef.current ?? undefined);
+      playerRef.current = null;
       if (widget && events) {
         widget.unbind(events.READY);
         widget.unbind(events.PLAY);
@@ -142,13 +152,13 @@ export function SoundCloudEmbed({
         widget.unbind(events.PLAY_PROGRESS);
       }
     };
-  }, [autoPlay, trackId, url, visual]);
+  }, [trackId, url, visual]);
 
   return (
     <iframe
       ref={iframeRef}
       title={`${title} on SoundCloud`}
-      src={soundCloudEmbedSrc(url, visual, autoPlay)}
+      src={src}
       allow="autoplay"
       className={cn("h-full w-full border-0", className)}
     />

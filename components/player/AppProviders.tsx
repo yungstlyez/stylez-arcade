@@ -3,6 +3,7 @@
 import { AudioProvider } from "@/components/audio/AudioProvider";
 import { LibraryProvider } from "@/components/music/LibraryProvider";
 import { ComingSoonProvider } from "@/components/game-ui/ComingSoonProvider";
+import { ChronicleProvider } from "@/components/chronicles/ChronicleProvider";
 import { PlayerProvider, usePlayer } from "@/components/player/PlayerProvider";
 import type { ReactNode } from "react";
 
@@ -16,7 +17,9 @@ export function AppProviders({ children }: { children: ReactNode }) {
     <PlayerProvider>
       <AudioBridge>
         <LibraryProvider>
-          <ComingSoonProvider>{children}</ComingSoonProvider>
+          <ComingSoonProvider>
+            <ChronicleProvider>{children}</ChronicleProvider>
+          </ComingSoonProvider>
         </LibraryProvider>
       </AudioBridge>
     </PlayerProvider>
