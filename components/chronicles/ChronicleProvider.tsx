@@ -54,7 +54,12 @@ export function ChronicleProvider({ children }: { children: ReactNode }) {
   const [readingSlug, setReadingSlug] = useState<string | null>(null);
 
   useEffect(() => {
-    setAuthored(loadAuthoredChronicles());
+    const previous = loadAuthoredChronicles();
+    const loaded = previous.filter(
+      (item) => !/first of it.?s kind/i.test(`${item.excerpt}\n${item.content}`),
+    );
+    if (loaded.length !== previous.length) persistAuthoredChronicles(loaded);
+    setAuthored(loaded);
     void fetch("/api/admin/session", { credentials: "include" })
       .then(readJson)
       .then((data) => setAuthorUnlocked(Boolean(data.authenticated)))

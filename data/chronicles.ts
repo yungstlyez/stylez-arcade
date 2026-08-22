@@ -2,6 +2,21 @@ import type { Chronicle } from "@/types";
 
 export const chronicles: Chronicle[] = [
   {
+    id: "chr-29",
+    number: 29,
+    slug: "dedicated-arcade-blog",
+    title: "Dedicated arcade blog",
+    date: "2026-08-22",
+    excerpt:
+      "New dedicated arcade blog for all my music and content, gonna add mini games soon...stay tuned!",
+    content:
+      "New dedicated arcade blog for all my music and content, gonna add mini games soon...stay tuned!",
+    media: [],
+    relatedSongs: ["flatbed-freestyle"],
+    relatedCharacters: ["stylez"],
+    relatedLocations: ["southside"],
+  },
+  {
     id: "chr-28",
     number: 28,
     slug: "the-world-comes-online",
