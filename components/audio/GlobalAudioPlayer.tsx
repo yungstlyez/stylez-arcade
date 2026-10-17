@@ -22,7 +22,7 @@ export function GlobalAudioPlayer({ visible }: { visible: boolean }) {
   const href = current ? `/music/${current.slug}` : "/music";
 
   return (
-    <div className="fixed inset-x-0 bottom-[calc(var(--nav-h)+env(safe-area-inset-bottom))] z-30 border-t border-cyan/20 bg-void/95 backdrop-blur-md lg:bottom-0">
+    <div className="shell-chrome fixed inset-x-0 bottom-[calc(var(--nav-h)+env(safe-area-inset-bottom))] z-30 border-t lg:bottom-0">
       <div className="mx-auto flex h-[var(--player-h)] max-w-[1920px] items-center gap-3 px-3">
         <Link href={href} className="shrink-0">
           <span className="cover-frame size-12 overflow-hidden">

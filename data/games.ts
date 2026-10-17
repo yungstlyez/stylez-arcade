@@ -2,15 +2,15 @@ import type { GameRecord } from "@/types";
 
 export const games: GameRecord[] = [
   {
-    id: "game-flatbed-run",
-    slug: "flatbed-run",
-    name: "FLATBED RUN",
+    id: "game-bodega-run",
+    slug: "bodega-run",
+    name: "BODEGA RUN",
     thumbnail: "/art/placeholders/stage-el-train.gif",
     description:
-      "Drive through Southside at night while FlatBed Freestyle plays. Avoid obstacles, collect items, and chase the high score.",
+      "Grab the sandwich from the deli and run the New York sidewalk. Jump hydrants, trash bags, and street clutter in this endless side-scroller.",
     soundtrack: "flatbed-freestyle",
-    status: "locked",
-    releaseDate: "TBD",
+    status: "beta",
+    releaseDate: "NOW",
     achievements: ["day-one"],
     highScore: 0,
   },

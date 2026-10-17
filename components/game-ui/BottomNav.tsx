@@ -20,7 +20,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label="Mobile"
-      className="safe-bottom fixed inset-x-0 bottom-0 z-30 border-t border-cyan/20 bg-void/95 lg:hidden"
+      className="shell-chrome safe-bottom fixed inset-x-0 bottom-0 z-30 border-t lg:hidden"
     >
       <ul className="grid grid-cols-5">
         {mobileNavItems.map((item) => {

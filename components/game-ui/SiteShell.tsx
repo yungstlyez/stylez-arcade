@@ -5,10 +5,8 @@ import { BrandLockup } from "@/components/game-ui/BrandLockup";
 import { ComingSoonOverlay } from "@/components/game-ui/ComingSoonOverlay";
 import { CrtOverlay } from "@/components/game-ui/CrtOverlay";
 import { GameMenu } from "@/components/game-ui/GameMenu";
-import { GrainOverlay } from "@/components/game-ui/GrainOverlay";
 import { HudDrawer } from "@/components/game-ui/HudDrawer";
 import { PlayerHud } from "@/components/game-ui/PlayerHud";
-import { ScanlineOverlay } from "@/components/game-ui/ScanlineOverlay";
 import { UnlockToasts } from "@/components/game-ui/SecretUnlockNotification";
 import { TopBar } from "@/components/game-ui/TopBar";
 import { WorldBackdrop } from "@/components/game-ui/WorldBackdrop";
@@ -59,18 +57,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </a>
       <WorldBackdrop />
       <FeaturedSoundCloudLayer />
-      {fxReady ? (
-        <>
-          <CrtOverlay />
-          <ScanlineOverlay />
-          <GrainOverlay />
-        </>
-      ) : null}
+      {fxReady ? <CrtOverlay /> : null}
       <UnlockToasts />
 
       {!titleScreen ? (
         <div className="app-shell">
-          <aside className="relative z-50 hidden h-full w-56 shrink-0 flex-col border-r border-cyan/20 bg-navy/80 xl:w-64 lg:flex">
+          <aside className="shell-rail relative z-50 hidden h-full w-56 shrink-0 flex-col xl:w-64 lg:flex">
             <BrandLockup />
             <div className="min-h-0 flex-1 overflow-auto px-2 pb-2">
               <GameMenu />
@@ -97,7 +89,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             />
             <SocialsBanner />
             {isMenuOpen ? (
-              <div id="mobile-menu" className="border-b border-cyan/20 bg-navy p-3 lg:hidden">
+              <div id="mobile-menu" className="shell-chrome border-b p-3 lg:hidden">
                 <GameMenu onNavigate={() => setMenuOpen(false)} />
               </div>
             ) : null}

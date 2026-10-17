@@ -35,7 +35,13 @@ export default async function GamePage({ params }: SlugParams) {
       <h1 className="mt-2 font-display text-2xl uppercase leading-snug sm:text-3xl">{game.name}</h1>
       <p className="mt-4 max-w-2xl text-sm leading-7 text-muted">{game.description}</p>
       <div className="mt-6">
-        <GameViewport gameId={game.id} locked={game.status !== "live"} label="LOCKED" art={game.thumbnail} />
+        <GameViewport
+          gameId={game.id}
+          slug={game.slug}
+          locked={game.status === "locked"}
+          label="LOCKED"
+          art={game.thumbnail}
+        />
       </div>
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         <GameWindow title="SOUNDTRACK" eyebrow="CHAPTER">
@@ -69,10 +75,16 @@ export default async function GamePage({ params }: SlugParams) {
           </ul>
         </GameWindow>
       </div>
-      <p className="mt-6 text-sm text-muted">
-        TODO: embed Phaser.js (or another engine) inside GameViewport when FLATBED RUN ships. Do not
-        rebuild site chrome for the game.
-      </p>
+      {game.slug === "bodega-run" ? (
+        <p className="mt-6 text-sm text-muted">
+          Controls: Space / ↑ / tap to jump. Endless sidewalk — dodge hydrants, trash, crates, and
+          scooters. Best score saves in this browser.
+        </p>
+      ) : (
+        <p className="mt-6 text-sm text-muted">
+          Cabinet still offline. Engine slot waits for a live build.
+        </p>
+      )}
     </article>
   );
 }

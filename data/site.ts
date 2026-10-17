@@ -10,7 +10,7 @@ export const site = {
   chronicleHandle: "@stylezchroniclez",
   featuredReleaseSlug: "body-by-raven",
   latestSpotifySlug: "gl0ckianna",
-  featuredGameSlug: "flatbed-run",
+  featuredGameSlug: "bodega-run",
   featuredLocationSlug: "southside",
   title: "STYLEZ ARCADE",
   logo: "/art/logo-primary.png",

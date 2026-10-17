@@ -42,31 +42,33 @@ export function PressStartScreen({ onStart, hidden = false }: { onStart: () => v
       <img
         src={STAGE_EL_TRAIN}
         alt=""
-        className="pixelated absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full scale-105 object-cover blur-[2px]"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-void/45 via-void/35 to-void/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-void/55 via-void/45 to-void/85" />
       <div className="crt-vignette absolute inset-0" />
 
-      <LogoMark className="relative mb-5 h-72 w-72 sm:h-96 sm:w-96" />
-      <p className="relative font-hud text-xs tracking-[0.38em] text-cyan glow-cyan">YOU FOUND IT.</p>
-      <h1 className="relative mt-4">
-        <PixelLogo size="hero" />
-      </h1>
-      <p className="relative mt-6 max-w-sm font-hud text-sm tracking-[0.22em] text-lime glow-green">
-        {site.byline}
-      </p>
+      <div className="hud-panel relative flex max-w-lg flex-col items-center px-8 py-10 sm:px-12 sm:py-12">
+        <LogoMark className="mb-5 h-56 w-56 sm:h-72 sm:w-72" />
+        <p className="font-hud text-xs tracking-[0.38em] text-cyan glow-cyan">YOU FOUND IT.</p>
+        <h1 className="mt-4">
+          <PixelLogo size="hero" />
+        </h1>
+        <p className="mt-6 max-w-sm font-hud text-sm tracking-[0.22em] text-lime glow-green">
+          {site.byline}
+        </p>
 
-      <button
-        onClick={onStart}
-        disabled={hidden}
-        className="relative mt-12 min-h-12 rounded-md border border-lime bg-green/20 px-6 font-pixel text-[10px] tracking-[0.2em] text-lime shadow-[0_0_20px_rgba(98,255,91,0.35)]"
-      >
-        <span className={reduce ? "" : "blink"}>PRESS START</span>
-      </button>
+        <button
+          onClick={onStart}
+          disabled={hidden}
+          className="mt-12 min-h-12 rounded-full border border-lime/80 bg-green/25 px-8 font-display text-[11px] tracking-[0.22em] text-lime shadow-[0_0_28px_rgba(98,255,91,0.35)] backdrop-blur-md"
+        >
+          <span className={reduce ? "" : "blink"}>PRESS START</span>
+        </button>
 
-      <p className="relative mt-16 font-hud text-[11px] tracking-[0.2em] text-muted">
-        {site.instagram} · PLAYER 1
-      </p>
+        <p className="mt-10 font-hud text-[11px] tracking-[0.2em] text-muted">
+          {site.instagram} · PLAYER 1
+        </p>
+      </div>
     </motion.section>
   );
 }

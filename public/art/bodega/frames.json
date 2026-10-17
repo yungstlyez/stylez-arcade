@@ -1,0 +1,49 @@
+{
+  "frameW": 147,
+  "frameH": 212,
+  "count": 7,
+  "frames": [
+    {
+      "i": 0,
+      "w": 125,
+      "h": 212,
+      "src": "/art/bodega/frame-0.png"
+    },
+    {
+      "i": 1,
+      "w": 147,
+      "h": 200,
+      "src": "/art/bodega/frame-1.png"
+    },
+    {
+      "i": 2,
+      "w": 146,
+      "h": 194,
+      "src": "/art/bodega/frame-2.png"
+    },
+    {
+      "i": 3,
+      "w": 146,
+      "h": 196,
+      "src": "/art/bodega/frame-3.png"
+    },
+    {
+      "i": 4,
+      "w": 146,
+      "h": 191,
+      "src": "/art/bodega/frame-4.png"
+    },
+    {
+      "i": 5,
+      "w": 147,
+      "h": 205,
+      "src": "/art/bodega/frame-5.png"
+    },
+    {
+      "i": 6,
+      "w": 138,
+      "h": 167,
+      "src": "/art/bodega/frame-6.png"
+    }
+  ]
+}

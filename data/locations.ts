@@ -15,7 +15,7 @@ export const locations: LocationRecord[] = [
       "FlatBed Freestyle (Stylezmix)",
       "stylez be",
       "Chronicle 0003",
-      "FLATBED RUN cabinet",
+      "BODEGA RUN cabinet",
     ],
   },
   {

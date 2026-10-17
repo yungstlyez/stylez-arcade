@@ -1,0 +1,10 @@
+---
+description: Stylez Arcade named visual profiles and restore points
+alwaysApply: true
+---
+
+# Visual profiles
+
+- **SEGA** — full 90s arcade / CRT HUD look. Checkpoint commit: `32756bb` ("Save Spotify-first hub with refreshed Callmestylez catalog."). When the user says "SEGA", "SEGA profile", or "back to SEGA", restore that visual direction — not a Sega brand partnership.
+- **NEXT** — next-gen console aesthetic (working name): transparent/blurred glass panels, soft ambient gradients, rounded chrome, Orbitron display type. Keeps the colorful lime/cyan/pink text and buttons; drops heavy CRT/scanline/pixel arcade chrome. This is the current exploration after SEGA.
+- Future visual experiments should use different profile names so SEGA and NEXT stay distinct restore targets.

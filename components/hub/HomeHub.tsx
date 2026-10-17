@@ -75,7 +75,7 @@ export function HomeHub() {
             <button
               type="button"
               onClick={playSpotify}
-              className="hud-press inline-flex min-h-10 items-center border border-lime/70 bg-green/15 px-4 font-display text-[11px] font-semibold tracking-[0.16em] text-lime shadow-[0_0_18px_rgba(98,255,91,0.35)] hover:border-lime"
+              className="hud-press glass-btn inline-flex min-h-10 items-center border-lime/70 bg-green/20 px-5 font-display text-[11px] font-semibold tracking-[0.16em] text-lime shadow-[0_0_22px_rgba(98,255,91,0.3)] hover:border-lime"
             >
               PLAY
             </button>
@@ -107,7 +107,7 @@ export function HomeHub() {
             </div>
             <Link
               href={`/music/${featured.slug}`}
-              className="hud-press inline-flex min-h-9 items-center border border-cyan/50 px-3 font-display text-[11px] font-semibold tracking-[0.16em] text-cyan hover:border-cyan"
+              className="hud-press glass-btn inline-flex min-h-9 items-center border-cyan/45 px-4 font-display text-[11px] font-semibold tracking-[0.16em] text-cyan hover:border-cyan"
             >
               OPEN FILE
             </Link>
@@ -242,24 +242,26 @@ export function HomeHub() {
           <p className="hud-label text-cyan">STYLEZ ARCADE</p>
           <div className="mt-3 grid min-h-0 flex-1 grid-cols-2 gap-3">
             {game ? (
-              <Link href={`/play/${game.slug}`} className="hud-lift group relative overflow-hidden border border-cyan/25">
+              <Link href={`/play/${game.slug}`} className="hud-lift group relative overflow-hidden rounded-2xl border border-lime/35">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={CITY_SCENE}
-                  alt="FLATBED RUN"
-                  className="pixelated absolute inset-0 h-full w-full object-cover"
+                  alt={game.name}
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-transparent" />
                 <div className="relative flex h-full min-h-[8.5rem] flex-col justify-end p-2">
                   <p className="font-display text-sm uppercase text-mist">{game.name}</p>
-                  <p className="hud-label text-violet">LOCKED</p>
+                  <p className="hud-label text-lime">
+                    {game.status === "locked" ? "LOCKED" : "PLAY"}
+                  </p>
                 </div>
               </Link>
             ) : null}
             {mystery ? (
               <Link
                 href={`/play/${mystery.slug}`}
-                className="hud-lift relative overflow-hidden border border-magenta/30"
+                className="hud-lift relative overflow-hidden rounded-2xl border border-magenta/30"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

@@ -18,12 +18,12 @@ export function TopBar({
 }) {
   const { authorUnlocked, openTerminal } = useChronicles();
   return (
-    <header className="flex h-12 shrink-0 items-center justify-between gap-3 border-b border-cyan/20 bg-navy/70 px-3 backdrop-blur-md">
+    <header className="shell-chrome flex h-12 shrink-0 items-center justify-between gap-3 border-b px-3">
       <div className="flex min-w-0 items-center gap-3">
         {onMenu ? (
           <button
             type="button"
-            className="flex size-10 items-center justify-center border border-cyan/40 text-cyan lg:hidden"
+            className="glass-btn flex size-10 items-center justify-center text-cyan lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={onMenu}
@@ -36,13 +36,13 @@ export function TopBar({
       <div className="flex items-center gap-2">
         <div className="hidden items-end gap-[3px] sm:flex" aria-label="Signal strength">
           {[6, 10, 14, 18].map((h) => (
-            <span key={h} className="w-[3px] bg-lime" style={{ height: h }} />
+            <span key={h} className="w-[3px] rounded-full bg-lime" style={{ height: h }} />
           ))}
         </div>
         {authorUnlocked ? (
           <button
             type="button"
-            className="border border-lime/40 px-2 py-1 font-hud text-[9px] tracking-[0.16em] text-lime hover:border-lime"
+            className="glass-btn px-3 py-1 font-hud text-[9px] tracking-[0.16em] text-lime hover:border-lime"
             onClick={() => openTerminal()}
           >
             LOG
@@ -57,7 +57,7 @@ export function TopBar({
         {onHud ? (
           <button
             type="button"
-            className="flex size-10 items-center justify-center border border-magenta/40 text-pink lg:hidden"
+            className="glass-btn flex size-10 items-center justify-center text-pink lg:hidden"
             aria-expanded={hudOpen}
             aria-label="Open player HUD"
             onClick={onHud}
