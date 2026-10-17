@@ -5,7 +5,7 @@ import { LoadingScreen } from "@/components/game-ui/LoadingScreen";
 import { PressStartScreen } from "@/components/game-ui/PressStartScreen";
 import { useAudio } from "@/components/audio/AudioProvider";
 import { usePlayer } from "@/components/player/PlayerProvider";
-import { getFeaturedRelease, getTrackQueue, releaseToTrack } from "@/lib/content";
+import { getFeaturedRelease, getLatestSpotifyRelease, getTrackQueue, releaseToTrack } from "@/lib/content";
 import { useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
@@ -26,8 +26,11 @@ export default function HomePage() {
           hidden={booting}
           onStart={() => {
             setMuffled(false, reduce ? 0.18 : 1.15);
-            const featured = releaseToTrack(getFeaturedRelease());
-            playTrack(current ?? featured, getTrackQueue());
+            const spotify = getLatestSpotifyRelease();
+            const next = spotify
+              ? releaseToTrack(spotify)
+              : (current ?? releaseToTrack(getFeaturedRelease()));
+            playTrack(next, getTrackQueue());
             setBooting(true);
             window.setTimeout(
               () => {

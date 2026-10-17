@@ -43,6 +43,10 @@ export function getFeaturedRelease(): Release {
 }
 
 export function getLatestSpotifyRelease(): Release | undefined {
+  const pinned = releases.find(
+    (item) => item.slug === site.latestSpotifySlug && Boolean(item.streamingLinks.spotify),
+  );
+  if (pinned) return pinned;
   return releases.find((item) => !item.soundcloudOnly && Boolean(item.streamingLinks.spotify));
 }
 

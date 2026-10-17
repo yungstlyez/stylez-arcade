@@ -20,16 +20,19 @@ import {
   getLatestSpotifyRelease,
   getLocation,
   getReleases,
+  getTrackQueue,
   listenHref,
   releaseToTrack,
 } from "@/lib/content";
 import { CITY_SCENE } from "@/lib/placeholders";
 import { useChronicles } from "@/components/chronicles/ChronicleProvider";
+import { useAudio } from "@/components/audio/AudioProvider";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export function HomeHub() {
   const { latest: chronicle } = useChronicles();
+  const { playTrack } = useAudio();
   const featured = getFeaturedRelease();
   const game = getGame(site.featuredGameSlug);
   const mystery = getGames().find((item) => item.slug === "unknown-cabinet");
@@ -38,30 +41,70 @@ export function HomeHub() {
   const soundcloudUrl = featured.soundcloudOnly ? featured.streamingLinks.soundcloud : undefined;
   const latestSpotify = getLatestSpotifyRelease();
   const spotifyUrl = latestSpotify?.streamingLinks.spotify;
+  const spotifyTrack = latestSpotify ? releaseToTrack(latestSpotify) : null;
   const [spotifyReady, setSpotifyReady] = useState(false);
 
   useEffect(() => {
-    const id = window.setTimeout(() => setSpotifyReady(true), 700);
+    const id = window.setTimeout(() => setSpotifyReady(true), 400);
     return () => window.clearTimeout(id);
   }, []);
 
+  useEffect(() => {
+    if (!spotifyReady || !spotifyTrack) return;
+    playTrack(spotifyTrack, getTrackQueue());
+  }, [playTrack, spotifyReady, spotifyTrack?.id]);
+
+  const playSpotify = () => {
+    if (!spotifyUrl || !spotifyTrack) return;
+    cueUiSound("press");
+    playTrack(spotifyTrack, getTrackQueue());
+    window.open(spotifyUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="hub-root mx-auto h-full max-w-[1920px]">
-      {soundcloudUrl ? (
-        <section className="hub-hero hud-panel-green relative flex h-full min-h-0 flex-col overflow-hidden lg:min-h-[18rem]">
-          <div className="relative aspect-square w-full lg:aspect-auto lg:min-h-0 lg:flex-1">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={featured.cover}
-              alt={`${featured.title} cover art`}
-              className="absolute inset-0 size-full object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-[166px] bg-void/70">
-              <FeaturedSoundCloudSlot className="size-full" />
+      {latestSpotify && spotifyUrl ? (
+        <section className="hub-spotify spotify-stage hud-panel-green relative flex min-h-[22rem] flex-col overflow-hidden lg:min-h-0">
+          <div className="flex shrink-0 items-center justify-between gap-3 border-b border-lime/35 bg-void/80 px-3 py-2.5 sm:px-4">
+            <div>
+              <p className="hud-label text-lime glow-green">NOW PLAYING · SPOTIFY</p>
+              <p className="mt-1 font-display text-sm uppercase leading-snug text-mist sm:text-base">
+                {latestSpotify.title}
+              </p>
             </div>
+            <button
+              type="button"
+              onClick={playSpotify}
+              className="hud-press inline-flex min-h-10 items-center border border-lime/70 bg-green/15 px-4 font-display text-[11px] font-semibold tracking-[0.16em] text-lime shadow-[0_0_18px_rgba(98,255,91,0.35)] hover:border-lime"
+            >
+              PLAY
+            </button>
           </div>
-          <div className="flex shrink-0 items-center justify-between gap-3 border-t border-lime/25 bg-void/85 px-3 py-2">
-            <SoundCloudOnlyTag />
+          <div className="relative min-h-[16rem] w-full flex-1 lg:min-h-0">
+            {spotifyReady ? (
+              <SpotifyEmbed
+                url={spotifyUrl}
+                title={latestSpotify.title}
+                track={spotifyTrack ?? undefined}
+                autoPlay
+                className="absolute inset-0 size-full"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center bg-void">
+                <p className="hud-label animate-pulse text-lime">LOADING SIGNAL…</p>
+              </div>
+            )}
+          </div>
+        </section>
+      ) : null}
+
+      {soundcloudUrl ? (
+        <section className="hub-soundcloud hud-panel relative flex min-h-[12rem] flex-col overflow-hidden lg:min-h-0">
+          <div className="flex shrink-0 items-center justify-between gap-3 border-b border-cyan/25 bg-void/85 px-3 py-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <p className="hud-label text-cyan">SOUNDCLOUD</p>
+              <SoundCloudOnlyTag />
+            </div>
             <Link
               href={`/music/${featured.slug}`}
               className="hud-press inline-flex min-h-9 items-center border border-cyan/50 px-3 font-display text-[11px] font-semibold tracking-[0.16em] text-cyan hover:border-cyan"
@@ -69,96 +112,60 @@ export function HomeHub() {
               OPEN FILE
             </Link>
           </div>
+          <div className="relative h-[166px] w-full shrink-0 bg-void lg:h-auto lg:min-h-0 lg:flex-1">
+            <FeaturedSoundCloudSlot className="size-full" />
+          </div>
         </section>
-      ) : (
-      <section className="hub-hero hud-panel-green relative min-h-[18rem] overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={CITY_SCENE}
-          alt="Southside Queens at night"
-          className="pixelated absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-void via-void/88 to-void/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-void/20" />
-        <div className="relative grid h-full min-h-0 grid-cols-1 items-stretch gap-4 p-4 md:grid-cols-[minmax(9.5rem,18vw)_minmax(0,1fr)] lg:p-5">
-          <ListenLink
-            release={featured}
-            className="cover-frame mx-auto aspect-square w-full max-w-[220px] md:mx-0 md:max-h-full md:max-w-none"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={featured.cover}
-              alt={`${featured.title} cover art`}
-              className="h-full w-full object-cover"
-            />
-          </ListenLink>
-          <div className="flex min-h-0 flex-col justify-center">
-            <p className="hud-label text-lime">NOW PLAYING</p>
-            <p className="mt-2 flex flex-wrap items-center gap-2 font-hud text-[11px] tracking-[0.18em] text-cyan">
-              TRACK 001
-              <i className="pulse-dot size-2 bg-lime" />
-              {featured.soundcloudOnly ? <SoundCloudOnlyTag /> : null}
-            </p>
-            <h1 className="mt-1 font-display text-xl uppercase leading-snug text-mist sm:text-2xl">
-              <ListenLink release={featured}>{featured.title}</ListenLink>
-            </h1>
-            <p className="mt-2 font-hud text-[11px] tracking-[0.12em] text-muted">
-              {featured.type} • {featured.year} • {featured.era}
-            </p>
-            <div className="mt-3 max-w-xl">
-              <Waveform active={false} />
-            </div>
-            <p className="mt-2 font-hud text-[11px] text-cyan">
-              {formatTime(0)} / —:—
-            </p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {featuredListen ? <PixelButton href={featuredListen}>PLAY</PixelButton> : null}
-              {featured.streamingLinks.spotify ? (
-                <StreamChip href={featured.streamingLinks.spotify}>Spotify</StreamChip>
-              ) : null}
-              {featured.streamingLinks.appleMusic ? (
-                <StreamChip href={featured.streamingLinks.appleMusic}>Apple</StreamChip>
-              ) : null}
-              {featured.streamingLinks.youtube ? (
-                <StreamChip href={featured.streamingLinks.youtube}>YouTube</StreamChip>
-              ) : null}
-              {featured.streamingLinks.soundcloud ? (
-                <StreamChip href={featured.streamingLinks.soundcloud}>SoundCloud</StreamChip>
-              ) : null}
-              <Link
-                href={`/music/${featured.slug}`}
-                className="hud-press inline-flex min-h-10 items-center border border-cyan/50 px-4 font-display text-[11px] font-semibold tracking-[0.16em] text-cyan hover:border-cyan"
-              >
-                OPEN FILE
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      )}
-
-      {latestSpotify && spotifyUrl ? (
-        <section className="hub-spotify hud-panel-green relative flex h-full min-h-0 flex-col overflow-hidden lg:min-h-[18rem]">
-          <div className="relative aspect-square w-full lg:aspect-auto lg:min-h-0 lg:flex-1">
-            {spotifyReady ? (
-              <SpotifyEmbed
-                url={spotifyUrl}
-                title={latestSpotify.title}
-                track={releaseToTrack(latestSpotify)}
-                className="absolute inset-0 size-full"
-              />
-            ) : (
-              <div className="absolute inset-0 bg-void" />
-            )}
-          </div>
-          <div className="flex shrink-0 items-center justify-between gap-3 border-t border-lime/25 bg-void/85 px-3 py-2">
-            <p className="hud-label text-lime">SPOTIFY</p>
-            <Link
-              href={`/music/${latestSpotify.slug}`}
-              className="hud-press inline-flex min-h-9 items-center border border-cyan/50 px-3 font-display text-[11px] font-semibold tracking-[0.16em] text-cyan hover:border-cyan"
+      ) : !latestSpotify ? (
+        <section className="hub-spotify hud-panel-green relative min-h-[18rem] overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={CITY_SCENE}
+            alt="Southside Queens at night"
+            className="pixelated absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-void via-void/88 to-void/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-void/20" />
+          <div className="relative grid h-full min-h-0 grid-cols-1 items-stretch gap-4 p-4 md:grid-cols-[minmax(9.5rem,18vw)_minmax(0,1fr)] lg:p-5">
+            <ListenLink
+              release={featured}
+              className="cover-frame mx-auto aspect-square w-full max-w-[220px] md:mx-0 md:max-h-full md:max-w-none"
             >
-              OPEN FILE
-            </Link>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={featured.cover}
+                alt={`${featured.title} cover art`}
+                className="h-full w-full object-cover"
+              />
+            </ListenLink>
+            <div className="flex min-h-0 flex-col justify-center">
+              <p className="hud-label text-lime">NOW PLAYING</p>
+              <p className="mt-2 flex flex-wrap items-center gap-2 font-hud text-[11px] tracking-[0.18em] text-cyan">
+                TRACK 001
+                <i className="pulse-dot size-2 bg-lime" />
+              </p>
+              <h1 className="mt-1 font-display text-xl uppercase leading-snug text-mist sm:text-2xl">
+                <ListenLink release={featured}>{featured.title}</ListenLink>
+              </h1>
+              <p className="mt-2 font-hud text-[11px] tracking-[0.12em] text-muted">
+                {featured.type} • {featured.year} • {featured.era}
+              </p>
+              <div className="mt-3 max-w-xl">
+                <Waveform active={false} />
+              </div>
+              <p className="mt-2 font-hud text-[11px] text-cyan">
+                {formatTime(0)} / —:—
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {featuredListen ? <PixelButton href={featuredListen}>PLAY</PixelButton> : null}
+                <Link
+                  href={`/music/${featured.slug}`}
+                  className="hud-press inline-flex min-h-10 items-center border border-cyan/50 px-4 font-display text-[11px] font-semibold tracking-[0.16em] text-cyan hover:border-cyan"
+                >
+                  OPEN FILE
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
       ) : null}
@@ -277,18 +284,5 @@ export function HomeHub() {
         <RightRail />
       </div>
     </div>
-  );
-}
-
-function StreamChip({ href, children }: { href: string; children: string }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="hud-press inline-flex min-h-10 items-center border border-cyan/35 px-3 font-display text-[11px] tracking-[0.12em] text-cyan hover:border-cyan"
-    >
-      {children}
-    </a>
   );
 }

@@ -77,11 +77,13 @@ export function SpotifyEmbed({
   url,
   title,
   track,
+  autoPlay = false,
   className,
 }: {
   url: string;
   title: string;
   track?: Track;
+  autoPlay?: boolean;
   className?: string;
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -90,8 +92,11 @@ export function SpotifyEmbed({
   audioRef.current = audio;
   const trackRef = useRef(track);
   trackRef.current = track;
+  const autoPlayRef = useRef(autoPlay);
+  autoPlayRef.current = autoPlay;
   const trackId = track?.id;
   const pausedRef = useRef(true);
+  const controllerRef = useRef<SpotifyEmbedController | null>(null);
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -105,6 +110,14 @@ export function SpotifyEmbed({
     host.style.height = "100%";
     wrap.replaceChildren(host);
 
+    const kickPlay = (next: SpotifyEmbedController) => {
+      try {
+        next.play();
+      } catch {
+        void next.togglePlay?.();
+      }
+    };
+
     whenSpotifyApiReady((api) => {
       if (cancelled || !host.isConnected) return;
       api.createController(host, { uri: `spotify:track:${id}`, width: "100%", height: "100%" }, (next) => {
@@ -113,15 +126,24 @@ export function SpotifyEmbed({
           return;
         }
         controller = next;
+        controllerRef.current = next;
         pausedRef.current = true;
         const nextPlayer: ExternalPlayer = {
-          play: () => next.play(),
+          play: () => kickPlay(next),
           pause: () => next.pause(),
           seek: (seconds) => next.seek(seconds),
         };
         player = nextPlayer;
         audioRef.current.registerExternal(trackId, nextPlayer);
         if (trackRef.current) audioRef.current.adoptExternal(trackRef.current);
+        next.addListener("ready", () => {
+          if (cancelled) return;
+          if (autoPlayRef.current) {
+            window.setTimeout(() => {
+              if (!cancelled) kickPlay(next);
+            }, 120);
+          }
+        });
         next.addListener("playback_started", () => {
           if (trackRef.current) audioRef.current.reportExternalPlay(trackRef.current);
         });
@@ -141,11 +163,17 @@ export function SpotifyEmbed({
             else audioRef.current.reportExternalPause(trackId);
           }
         });
+        if (autoPlayRef.current) {
+          window.setTimeout(() => {
+            if (!cancelled) kickPlay(next);
+          }, 200);
+        }
       });
     });
 
     return () => {
       cancelled = true;
+      controllerRef.current = null;
       audioRef.current.unregisterExternal(trackId, player ?? undefined);
       controller?.destroy?.();
     };
@@ -159,7 +187,7 @@ export function SpotifyEmbed({
       {!track && src ? (
         <iframe
           title={`${title} on Spotify`}
-          src={src}
+          src={`${src}&autoplay=1`}
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           className="size-full border-0"
         />

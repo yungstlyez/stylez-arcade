@@ -509,17 +509,17 @@ body {
     height: 100%;
     min-height: 0;
     grid-template-columns: minmax(0, 1fr) 16.75rem;
-    grid-template-rows: minmax(200px, 1.05fr) minmax(200px, 1.05fr) minmax(175px, 1.1fr) minmax(120px, 0.8fr);
+    grid-template-rows: minmax(280px, 1.45fr) minmax(150px, 0.75fr) minmax(160px, 0.95fr) minmax(110px, 0.75fr);
     gap: 0.7rem;
   }
 
-  .hub-hero {
+  .hub-spotify {
     grid-column: 1;
     grid-row: 1;
     min-height: 0;
   }
 
-  .hub-spotify {
+  .hub-soundcloud {
     grid-column: 1;
     grid-row: 2;
     min-height: 0;
@@ -541,6 +541,34 @@ body {
     grid-column: 2;
     grid-row: 1 / -1;
     min-height: 0;
+  }
+}
+
+.spotify-stage {
+  border-color: rgba(98, 255, 91, 0.65);
+  box-shadow:
+    0 0 0 1px rgba(98, 255, 91, 0.35),
+    0 0 28px rgba(25, 230, 66, 0.35),
+    0 0 60px rgba(0, 229, 255, 0.12),
+    inset 0 0 40px rgba(25, 230, 66, 0.08);
+  animation: spotify-glow 3.2s ease-in-out infinite;
+}
+
+@keyframes spotify-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(98, 255, 91, 0.35),
+      0 0 24px rgba(25, 230, 66, 0.28),
+      0 0 48px rgba(0, 229, 255, 0.1),
+      inset 0 0 36px rgba(25, 230, 66, 0.06);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(98, 255, 91, 0.7),
+      0 0 36px rgba(25, 230, 66, 0.5),
+      0 0 72px rgba(0, 229, 255, 0.18),
+      inset 0 0 48px rgba(25, 230, 66, 0.12);
   }
 }
 
@@ -613,7 +641,8 @@ body {
   .scanlines,
   .hud-scan::after,
   .achieve-pulse,
-  .social-marquee {
+  .social-marquee,
+  .spotify-stage {
     animation: none !important;
   }
 
