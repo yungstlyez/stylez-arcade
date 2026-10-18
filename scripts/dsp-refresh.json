@@ -1,0 +1,703 @@
+{
+  "dsp": {
+    "gl0ckianna": {
+      "title": "!!gl0ckiana**",
+      "id": "00dJvtrSXwzK76NEMa98pR",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ea3f94c1937ebd7750df98a1",
+      "spotify": "https://open.spotify.com/track/00dJvtrSXwzK76NEMa98pR",
+      "soundcloud": "https://soundcloud.com/user-363377229/gl0ckianna-prod-sygen-mamberr"
+    },
+    "jesus-piece-rockin": {
+      "title": "jesus piece rockin\u2019",
+      "id": "5lC6GRzgSS4YZ4S4pv5Ib0",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0297bee067ffc9db2649321bb1",
+      "spotify": "https://open.spotify.com/track/5lC6GRzgSS4YZ4S4pv5Ib0",
+      "soundcloud": "https://soundcloud.com/user-363377229/jesus-piece-rockin"
+    },
+    "drake-timing": {
+      "title": "drake timing",
+      "id": "3zeb4mwxbXyJDfy4tQ2x2t",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0254cb268d9881315bda50c6ef",
+      "spotify": "https://open.spotify.com/track/3zeb4mwxbXyJDfy4tQ2x2t"
+    },
+    "casually-flexing": {
+      "title": "casually flexing",
+      "id": "3kAV79hqBdeKR2EECkNsz8",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02528b9f466ae2b292e4c4fca3",
+      "spotify": "https://open.spotify.com/track/3kAV79hqBdeKR2EECkNsz8",
+      "soundcloud": "https://soundcloud.com/user-363377229/casually-flexing-releasee"
+    },
+    "stylez-be": {
+      "title": "stylez be",
+      "id": "20RbaHgNisFO2YNSwxIzX6",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025a41fc935886a2098fffed6d",
+      "spotify": "https://open.spotify.com/track/20RbaHgNisFO2YNSwxIzX6",
+      "soundcloud": "https://soundcloud.com/user-363377229/stylez-be"
+    },
+    "flyest-inna-room": {
+      "title": "flyest inna room",
+      "id": "2lxq7iPmcOrLkHtDFi4Uwj",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020414fbff62fdd8b2f48cc727",
+      "spotify": "https://open.spotify.com/track/2lxq7iPmcOrLkHtDFi4Uwj",
+      "soundcloud": "https://soundcloud.com/user-363377229/callmestylez-flyest-inna-room"
+    },
+    "different-cloth": {
+      "title": "different cloth",
+      "id": "3b6yoext6LRAhJ2XpF9OGG",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0214fa25920c6ca8b8b6cc4fd9",
+      "spotify": "https://open.spotify.com/track/3b6yoext6LRAhJ2XpF9OGG",
+      "soundcloud": "https://soundcloud.com/user-363377229/callmestylez-different-cloth"
+    },
+    "when-the-dust-settles-acoustic": {
+      "title": "when the dust settles (acoustic)",
+      "id": "7sK3LGERh5YpZV2vB6quwo",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0268abd7a44c0826c4cf806d19",
+      "spotify": "https://open.spotify.com/track/7sK3LGERh5YpZV2vB6quwo"
+    },
+    "badu-freestyle": {
+      "title": "badu freestyle",
+      "id": "3M5bmTlgecdVzNsDpCDb7C",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0258261d00be1024caf6ed9a02",
+      "spotify": "https://open.spotify.com/track/3M5bmTlgecdVzNsDpCDb7C",
+      "soundcloud": "https://soundcloud.com/user-363377229/badu-freestyle-2025"
+    },
+    "genesis": {
+      "title": "genesis",
+      "id": "3IBEy1p4xHvSK46QfnbfWK",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "spotify": "https://open.spotify.com/track/3IBEy1p4xHvSK46QfnbfWK",
+      "soundcloud": "https://soundcloud.com/user-363377229/genesis-1"
+    },
+    "my-darkest-thoughts": {
+      "title": "my darkest thoughts",
+      "id": "4QBxMyyDtLLqc3AvVCioMZ",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "spotify": "https://open.spotify.com/track/4QBxMyyDtLLqc3AvVCioMZ",
+      "soundcloud": "https://soundcloud.com/user-363377229/my-darkest-thoughts-2"
+    },
+    "boyz-n-the-hood": {
+      "title": "boyz n the hood",
+      "id": "6QHT0PkAWOlkOzTBRZXJQc",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "spotify": "https://open.spotify.com/track/6QHT0PkAWOlkOzTBRZXJQc",
+      "soundcloud": "https://soundcloud.com/user-363377229/boyz-n-the-hood-3"
+    },
+    "roses-in-the-concrete": {
+      "title": "roses in the concrete",
+      "id": "4WSTYQQXteZQrSdz9XZn4u",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "spotify": "https://open.spotify.com/track/4WSTYQQXteZQrSdz9XZn4u",
+      "soundcloud": "https://soundcloud.com/user-363377229/roses-in-the-concrete-4"
+    },
+    "this-wat-a-rave-sounds-like": {
+      "title": "this wat a rave sounds like",
+      "id": "00IBzAgiKhHR1GXcbTTVdO",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "spotify": "https://open.spotify.com/track/00IBzAgiKhHR1GXcbTTVdO",
+      "soundcloud": "https://soundcloud.com/user-363377229/this-wat-a-rave-sounds-like-5"
+    },
+    "when-the-dust-settles": {
+      "title": "when the dust settles",
+      "id": "3zZPg3SndFGqB9apjcpNQ0",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "spotify": "https://open.spotify.com/track/3zZPg3SndFGqB9apjcpNQ0",
+      "soundcloud": "https://soundcloud.com/user-363377229/when-the-dust-settles-6"
+    },
+    "raps-funeral": {
+      "title": "rap's funeral",
+      "id": "53uOvljb0DUCNrATLwNk80",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020960c38f99d97b4e61fdf4f4",
+      "spotify": "https://open.spotify.com/track/53uOvljb0DUCNrATLwNk80"
+    },
+    "2025-intro": {
+      "title": "2025 intro",
+      "id": "1xztYAooTystoau47lANpK",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02107df48ba2e72a84dc9fb924",
+      "spotify": "https://open.spotify.com/track/1xztYAooTystoau47lANpK",
+      "soundcloud": "https://soundcloud.com/user-363377229/callmestylez-2025-intro"
+    },
+    "i-wanna-buy-a-gun": {
+      "title": "i wanna buy a gun",
+      "id": "6UI0gKh2J8FIZuOEvslMbn",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cbe90e2bed146626e389f76d",
+      "spotify": "https://open.spotify.com/track/6UI0gKh2J8FIZuOEvslMbn"
+    },
+    "ilovewomen": {
+      "title": "ILOVEWOMEN",
+      "id": "3kr29yWiq4w8j3b93bqHOE",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02fc6996513b2885faf7c27793",
+      "spotify": "https://open.spotify.com/track/3kr29yWiq4w8j3b93bqHOE"
+    },
+    "adhd": {
+      "title": "adhd",
+      "id": "1J5DaIBJuh0dIWeOf1lCco",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0254ba40ff560f93bef11df20f",
+      "spotify": "https://open.spotify.com/track/1J5DaIBJuh0dIWeOf1lCco"
+    },
+    "the-delancey": {
+      "title": "the delancey",
+      "id": "5jwZqi7CJcM5zsBaEd2y0N",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b6ac1099b3f114bd58fcb872",
+      "spotify": "https://open.spotify.com/track/5jwZqi7CJcM5zsBaEd2y0N"
+    },
+    "e30": {
+      "title": "e30",
+      "id": "57swigrOXM78IazvSGtuN3",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026353c2792332d877dafc0cd5",
+      "spotify": "https://open.spotify.com/track/57swigrOXM78IazvSGtuN3"
+    },
+    "glad-you-came": {
+      "title": "glad you came",
+      "id": "4axsAtdelU3rX8n2tXIjHM",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b113e0b6f8ce070826ac2264",
+      "spotify": "https://open.spotify.com/track/4axsAtdelU3rX8n2tXIjHM"
+    }
+  },
+  "missing_sc": [
+    {
+      "title": "Melodic Stylez is Back",
+      "permalink": "melodic-stylez-is-back",
+      "url": "https://soundcloud.com/user-363377229/melodic-stylez-is-back",
+      "created": "2026-01-23",
+      "artwork": "https://i1.sndcdn.com/artworks-tFNi5ZLAvhzKw6zv-PR0X1A-t500x500.png",
+      "slug": "melodic-stylez-is-back"
+    },
+    {
+      "title": "There's Tension Here (Prod. Rahfrmny)",
+      "permalink": "theres-tension-here",
+      "url": "https://soundcloud.com/user-363377229/theres-tension-here",
+      "created": "2026-01-19",
+      "artwork": "https://i1.sndcdn.com/artworks-EaZnRTobLrkUeRIG-SyE74Q-t500x500.png",
+      "slug": "theres-tension-here"
+    },
+    {
+      "title": "Grind 'Til I Die (Prod. Rahfromny)",
+      "permalink": "grind-til-i-die",
+      "url": "https://soundcloud.com/user-363377229/grind-til-i-die",
+      "created": "2026-01-14",
+      "artwork": "https://i1.sndcdn.com/artworks-HRTYnq4IpAGQrYxt-V4Pgew-t500x500.jpg",
+      "slug": "grind-til-i-die"
+    },
+    {
+      "title": "On Gang (prod. 129Jay)",
+      "permalink": "on-gang",
+      "url": "https://soundcloud.com/user-363377229/on-gang",
+      "created": "2026-01-07",
+      "artwork": "https://i1.sndcdn.com/artworks-kywWqZJ1GNGUuAxv-y63Z1g-t500x500.jpg",
+      "slug": "on-gang"
+    },
+    {
+      "title": "Walk \u2018Em Down In Balenci (Prod. keziibeats)",
+      "permalink": "callmestylez-walk-em-down-in-balance",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-walk-em-down-in-balance",
+      "created": "2025-12-31",
+      "artwork": "https://i1.sndcdn.com/artworks-9O1YZzaJzYdlHzym-1jP8rg-t500x500.png",
+      "slug": "walk-em-down-in-balance"
+    },
+    {
+      "title": "Vvs On Me (prod. Young Madz)",
+      "permalink": "callmestylez-vvs-on-me",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-vvs-on-me",
+      "created": "2025-12-27",
+      "artwork": "https://i1.sndcdn.com/artworks-ScRCGW2EGzk8QyXy-t6gUew-t500x500.png",
+      "slug": "vvs-on-me"
+    },
+    {
+      "title": "Lilith Among Us",
+      "permalink": "callmestylez-lilith-among-us",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-lilith-among-us",
+      "created": "2025-12-13",
+      "artwork": "https://i1.sndcdn.com/artworks-CtAHVqc7WXsQoE4w-50gRRg-t500x500.png",
+      "slug": "lilith-among-us"
+    },
+    {
+      "title": "Long Distance Sucks",
+      "permalink": "callmestylez-long-distance",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-long-distance",
+      "created": "2025-10-08",
+      "artwork": "https://i1.sndcdn.com/artworks-zuHpht4Q3jzzKesj-2Y3oBA-t500x500.jpg",
+      "slug": "long-distance"
+    },
+    {
+      "title": "callmestylez- my feliciaaa",
+      "permalink": "callmestylez-my-feliciaaa",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-my-feliciaaa",
+      "created": "2025-09-24",
+      "artwork": "https://i1.sndcdn.com/artworks-lJTBJOhNOWxTmQoX-VMOzhA-t500x500.jpg",
+      "slug": "my-feliciaaa"
+    },
+    {
+      "title": "callmestylez - #preacherboy",
+      "permalink": "callmestylez-preacherboy",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-preacherboy",
+      "created": "2025-08-06",
+      "artwork": "https://i1.sndcdn.com/artworks-hoTsashZtCZny7pK-pP3Q2g-t500x500.jpg",
+      "slug": "preacherboy"
+    },
+    {
+      "title": "callmestylez - #walkingmypath",
+      "permalink": "callmestylez-walkingmypath",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-walkingmypath",
+      "created": "2025-07-25",
+      "artwork": "https://i1.sndcdn.com/artworks-NM7rK4rFRJNSEmGG-DqLeew-t500x500.jpg",
+      "slug": "walkingmypath"
+    },
+    {
+      "title": "callmestylez - panda express",
+      "permalink": "callmestylez-belt-and-road",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-belt-and-road",
+      "created": "2025-03-25",
+      "artwork": "https://i1.sndcdn.com/artworks-FN30dwSP8barbo21-OM4rJg-t500x500.png",
+      "slug": "belt-and-road"
+    },
+    {
+      "title": "callmestylez - iced out leggings",
+      "permalink": "callmestylez-iced-out-leggings",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-iced-out-leggings",
+      "created": "2025-01-03",
+      "artwork": "https://i1.sndcdn.com/artworks-YQS0o9IyFumaCCyd-AE000g-t500x500.jpg",
+      "slug": "iced-out-leggings"
+    },
+    {
+      "title": "callmestylez - COOKINWITSTYLEZ",
+      "permalink": "callmestylez-cookinwitstylez",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-cookinwitstylez",
+      "created": "2024-12-15",
+      "artwork": "https://i1.sndcdn.com/artworks-IixUJiq7KRstR1Yp-E7XbeA-t500x500.png",
+      "slug": "cookinwitstylez"
+    },
+    {
+      "title": "callmestylez - not a jerk rapper",
+      "permalink": "callmestylez-not-a-jerk-rapper",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-not-a-jerk-rapper",
+      "created": "2024-12-01",
+      "artwork": "https://i1.sndcdn.com/artworks-At32vcTH8Jqs1A1E-sSCIuA-t500x500.jpg",
+      "slug": "not-a-jerk-rapper"
+    },
+    {
+      "title": "callmestylez - kevin gates gif",
+      "permalink": "callmestylez-kevin-gates-gif",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-kevin-gates-gif",
+      "created": "2024-11-22",
+      "artwork": "https://i1.sndcdn.com/artworks-xx2BYNaEBEOWhqCe-CjLs7A-t500x500.jpg",
+      "slug": "kevin-gates-gif"
+    },
+    {
+      "title": "callmestylez - swim music 2024",
+      "permalink": "callmestylez-swim-music-2024-master",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-swim-music-2024-master",
+      "created": "2024-11-01",
+      "artwork": "https://i1.sndcdn.com/artworks-arpQN5XhEJ2PYKam-HqqeJg-t500x500.png",
+      "slug": "swim-music-2024-master"
+    },
+    {
+      "title": "callmestylez - gotham city",
+      "permalink": "callmestylez-gotham-city",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-gotham-city",
+      "created": "2024-10-20",
+      "artwork": "https://i1.sndcdn.com/artworks-QIstyFAyo2zWgATz-bt1p9Q-t500x500.jpg",
+      "slug": "gotham-city"
+    },
+    {
+      "title": "callmestylez - no humility",
+      "permalink": "callmestylez-no-humility",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-no-humility",
+      "created": "2024-09-21",
+      "artwork": "https://i1.sndcdn.com/artworks-dWQRsf5uH2qNkkfc-HeSunA-t500x500.jpg",
+      "slug": "no-humility"
+    },
+    {
+      "title": "callmestylez - redemption arc",
+      "permalink": "callmestylez-redemption-arc",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-redemption-arc",
+      "created": "2024-07-24",
+      "artwork": "https://i1.sndcdn.com/artworks-LtAyGyVvGJJo3fMo-yyIYNg-t500x500.jpg",
+      "slug": "redemption-arc"
+    },
+    {
+      "title": "callmestylez - please come here",
+      "permalink": "callmestylez-please-come-here",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-please-come-here",
+      "created": "2024-07-14",
+      "artwork": "https://i1.sndcdn.com/artworks-L7JJuEZPJYsOx3f2-GHDtAQ-t500x500.jpg",
+      "slug": "please-come-here"
+    },
+    {
+      "title": "callmestylez - paid motion",
+      "permalink": "callmestylez-paid-motion",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-paid-motion",
+      "created": "2024-07-01",
+      "artwork": "https://i1.sndcdn.com/artworks-WUXLGELFtlFHmoev-bGikuA-t500x500.jpg",
+      "slug": "paid-motion"
+    },
+    {
+      "title": "callmestylez - squeaky clean",
+      "permalink": "squeaky-clean-final",
+      "url": "https://soundcloud.com/user-363377229/squeaky-clean-final",
+      "created": "2024-06-05",
+      "artwork": "https://i1.sndcdn.com/artworks-x6qPDMEZzLPr33wy-ePOBAA-t500x500.jpg",
+      "slug": "squeaky-clean-final"
+    },
+    {
+      "title": "callmestylez - yea he aint that",
+      "permalink": "callmestylez-yea-he-aint-that",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-yea-he-aint-that",
+      "created": "2024-05-22",
+      "artwork": "https://i1.sndcdn.com/artworks-dpIq9gKo5DIbEpvr-Mlx29A-t500x500.jpg",
+      "slug": "yea-he-aint-that"
+    },
+    {
+      "title": "callmestylez - I feel ah way",
+      "permalink": "callmestylez-i-feel-ah-way",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-i-feel-ah-way",
+      "created": "2024-04-23",
+      "artwork": "https://i1.sndcdn.com/artworks-Dr5el9mfyDeZSWkH-HuKmhg-t500x500.jpg",
+      "slug": "i-feel-ah-way"
+    }
+  ],
+  "sc_all": [
+    {
+      "title": "body by raven**",
+      "permalink": "callmestylez-body-by-raven",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-body-by-raven",
+      "created": "2026-10-14",
+      "artwork": "https://i1.sndcdn.com/artworks-sbeCbhsjIGX3v7ny-cr4zGA-t500x500.jpg"
+    },
+    {
+      "title": "5 in singles**",
+      "permalink": "callmestylez-5-in-singles",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-5-in-singles",
+      "created": "2026-10-12",
+      "artwork": "https://i1.sndcdn.com/artworks-CzY72ilHlvgXbPHi-6wbbHQ-t500x500.jpg"
+    },
+    {
+      "title": "gl0ckianna (prod. sygen+mamberr)",
+      "permalink": "gl0ckianna-prod-sygen-mamberr",
+      "url": "https://soundcloud.com/user-363377229/gl0ckianna-prod-sygen-mamberr",
+      "created": "2026-09-12",
+      "artwork": "https://i1.sndcdn.com/artworks-jq2UobO0vUQ4djB3-lMZNBw-t500x500.jpg"
+    },
+    {
+      "title": "raininglol face tatt (stylezmix)",
+      "permalink": "raininglol-face-tatt-stylezmix",
+      "url": "https://soundcloud.com/user-363377229/raininglol-face-tatt-stylezmix",
+      "created": "2026-08-28",
+      "artwork": "https://i1.sndcdn.com/artworks-N5R0bFtL8LOpc5Pm-s8inLg-t500x500.jpg"
+    },
+    {
+      "title": "FlatBed Freestyle (Stylezmix)",
+      "permalink": "flatbed-freestyle-stylezmix",
+      "url": "https://soundcloud.com/user-363377229/flatbed-freestyle-stylezmix",
+      "created": "2026-08-15",
+      "artwork": "https://i1.sndcdn.com/artworks-tFmQEhHoSKTvzaHe-1zAsUg-t500x500.jpg"
+    },
+    {
+      "title": "JESUS PIECE ROCKIN\u2019",
+      "permalink": "jesus-piece-rockin",
+      "url": "https://soundcloud.com/user-363377229/jesus-piece-rockin",
+      "created": "2026-08-08",
+      "artwork": "https://i1.sndcdn.com/artworks-FtWJjC1RlBZulZv9-6g4UZA-t500x500.jpg"
+    },
+    {
+      "title": "ma vibeee",
+      "permalink": "ma-vibeee",
+      "url": "https://soundcloud.com/user-363377229/ma-vibeee",
+      "created": "2026-05-13",
+      "artwork": "https://i1.sndcdn.com/artworks-4suYZOVX8zB9gINS-QAnVzg-t500x500.png"
+    },
+    {
+      "title": "rip juice",
+      "permalink": "rip-juice",
+      "url": "https://soundcloud.com/user-363377229/rip-juice",
+      "created": "2026-05-06",
+      "artwork": "https://i1.sndcdn.com/artworks-Rwxjjc6zq2S9vygk-smCcDA-t500x500.jpg"
+    },
+    {
+      "title": "Vivienne Westwood",
+      "permalink": "vivienne-westwood",
+      "url": "https://soundcloud.com/user-363377229/vivienne-westwood",
+      "created": "2026-04-29",
+      "artwork": "https://i1.sndcdn.com/artworks-Vni5qL2LxyJ4Upy5-3s3BGQ-t500x500.jpg"
+    },
+    {
+      "title": "R.I.P. Fredo (Stylezmix)",
+      "permalink": "r-i-p-fredo-stylezmix",
+      "url": "https://soundcloud.com/user-363377229/r-i-p-fredo-stylezmix",
+      "created": "2026-04-28",
+      "artwork": "https://i1.sndcdn.com/artworks-tnsBP28azVp3g4OE-Cqaeig-t500x500.png"
+    },
+    {
+      "title": "tragic freestyle (prod. HYZXR)",
+      "permalink": "tragic-freestyle",
+      "url": "https://soundcloud.com/user-363377229/tragic-freestyle",
+      "created": "2026-04-22",
+      "artwork": "https://i1.sndcdn.com/artworks-6oJYMD2qRhRGSHD3-F3ZlXg-t500x500.png"
+    },
+    {
+      "title": "Badu Freestyle 2025",
+      "permalink": "badu-freestyle-2025",
+      "url": "https://soundcloud.com/user-363377229/badu-freestyle-2025",
+      "created": "2026-04-17",
+      "artwork": "https://i1.sndcdn.com/artworks-pYcA9K6hTNl86TYa-rpzYMQ-t500x500.jpg"
+    },
+    {
+      "title": "Casually Flexxing",
+      "permalink": "casually-flexing-releasee",
+      "url": "https://soundcloud.com/user-363377229/casually-flexing-releasee",
+      "created": "2026-04-15",
+      "artwork": "https://i1.sndcdn.com/artworks-Xusywh03eLPsd1se-Wvpx7A-t500x500.png"
+    },
+    {
+      "title": "Stylez Be",
+      "permalink": "stylez-be",
+      "url": "https://soundcloud.com/user-363377229/stylez-be",
+      "created": "2026-03-08",
+      "artwork": "https://i1.sndcdn.com/artworks-3zYb5LfTpEDP0xtD-8mNYPA-t500x500.jpg"
+    },
+    {
+      "title": "Melodic Stylez is Back",
+      "permalink": "melodic-stylez-is-back",
+      "url": "https://soundcloud.com/user-363377229/melodic-stylez-is-back",
+      "created": "2026-01-23",
+      "artwork": "https://i1.sndcdn.com/artworks-tFNi5ZLAvhzKw6zv-PR0X1A-t500x500.png"
+    },
+    {
+      "title": "There's Tension Here (Prod. Rahfrmny)",
+      "permalink": "theres-tension-here",
+      "url": "https://soundcloud.com/user-363377229/theres-tension-here",
+      "created": "2026-01-19",
+      "artwork": "https://i1.sndcdn.com/artworks-EaZnRTobLrkUeRIG-SyE74Q-t500x500.png"
+    },
+    {
+      "title": "Grind 'Til I Die (Prod. Rahfromny)",
+      "permalink": "grind-til-i-die",
+      "url": "https://soundcloud.com/user-363377229/grind-til-i-die",
+      "created": "2026-01-14",
+      "artwork": "https://i1.sndcdn.com/artworks-HRTYnq4IpAGQrYxt-V4Pgew-t500x500.jpg"
+    },
+    {
+      "title": "On Gang (prod. 129Jay)",
+      "permalink": "on-gang",
+      "url": "https://soundcloud.com/user-363377229/on-gang",
+      "created": "2026-01-07",
+      "artwork": "https://i1.sndcdn.com/artworks-kywWqZJ1GNGUuAxv-y63Z1g-t500x500.jpg"
+    },
+    {
+      "title": "Walk \u2018Em Down In Balenci (Prod. keziibeats)",
+      "permalink": "callmestylez-walk-em-down-in-balance",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-walk-em-down-in-balance",
+      "created": "2025-12-31",
+      "artwork": "https://i1.sndcdn.com/artworks-9O1YZzaJzYdlHzym-1jP8rg-t500x500.png"
+    },
+    {
+      "title": "Vvs On Me (prod. Young Madz)",
+      "permalink": "callmestylez-vvs-on-me",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-vvs-on-me",
+      "created": "2025-12-27",
+      "artwork": "https://i1.sndcdn.com/artworks-ScRCGW2EGzk8QyXy-t6gUew-t500x500.png"
+    },
+    {
+      "title": "Flyest Inna Room (Prod. l1lroldyy)",
+      "permalink": "callmestylez-flyest-inna-room",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-flyest-inna-room",
+      "created": "2025-12-20",
+      "artwork": "https://i1.sndcdn.com/artworks-iwmZjypJGDjZNgTu-N97KTw-t500x500.jpg"
+    },
+    {
+      "title": "Lilith Among Us",
+      "permalink": "callmestylez-lilith-among-us",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-lilith-among-us",
+      "created": "2025-12-13",
+      "artwork": "https://i1.sndcdn.com/artworks-CtAHVqc7WXsQoE4w-50gRRg-t500x500.png"
+    },
+    {
+      "title": "Different Cloth (prod. Young Madz)",
+      "permalink": "callmestylez-different-cloth",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-different-cloth",
+      "created": "2025-11-09",
+      "artwork": "https://i1.sndcdn.com/artworks-GM23KzeWzEF0oivN-PxodeQ-t500x500.jpg"
+    },
+    {
+      "title": "Long Distance Sucks",
+      "permalink": "callmestylez-long-distance",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-long-distance",
+      "created": "2025-10-08",
+      "artwork": "https://i1.sndcdn.com/artworks-zuHpht4Q3jzzKesj-2Y3oBA-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez- my feliciaaa",
+      "permalink": "callmestylez-my-feliciaaa",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-my-feliciaaa",
+      "created": "2025-09-24",
+      "artwork": "https://i1.sndcdn.com/artworks-lJTBJOhNOWxTmQoX-VMOzhA-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - #preacherboy",
+      "permalink": "callmestylez-preacherboy",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-preacherboy",
+      "created": "2025-08-06",
+      "artwork": "https://i1.sndcdn.com/artworks-hoTsashZtCZny7pK-pP3Q2g-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - #walkingmypath",
+      "permalink": "callmestylez-walkingmypath",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-walkingmypath",
+      "created": "2025-07-25",
+      "artwork": "https://i1.sndcdn.com/artworks-NM7rK4rFRJNSEmGG-DqLeew-t500x500.jpg"
+    },
+    {
+      "title": "this wat a rave sounds like",
+      "permalink": "this-wat-a-rave-sounds-like-5",
+      "url": "https://soundcloud.com/user-363377229/this-wat-a-rave-sounds-like-5",
+      "created": "2025-05-01",
+      "artwork": "https://i1.sndcdn.com/artworks-z4zQy41372Dbaguk-w5N4Tg-t500x500.png"
+    },
+    {
+      "title": "boyz n the hood",
+      "permalink": "boyz-n-the-hood-3",
+      "url": "https://soundcloud.com/user-363377229/boyz-n-the-hood-3",
+      "created": "2025-05-01",
+      "artwork": "https://i1.sndcdn.com/artworks-z4zQy41372Dbaguk-w5N4Tg-t500x500.png"
+    },
+    {
+      "title": "genesis",
+      "permalink": "genesis-1",
+      "url": "https://soundcloud.com/user-363377229/genesis-1",
+      "created": "2025-05-01",
+      "artwork": "https://i1.sndcdn.com/artworks-z4zQy41372Dbaguk-w5N4Tg-t500x500.png"
+    },
+    {
+      "title": "my darkest thoughts",
+      "permalink": "my-darkest-thoughts-2",
+      "url": "https://soundcloud.com/user-363377229/my-darkest-thoughts-2",
+      "created": "2025-05-01",
+      "artwork": "https://i1.sndcdn.com/artworks-z4zQy41372Dbaguk-w5N4Tg-t500x500.png"
+    },
+    {
+      "title": "roses in the concrete",
+      "permalink": "roses-in-the-concrete-4",
+      "url": "https://soundcloud.com/user-363377229/roses-in-the-concrete-4",
+      "created": "2025-05-01",
+      "artwork": "https://i1.sndcdn.com/artworks-z4zQy41372Dbaguk-w5N4Tg-t500x500.png"
+    },
+    {
+      "title": "when the dust settles",
+      "permalink": "when-the-dust-settles-6",
+      "url": "https://soundcloud.com/user-363377229/when-the-dust-settles-6",
+      "created": "2025-05-01",
+      "artwork": "https://i1.sndcdn.com/artworks-z4zQy41372Dbaguk-w5N4Tg-t500x500.png"
+    },
+    {
+      "title": "callmestylez - panda express",
+      "permalink": "callmestylez-belt-and-road",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-belt-and-road",
+      "created": "2025-03-25",
+      "artwork": "https://i1.sndcdn.com/artworks-FN30dwSP8barbo21-OM4rJg-t500x500.png"
+    },
+    {
+      "title": "callmestylez- 2025 intro",
+      "permalink": "callmestylez-2025-intro",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-2025-intro",
+      "created": "2025-02-03",
+      "artwork": "https://i1.sndcdn.com/artworks-qBd9ZJwOoBkjvY1y-kBD0SQ-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - iced out leggings",
+      "permalink": "callmestylez-iced-out-leggings",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-iced-out-leggings",
+      "created": "2025-01-03",
+      "artwork": "https://i1.sndcdn.com/artworks-YQS0o9IyFumaCCyd-AE000g-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - COOKINWITSTYLEZ",
+      "permalink": "callmestylez-cookinwitstylez",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-cookinwitstylez",
+      "created": "2024-12-15",
+      "artwork": "https://i1.sndcdn.com/artworks-IixUJiq7KRstR1Yp-E7XbeA-t500x500.png"
+    },
+    {
+      "title": "callmestylez - not a jerk rapper",
+      "permalink": "callmestylez-not-a-jerk-rapper",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-not-a-jerk-rapper",
+      "created": "2024-12-01",
+      "artwork": "https://i1.sndcdn.com/artworks-At32vcTH8Jqs1A1E-sSCIuA-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - kevin gates gif",
+      "permalink": "callmestylez-kevin-gates-gif",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-kevin-gates-gif",
+      "created": "2024-11-22",
+      "artwork": "https://i1.sndcdn.com/artworks-xx2BYNaEBEOWhqCe-CjLs7A-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - swim music 2024",
+      "permalink": "callmestylez-swim-music-2024-master",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-swim-music-2024-master",
+      "created": "2024-11-01",
+      "artwork": "https://i1.sndcdn.com/artworks-arpQN5XhEJ2PYKam-HqqeJg-t500x500.png"
+    },
+    {
+      "title": "callmestylez - gotham city",
+      "permalink": "callmestylez-gotham-city",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-gotham-city",
+      "created": "2024-10-20",
+      "artwork": "https://i1.sndcdn.com/artworks-QIstyFAyo2zWgATz-bt1p9Q-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - no humility",
+      "permalink": "callmestylez-no-humility",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-no-humility",
+      "created": "2024-09-21",
+      "artwork": "https://i1.sndcdn.com/artworks-dWQRsf5uH2qNkkfc-HeSunA-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - redemption arc",
+      "permalink": "callmestylez-redemption-arc",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-redemption-arc",
+      "created": "2024-07-24",
+      "artwork": "https://i1.sndcdn.com/artworks-LtAyGyVvGJJo3fMo-yyIYNg-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - please come here",
+      "permalink": "callmestylez-please-come-here",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-please-come-here",
+      "created": "2024-07-14",
+      "artwork": "https://i1.sndcdn.com/artworks-L7JJuEZPJYsOx3f2-GHDtAQ-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - paid motion",
+      "permalink": "callmestylez-paid-motion",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-paid-motion",
+      "created": "2024-07-01",
+      "artwork": "https://i1.sndcdn.com/artworks-WUXLGELFtlFHmoev-bGikuA-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - i wanna buy a gun",
+      "permalink": "callmestylez-i-wanna-buy-a-gun",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-i-wanna-buy-a-gun",
+      "created": "2024-06-19",
+      "artwork": "https://i1.sndcdn.com/artworks-j16GBScezz9qlotG-M9fyvQ-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - squeaky clean",
+      "permalink": "squeaky-clean-final",
+      "url": "https://soundcloud.com/user-363377229/squeaky-clean-final",
+      "created": "2024-06-05",
+      "artwork": "https://i1.sndcdn.com/artworks-x6qPDMEZzLPr33wy-ePOBAA-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - yea he aint that",
+      "permalink": "callmestylez-yea-he-aint-that",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-yea-he-aint-that",
+      "created": "2024-05-22",
+      "artwork": "https://i1.sndcdn.com/artworks-dpIq9gKo5DIbEpvr-Mlx29A-t500x500.jpg"
+    },
+    {
+      "title": "callmestylez - I feel ah way",
+      "permalink": "callmestylez-i-feel-ah-way",
+      "url": "https://soundcloud.com/user-363377229/callmestylez-i-feel-ah-way",
+      "created": "2024-04-23",
+      "artwork": "https://i1.sndcdn.com/artworks-Dr5el9mfyDeZSWkH-HuKmhg-t500x500.jpg"
+    }
+  ]
+}

@@ -2,6 +2,19 @@ import type { Chronicle } from "@/types";
 
 export const chronicles: Chronicle[] = [
   {
+    id: "chr-30",
+    number: 30,
+    slug: "bodega-run-minigame",
+    title: "Bodega Run minigame",
+    date: "2026-10-17",
+    excerpt: "BODEGA RUN MINIGAME BELOW!!! TRY NOW!!!!",
+    content: "BODEGA RUN MINIGAME BELOW!!! TRY NOW!!!!",
+    media: [],
+    relatedSongs: ["gl0ckianna", "body-by-raven"],
+    relatedCharacters: ["stylez"],
+    relatedLocations: ["southside"],
+  },
+  {
     id: "chr-29",
     number: 29,
     slug: "dedicated-arcade-blog",

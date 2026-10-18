@@ -1,5 +1,6 @@
 "use client";
 
+import { AllPlatsTag } from "@/components/music/AllPlatsTag";
 import { ListenLink } from "@/components/music/ListenLink";
 import { SoundCloudOnlyTag } from "@/components/music/SoundCloudOnlyTag";
 import { cueUiSound } from "@/lib/ui-sound";
@@ -22,7 +23,12 @@ export function ReleaseTile({
             compact={compact}
             className="absolute left-1 top-1 z-10 max-w-[calc(100%-0.5rem)]"
           />
-        ) : null}
+        ) : (
+          <AllPlatsTag
+            compact={compact}
+            className="absolute left-1 top-1 z-10 max-w-[calc(100%-0.5rem)]"
+          />
+        )}
       </div>
       <p className="mt-2 truncate font-display text-[11px] text-mist">{release.title}</p>
       <p className="font-hud text-[10px] text-muted">

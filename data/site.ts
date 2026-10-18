@@ -12,6 +12,9 @@ export const site = {
   latestSpotifySlug: "gl0ckianna",
   featuredGameSlug: "bodega-run",
   featuredLocationSlug: "southside",
+  /** @Stylezwillsaveus — pin latest upload video id */
+  latestYouTubeVideoId: "iiEGBESAWsc",
+  youtubeChannel: "https://www.youtube.com/@Stylezwillsaveus",
   title: "STYLEZ ARCADE",
   logo: "/art/logo-primary.png",
   portrait: "/art/portrait-stylez.png",

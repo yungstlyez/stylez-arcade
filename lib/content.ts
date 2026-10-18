@@ -153,7 +153,7 @@ export function releaseLinkItems(slugs: string[]) {
   return resolveReleases(slugs).map((item) => ({
     href: listenHref(item) ?? `/music/${item.slug}`,
     label: item.title,
-    note: item.soundcloudOnly ? "SOUNDCLOUD ONLY" : undefined,
+    note: item.soundcloudOnly ? "SOUNDCLOUD ONLY" : "ALL PLATS",
     external: Boolean(listenHref(item)),
   }));
 }

@@ -47,7 +47,7 @@ function kindSize(kind: ObstacleKind) {
   }
 }
 
-export function BodegaRun() {
+export function BodegaRun({ compact = false }: { compact?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hud, setHud] = useState({ score: 0, best: 0, state: "ready" as "ready" | "run" | "dead" });
 
@@ -107,7 +107,10 @@ export function BodegaRun() {
     const resize = () => {
       const parent = canvas.parentElement;
       const w = parent?.clientWidth || 800;
-      const h = Math.max(280, Math.round(w * 9 / 16));
+      const parentH = parent?.clientHeight || 0;
+      const h = compact
+        ? Math.max(160, parentH || Math.round(w * 0.55))
+        : Math.max(280, parentH || Math.round((w * 9) / 16));
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
@@ -445,19 +448,29 @@ export function BodegaRun() {
     window.addEventListener("keydown", onKey);
     canvas.addEventListener("pointerdown", onPointer);
     window.addEventListener("resize", resize);
+    const parent = canvas.parentElement;
+    const ro = parent ? new ResizeObserver(() => resize()) : null;
+    if (parent && ro) ro.observe(parent);
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("keydown", onKey);
       canvas.removeEventListener("pointerdown", onPointer);
       window.removeEventListener("resize", resize);
+      ro?.disconnect();
     };
-  }, []);
+  }, [compact]);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-violet/35 bg-black shadow-[0_0_40px_rgba(139,92,246,0.2)]">
-      <canvas ref={canvasRef} className="block w-full touch-none" aria-label="Bodega Run game" />
-      <div className="pointer-events-none absolute right-3 top-3 rounded-full border border-violet/40 bg-void/50 px-3 py-1 font-hud text-[10px] tracking-[0.16em] text-violet backdrop-blur-md">
+    <div
+      className={
+        compact
+          ? "relative h-full min-h-0 overflow-hidden rounded-xl border border-lime/35 bg-black"
+          : "relative overflow-hidden rounded-2xl border border-violet/35 bg-black shadow-[0_0_40px_rgba(139,92,246,0.2)]"
+      }
+    >
+      <canvas ref={canvasRef} className="block h-full w-full touch-none" aria-label="Bodega Run game" />
+      <div className="pointer-events-none absolute right-2 top-2 rounded-full border border-violet/40 bg-void/50 px-2 py-0.5 font-hud text-[9px] tracking-[0.14em] text-violet backdrop-blur-md sm:right-3 sm:top-3 sm:px-3 sm:py-1 sm:text-[10px]">
         {hud.state === "ready" ? "READY" : hud.state === "dead" ? "RETRY" : "RUNNING"} · {hud.score}
       </div>
     </div>

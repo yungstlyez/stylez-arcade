@@ -1,5 +1,6 @@
 import { PixelButton } from "@/components/game-ui/PixelButton";
 import { ListenLink } from "@/components/music/ListenLink";
+import { AllPlatsTag } from "@/components/music/AllPlatsTag";
 import { SoundCloudOnlyTag } from "@/components/music/SoundCloudOnlyTag";
 import { cn } from "@/lib/cn";
 import { listenHref } from "@/lib/content";
@@ -25,7 +26,9 @@ export function ReleaseCard({ release, featured = false }: { release: Release; f
         />
         {release.soundcloudOnly ? (
           <SoundCloudOnlyTag className="absolute left-2 top-2 z-10" />
-        ) : null}
+        ) : (
+          <AllPlatsTag className="absolute left-2 top-2 z-10" />
+        )}
       </ListenLink>
       <div className="flex flex-1 flex-col gap-3 p-4">
         <div>
@@ -37,7 +40,11 @@ export function ReleaseCard({ release, featured = false }: { release: Release; f
             <ListenLink release={release}>{release.title}</ListenLink>
           </h3>
           {release.subtitle ? <p className="mt-1 text-sm text-muted">{release.subtitle}</p> : null}
-          {release.soundcloudOnly ? <SoundCloudOnlyTag className="mt-2" /> : null}
+          {release.soundcloudOnly ? (
+            <SoundCloudOnlyTag className="mt-2" />
+          ) : (
+            <AllPlatsTag className="mt-2" />
+          )}
         </div>
         <div className="mt-auto flex gap-2">
           {href ? <PixelButton href={href}>PLAY</PixelButton> : null}

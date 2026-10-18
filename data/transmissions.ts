@@ -40,9 +40,9 @@ export const transmissions: Transmission[] = [
 ];
 
 export const currentMission: Mission = {
-  id: "mission-flatbed",
-  title: "FLATBED FREESTYLE",
-  brief: "Unlock a hidden scene",
-  href: "/music/flatbed-freestyle",
+  id: "mission-bodega-run",
+  title: "BODEGA RUN",
+  brief: "Grab the sandwich. Run the block.",
+  href: "/play/bodega-run",
   locationHint: "Southside",
 };

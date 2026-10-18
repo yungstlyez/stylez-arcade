@@ -1,6 +1,7 @@
 import { PlayReleaseButton } from "@/components/music/PlayReleaseButton";
 import { ListenLink } from "@/components/music/ListenLink";
 import { SoundCloudEmbed } from "@/components/music/SoundCloudEmbed";
+import { AllPlatsTag } from "@/components/music/AllPlatsTag";
 import { SoundCloudOnlyTag } from "@/components/music/SoundCloudOnlyTag";
 import { GameWindow } from "@/components/game-ui/GameWindow";
 import { ReturnLink } from "@/components/game-ui/ReturnLink";
@@ -50,7 +51,9 @@ export default async function ReleasePage({ params }: SlugParams) {
             </ListenLink>
             {release.soundcloudOnly ? (
               <SoundCloudOnlyTag className="absolute left-2 top-2 z-10" />
-            ) : null}
+            ) : (
+              <AllPlatsTag className="absolute left-2 top-2 z-10" />
+            )}
           </div>
           {release.soundcloudOnly && release.streamingLinks.soundcloud ? (
             <div className="cover-frame mt-4 aspect-square overflow-hidden">
@@ -89,7 +92,11 @@ export default async function ReleasePage({ params }: SlugParams) {
               <ListenLink release={release}>{release.title}</ListenLink>
             </h1>
             {release.subtitle ? <p className="mt-2 text-muted">{release.subtitle}</p> : null}
-            {release.soundcloudOnly ? <SoundCloudOnlyTag className="mt-3" /> : null}
+            {release.soundcloudOnly ? (
+              <SoundCloudOnlyTag className="mt-3" />
+            ) : (
+              <AllPlatsTag className="mt-3" />
+            )}
           </header>
           <p className="max-w-2xl text-sm leading-7 text-cream/90">{release.description}</p>
           {release.story ? (
