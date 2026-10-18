@@ -6,7 +6,6 @@ import { RightRail } from "@/components/hub/RightRail";
 import { ListenLink } from "@/components/music/ListenLink";
 import { MusicLibrary } from "@/components/music/MusicLibrary";
 import { FeaturedSoundCloudSlot } from "@/components/music/FeaturedSoundCloud";
-import { SoundCloudOnlyTag } from "@/components/music/SoundCloudOnlyTag";
 import { SpotifyEmbed } from "@/components/music/SpotifyEmbed";
 import { BodegaRun } from "@/components/play/BodegaRun";
 import { site } from "@/data/site";
@@ -32,7 +31,7 @@ export function HomeHub() {
   const { playTrack } = useAudio();
   const featured = getFeaturedRelease();
   const featuredListen = listenHref(featured);
-  const soundcloudUrl = featured.soundcloudOnly ? featured.streamingLinks.soundcloud : undefined;
+  const soundcloudUrl = site.soundcloud;
   const latestSpotify = getLatestSpotifyRelease();
   const spotifyUrl = latestSpotify?.streamingLinks.spotify;
   const spotifyTrack = latestSpotify ? releaseToTrack(latestSpotify) : null;
@@ -91,14 +90,16 @@ export function HomeHub() {
           <div className="flex shrink-0 items-center justify-between gap-3 border-b border-cyan/25 bg-void/85 px-3 py-2">
             <div className="flex flex-wrap items-center gap-2">
               <p className="hud-label text-cyan">SOUNDCLOUD</p>
-              <SoundCloudOnlyTag />
+              <span className="font-hud text-[10px] tracking-[0.16em] text-muted">{site.artist.toUpperCase()}</span>
             </div>
-            <Link
-              href={`/music/${featured.slug}`}
+            <a
+              href={soundcloudUrl}
+              target="_blank"
+              rel="noreferrer"
               className="hud-press glass-btn inline-flex min-h-9 items-center border-cyan/45 px-4 font-display text-[11px] font-semibold tracking-[0.16em] text-cyan hover:border-cyan"
             >
-              OPEN FILE
-            </Link>
+              OPEN PAGE
+            </a>
           </div>
           <div className="relative h-[166px] w-full shrink-0 bg-void lg:h-auto lg:min-h-0 lg:flex-1">
             <FeaturedSoundCloudSlot className="size-full" />

@@ -5,14 +5,27 @@ import { useComingSoon } from "@/components/game-ui/ComingSoonProvider";
 import { useLibrary } from "@/components/music/LibraryProvider";
 import { useChronicles } from "@/components/chronicles/ChronicleProvider";
 import { usePlayer } from "@/components/player/PlayerProvider";
-import { getFeaturedRelease, releaseToTrack } from "@/lib/content";
+import { site } from "@/data/site";
+import type { Track } from "@/types";
 import { usePathname } from "next/navigation";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 
 export const FEATURED_SC_SLOT_ID = "featured-sc-slot";
 
 const PARKED =
   "position:fixed;left:-10000px;top:0;width:320px;height:166px;opacity:0;pointer-events:none;z-index:0;overflow:hidden;";
+
+/** Stable host for the artist-page widget — SoundCloud owns track-to-track advance. */
+export const SOUNDCLOUD_CATALOG_TRACK: Track = {
+  id: "sc-artist-catalog",
+  title: `${site.artist} · SoundCloud`,
+  artist: site.artist,
+  cover: site.portrait,
+  src: "",
+  slug: "soundcloud",
+  preferExternal: true,
+  soundcloudUrl: site.soundcloud,
+};
 
 export function FeaturedSoundCloudSlot({ className }: { className?: string }) {
   return <div id={FEATURED_SC_SLOT_ID} className={className} />;
@@ -25,9 +38,8 @@ export function FeaturedSoundCloudLayer() {
   const { open: comingSoonOpen } = useComingSoon();
   const { terminalOpen, reading } = useChronicles();
   const { save, ready } = usePlayer();
-  const featured = getFeaturedRelease();
-  const url = featured.streamingLinks.soundcloud;
-  const track = releaseToTrack(featured);
+  const url = site.soundcloud;
+  const track = useMemo(() => SOUNDCLOUD_CATALOG_TRACK, []);
   const showOnHome =
     ready &&
     save.started &&
@@ -84,9 +96,10 @@ export function FeaturedSoundCloudLayer() {
     <div ref={wrapRef} aria-hidden={!showOnHome}>
       <SoundCloudEmbed
         url={url}
-        title={featured.title}
+        title={`${site.artist} on SoundCloud`}
         track={track}
         autoPlay
+        advanceOnEnd={false}
         visual={false}
         className="size-full"
       />

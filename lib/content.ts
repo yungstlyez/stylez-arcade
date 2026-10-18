@@ -136,11 +136,17 @@ export function releaseToTrack(release: Release): Track {
     src: release.audio,
     slug: release.slug,
     preferExternal: Boolean(release.streamingLinks.soundcloud || release.streamingLinks.spotify),
+    soundcloudUrl: release.streamingLinks.soundcloud,
   };
 }
 
 export function getTrackQueue(): Track[] {
   return releases.map(releaseToTrack);
+}
+
+/** Continuous SoundCloud radio — every catalog cut with an SC link. */
+export function getSoundCloudQueue(): Track[] {
+  return releases.filter((item) => Boolean(item.streamingLinks.soundcloud)).map(releaseToTrack);
 }
 
 export function resolveReleases(slugs: string[]): Release[] {

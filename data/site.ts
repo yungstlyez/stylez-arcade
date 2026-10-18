@@ -15,6 +15,8 @@ export const site = {
   /** @Stylezwillsaveus — pin latest upload video id */
   latestYouTubeVideoId: "iiEGBESAWsc",
   youtubeChannel: "https://www.youtube.com/@Stylezwillsaveus",
+  /** Full catalog player — SoundCloud advances tracks inside the widget. */
+  soundcloud: "https://soundcloud.com/user-363377229",
   title: "STYLEZ ARCADE",
   logo: "/art/logo-primary.png",
   portrait: "/art/portrait-stylez.png",

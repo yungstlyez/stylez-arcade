@@ -206,6 +206,8 @@ export type Track = {
   slug: string;
   /** When true, never play the local placeholder file — wait for the embed. */
   preferExternal?: boolean;
+  /** SoundCloud permalink — used by the featured embed queue. */
+  soundcloudUrl?: string;
 };
 
 export type SaveData = {

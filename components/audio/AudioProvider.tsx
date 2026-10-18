@@ -1,6 +1,6 @@
 "use client";
 
-import { getTrackQueue } from "@/lib/content";
+import { getSoundCloudQueue, getTrackQueue } from "@/lib/content";
 import type { Track } from "@/types";
 import {
   createContext,
@@ -463,27 +463,35 @@ export function AudioProvider({
     setVolumeState(nextValue);
   }, []);
 
+  const activeQueue = useCallback(() => {
+    const now = currentRef.current;
+    const queued = queueRef.current;
+    if (!now?.soundcloudUrl) return queued;
+    const fromQueue = queued.filter((track) => track.soundcloudUrl);
+    return fromQueue.length ? fromQueue : getSoundCloudQueue();
+  }, []);
+
   const next = useCallback(() => {
-    const list = queueRef.current;
+    const list = activeQueue();
     const now = currentRef.current;
     if (list.length === 0) return;
     const index = now ? list.findIndex((track) => track.id === now.id) : -1;
     const upcoming = list[(index + 1 + list.length) % list.length];
     if (upcoming) loadAndPlay(upcoming, list, true);
-  }, [loadAndPlay]);
+  }, [activeQueue, loadAndPlay]);
 
   const prev = useCallback(() => {
     if (progress > 3) {
       seek(0);
       return;
     }
-    const list = queueRef.current;
+    const list = activeQueue();
     const now = currentRef.current;
     if (list.length === 0) return;
     const index = now ? list.findIndex((track) => track.id === now.id) : 0;
     const upcoming = list[(index - 1 + list.length) % list.length];
     if (upcoming) loadAndPlay(upcoming, list, true);
-  }, [loadAndPlay, progress, seek]);
+  }, [activeQueue, loadAndPlay, progress, seek]);
 
   const registerExternal = useCallback((trackId: string, player: ExternalPlayer) => {
     const prev = externalsRef.current.get(trackId);
@@ -542,6 +550,12 @@ export function AudioProvider({
       engineRef.current = "external";
       currentRef.current = track;
       isPlayingRef.current = true;
+      // Keep SoundCloud in its own continuum so FINISH advances to the next SC cut.
+      if (track.soundcloudUrl) {
+        const scQueue = getSoundCloudQueue();
+        queueRef.current = scQueue;
+        setQueue(scQueue);
+      }
       if (already) return;
       setCurrent(track);
       takeExclusive(track.id);
@@ -576,12 +590,13 @@ export function AudioProvider({
     (trackId: string) => {
       if (currentRef.current?.id !== trackId) return;
       setIsPlaying(false);
-      const list = queueRef.current;
+      const list = activeQueue();
+      if (list.length === 0) return;
       const index = list.findIndex((track) => track.id === trackId);
-      const upcoming = list[(index + 1) % list.length];
+      const upcoming = list[(index + 1 + list.length) % list.length];
       if (upcoming) loadAndPlay(upcoming, list, true);
     },
-    [loadAndPlay],
+    [activeQueue, loadAndPlay],
   );
 
   const value = useMemo(

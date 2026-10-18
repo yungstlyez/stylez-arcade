@@ -75,6 +75,8 @@ export function SoundCloudEmbed({
   title,
   track,
   autoPlay = false,
+  /** When false, FINISH stays inside SoundCloud (artist/playlist widgets). */
+  advanceOnEnd = true,
   visual = true,
   className,
 }: {
@@ -82,6 +84,7 @@ export function SoundCloudEmbed({
   title: string;
   track?: Track;
   autoPlay?: boolean;
+  advanceOnEnd?: boolean;
   visual?: boolean;
   className?: string;
 }) {
@@ -89,6 +92,8 @@ export function SoundCloudEmbed({
   const playerRef = useRef<ExternalPlayer | null>(null);
   const autoPlayRef = useRef(autoPlay);
   autoPlayRef.current = autoPlay;
+  const advanceOnEndRef = useRef(advanceOnEnd);
+  advanceOnEndRef.current = advanceOnEnd;
   const initialAutoPlay = useRef(autoPlay);
   const audio = useAudio();
   const audioRef = useRef(audio);
@@ -134,7 +139,11 @@ export function SoundCloudEmbed({
         if (trackRef.current) audioRef.current.reportExternalPlay(trackRef.current);
       });
       widget.bind(events.PAUSE, () => audioRef.current.reportExternalPause(trackId));
-      widget.bind(events.FINISH, () => audioRef.current.reportExternalEnded(trackId));
+      widget.bind(events.FINISH, () => {
+        // Artist/playlist embeds advance themselves — remounting here crashed the hub.
+        if (!advanceOnEndRef.current) return;
+        audioRef.current.reportExternalEnded(trackId);
+      });
       widget.bind(events.PLAY_PROGRESS, (data) => {
         audioRef.current.reportExternalProgress(trackId, (data?.currentPosition ?? 0) / 1000, durationSec);
       });
