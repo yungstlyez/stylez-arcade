@@ -14,11 +14,17 @@ import {
   type ReactNode,
 } from "react";
 
+/** Stable id for the hub artist-page SoundCloud widget. */
+export const SC_CATALOG_ID = "sc-artist-catalog";
+
 export type ExternalPlayer = {
   play: () => void;
   pause: () => void;
   seek: (seconds: number) => void;
   setVolume?: (volume: number) => void;
+  /** SoundCloud playlist/user widgets */
+  next?: () => void;
+  prev?: () => void;
 };
 
 type AudioContextValue = {
@@ -399,27 +405,52 @@ export function AudioProvider({
     [applyExternalGain, applyMuffle, resumeEngine, stopHtml5],
   );
 
+  const resolveExternal = useCallback(() => {
+    const now = currentRef.current;
+    if (now && externalsRef.current.has(now.id)) {
+      return { id: now.id, player: externalsRef.current.get(now.id)! };
+    }
+    if (externalsRef.current.has(SC_CATALOG_ID)) {
+      return { id: SC_CATALOG_ID, player: externalsRef.current.get(SC_CATALOG_ID)! };
+    }
+    const first = externalsRef.current.entries().next().value as
+      | [string, ExternalPlayer]
+      | undefined;
+    return first ? { id: first[0], player: first[1] } : null;
+  }, []);
+
   const toggle = useCallback(() => {
     const now = currentRef.current;
-    if (!now) {
-      const first = queueRef.current[0];
-      if (first) loadAndPlay(first, queueRef.current, true);
-      return;
-    }
-    const external = externalsRef.current.get(now.id);
-    if (external && engineRef.current === "external") {
+    const resolved = resolveExternal();
+    if (resolved && (engineRef.current === "external" || now?.preferExternal || !now)) {
       if (isPlayingRef.current) {
         pauseHtml5();
-        external.pause();
+        resolved.player.pause();
         isPlayingRef.current = false;
         setIsPlaying(false);
       } else {
-        takeExclusive(now.id);
-        external.play();
+        takeExclusive(resolved.id);
+        engineRef.current = "external";
+        resolved.player.play();
         isPlayingRef.current = true;
         setIsPlaying(true);
-        onListenRef.current?.(now.slug);
+        if (now) onListenRef.current?.(now.slug);
       }
+      return;
+    }
+    if (!now) {
+      const catalog = externalsRef.current.get(SC_CATALOG_ID);
+      if (catalog) {
+        takeExclusive(SC_CATALOG_ID);
+        engineRef.current = "external";
+        pendingExternalPlayRef.current = SC_CATALOG_ID;
+        catalog.play();
+        isPlayingRef.current = true;
+        setIsPlaying(true);
+        return;
+      }
+      const first = queueRef.current[0];
+      if (first) loadAndPlay(first, queueRef.current, true);
       return;
     }
     const audio = audioRef.current;
@@ -440,13 +471,12 @@ export function AudioProvider({
     } else {
       audio.pause();
     }
-  }, [loadAndPlay, pauseExternals, pauseHtml5, resumeEngine, stopHtml5, takeExclusive]);
+  }, [loadAndPlay, pauseExternals, pauseHtml5, resolveExternal, resumeEngine, stopHtml5, takeExclusive]);
 
   const seek = useCallback((time: number) => {
-    const now = currentRef.current;
-    const external = now ? externalsRef.current.get(now.id) : undefined;
-    if (external && engineRef.current === "external") {
-      external.seek(time);
+    const resolved = resolveExternal();
+    if (resolved && engineRef.current === "external") {
+      resolved.player.seek(time);
       setProgress(time);
       return;
     }
@@ -454,7 +484,7 @@ export function AudioProvider({
     if (!audio) return;
     audio.currentTime = time;
     setProgress(time);
-  }, []);
+  }, [resolveExternal]);
 
   const setVolume = useCallback((value: number) => {
     const nextValue = Math.min(1, Math.max(0, value));
@@ -472,15 +502,29 @@ export function AudioProvider({
   }, []);
 
   const next = useCallback(() => {
+    const resolved = resolveExternal();
+    if (resolved?.player.next && (engineRef.current === "external" || currentRef.current?.id === SC_CATALOG_ID)) {
+      resolved.player.next();
+      return;
+    }
     const list = activeQueue();
     const now = currentRef.current;
     if (list.length === 0) return;
     const index = now ? list.findIndex((track) => track.id === now.id) : -1;
     const upcoming = list[(index + 1 + list.length) % list.length];
     if (upcoming) loadAndPlay(upcoming, list, true);
-  }, [activeQueue, loadAndPlay]);
+  }, [activeQueue, loadAndPlay, resolveExternal]);
 
   const prev = useCallback(() => {
+    const resolved = resolveExternal();
+    if (
+      resolved?.player.prev &&
+      progress <= 3 &&
+      (engineRef.current === "external" || currentRef.current?.id === SC_CATALOG_ID)
+    ) {
+      resolved.player.prev();
+      return;
+    }
     if (progress > 3) {
       seek(0);
       return;
@@ -491,7 +535,7 @@ export function AudioProvider({
     const index = now ? list.findIndex((track) => track.id === now.id) : 0;
     const upcoming = list[(index - 1 + list.length) % list.length];
     if (upcoming) loadAndPlay(upcoming, list, true);
-  }, [activeQueue, loadAndPlay, progress, seek]);
+  }, [activeQueue, loadAndPlay, progress, resolveExternal, seek]);
 
   const registerExternal = useCallback((trackId: string, player: ExternalPlayer) => {
     const prev = externalsRef.current.get(trackId);
@@ -520,7 +564,8 @@ export function AudioProvider({
       player.play();
       return;
     }
-    if (isPlayingRef.current && now?.id !== trackId) {
+    // Never pause the artist catalog host for a stale single-track current id.
+    if (isPlayingRef.current && now?.id !== trackId && trackId !== SC_CATALOG_ID) {
       player.pause();
     }
   }, [stopHtml5]);
@@ -538,14 +583,21 @@ export function AudioProvider({
       if (nextDuration) setDuration(nextDuration);
       return;
     }
-    if (now.id === track.id && nextDuration) setDuration(nextDuration);
+    if (now.id === track.id) {
+      if (now.title !== track.title || now.cover !== track.cover) {
+        currentRef.current = track;
+        setCurrent(track);
+      }
+      if (nextDuration) setDuration(nextDuration);
+    }
   }, []);
 
   const reportExternalPlay = useCallback(
     (track: Track) => {
+      const prev = currentRef.current;
       const already =
         engineRef.current === "external" &&
-        currentRef.current?.id === track.id &&
+        prev?.id === track.id &&
         isPlayingRef.current;
       engineRef.current = "external";
       currentRef.current = track;
@@ -556,7 +608,14 @@ export function AudioProvider({
         queueRef.current = scQueue;
         setQueue(scQueue);
       }
-      if (already) return;
+      if (already) {
+        // Artist widget advanced — refresh title/art without tearing down playback.
+        if (prev.title !== track.title || prev.cover !== track.cover) {
+          setCurrent(track);
+        }
+        setIsPlaying(true);
+        return;
+      }
       setCurrent(track);
       takeExclusive(track.id);
       setIsPlaying(true);
@@ -568,14 +627,23 @@ export function AudioProvider({
   const reportExternalPause = useCallback((trackId: string) => {
     if (handoffRef.current) return;
     if (!externalsRef.current.has(trackId)) return;
-    if (currentRef.current?.id === trackId && engineRef.current === "external") {
+    const now = currentRef.current;
+    const owns =
+      now?.id === trackId ||
+      (trackId === SC_CATALOG_ID && (now?.id === SC_CATALOG_ID || Boolean(now?.soundcloudUrl)));
+    if (owns && engineRef.current === "external") {
       isPlayingRef.current = false;
       setIsPlaying(false);
     }
   }, []);
 
   const reportExternalProgress = useCallback((trackId: string, nextProgress: number, nextDuration: number) => {
-    if (currentRef.current?.id !== trackId || engineRef.current !== "external") return;
+    if (engineRef.current !== "external") return;
+    const now = currentRef.current;
+    const owns =
+      now?.id === trackId ||
+      (trackId === SC_CATALOG_ID && (now?.id === SC_CATALOG_ID || Boolean(now?.soundcloudUrl)));
+    if (!owns) return;
     progressRef.current = nextProgress;
     if (nextDuration) pendingDurationRef.current = nextDuration;
     if (progressRafRef.current) return;

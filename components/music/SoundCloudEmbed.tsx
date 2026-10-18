@@ -5,16 +5,25 @@ import { cn } from "@/lib/cn";
 import type { Track } from "@/types";
 import { useEffect, useMemo, useRef } from "react";
 
+type SoundCloudSound = {
+  title?: string;
+  artwork_url?: string;
+  duration?: number;
+};
+
 type SoundCloudWidget = {
   bind: (event: string, listener: (data?: { currentPosition?: number; loadedProgress?: number }) => void) => void;
   unbind: (event: string) => void;
   play: () => void;
   pause: () => void;
   toggle: () => void;
+  next: () => void;
+  prev: () => void;
   seekTo: (ms: number) => void;
   setVolume: (volume: number) => void;
   getDuration: (cb: (ms: number) => void) => void;
   getPosition: (cb: (ms: number) => void) => void;
+  getCurrentSound: (cb: (sound: SoundCloudSound | null) => void) => void;
 };
 
 type SoundCloudAPI = {
@@ -70,6 +79,12 @@ function loadSoundCloudApi() {
   });
 }
 
+function artworkUrl(sound: SoundCloudSound | null | undefined, fallback: string) {
+  const raw = sound?.artwork_url;
+  if (!raw) return fallback;
+  return raw.replace("-large", "-t500x500");
+}
+
 export function SoundCloudEmbed({
   url,
   title,
@@ -113,6 +128,19 @@ export function SoundCloudEmbed({
     let widget: SoundCloudWidget | null = null;
     let events: SoundCloudAPI["Widget"]["Events"] | null = null;
 
+    const publishSound = (sound: SoundCloudSound | null | undefined) => {
+      const base = trackRef.current;
+      if (!base) return;
+      const live: Track = {
+        ...base,
+        title: sound?.title?.trim() || base.title,
+        cover: artworkUrl(sound, base.cover),
+      };
+      const durationSec = sound?.duration ? sound.duration / 1000 : 0;
+      audioRef.current.reportExternalPlay(live);
+      if (durationSec) audioRef.current.adoptExternal(live, durationSec);
+    };
+
     void loadSoundCloudApi().then((api) => {
       if (cancelled || !iframeRef.current) return;
       widget = api.Widget(iframeRef.current);
@@ -130,13 +158,19 @@ export function SoundCloudEmbed({
           pause: () => widget?.pause(),
           seek: (seconds) => widget?.seekTo(seconds * 1000),
           setVolume: (volume) => widget?.setVolume(Math.round(volume * 100)),
+          next: () => widget?.next(),
+          prev: () => widget?.prev(),
         };
         playerRef.current = player;
         audioRef.current.registerExternal(trackId, player);
         if (autoPlayRef.current) widget.play();
       });
       widget.bind(events.PLAY, () => {
-        if (trackRef.current) audioRef.current.reportExternalPlay(trackRef.current);
+        widget?.getCurrentSound((sound) => {
+          if (cancelled) return;
+          if (sound?.duration) durationSec = sound.duration / 1000;
+          publishSound(sound);
+        });
       });
       widget.bind(events.PAUSE, () => audioRef.current.reportExternalPause(trackId));
       widget.bind(events.FINISH, () => {

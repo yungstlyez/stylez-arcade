@@ -5,6 +5,7 @@ import { useComingSoon } from "@/components/game-ui/ComingSoonProvider";
 import { useLibrary } from "@/components/music/LibraryProvider";
 import { useChronicles } from "@/components/chronicles/ChronicleProvider";
 import { usePlayer } from "@/components/player/PlayerProvider";
+import { SC_CATALOG_ID } from "@/components/audio/AudioProvider";
 import { site } from "@/data/site";
 import type { Track } from "@/types";
 import { usePathname } from "next/navigation";
@@ -17,7 +18,7 @@ const PARKED =
 
 /** Stable host for the artist-page widget — SoundCloud owns track-to-track advance. */
 export const SOUNDCLOUD_CATALOG_TRACK: Track = {
-  id: "sc-artist-catalog",
+  id: SC_CATALOG_ID,
   title: `${site.artist} · SoundCloud`,
   artist: site.artist,
   cover: site.portrait,

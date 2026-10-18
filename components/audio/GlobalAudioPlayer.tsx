@@ -1,6 +1,7 @@
 "use client";
 
-import { useAudio } from "@/components/audio/AudioProvider";
+import { SC_CATALOG_ID, useAudio } from "@/components/audio/AudioProvider";
+import { site } from "@/data/site";
 import { socials } from "@/data/socials";
 import { formatTime } from "@/lib/cn";
 import { cueUiSound } from "@/lib/ui-sound";
@@ -19,17 +20,28 @@ export function GlobalAudioPlayer({ visible }: { visible: boolean }) {
   const title = current?.title ?? "NO FILE LOADED";
   const artist = current?.artist ?? "Callmestylez";
   const cover = current?.cover ?? "/art/placeholders/stage-el-train.gif";
-  const href = current ? `/music/${current.slug}` : "/music";
+  const isSoundCloudCatalog = current?.id === SC_CATALOG_ID;
+  const href = isSoundCloudCatalog ? site.soundcloud : current ? `/music/${current.slug}` : "/music";
+  const openExternal = isSoundCloudCatalog;
 
   return (
     <div className="shell-chrome fixed inset-x-0 bottom-[calc(var(--nav-h)+env(safe-area-inset-bottom))] z-30 border-t lg:bottom-0">
       <div className="mx-auto flex h-[var(--player-h)] max-w-[1920px] items-center gap-3 px-3">
-        <Link href={href} className="shrink-0">
-          <span className="cover-frame size-12 overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={cover} alt="" className="size-12 object-cover" />
-          </span>
-        </Link>
+        {openExternal ? (
+          <a href={href} target="_blank" rel="noreferrer" className="shrink-0">
+            <span className="cover-frame size-12 overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={cover} alt="" className="size-12 object-cover" />
+            </span>
+          </a>
+        ) : (
+          <Link href={href} className="shrink-0">
+            <span className="cover-frame size-12 overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={cover} alt="" className="size-12 object-cover" />
+            </span>
+          </Link>
+        )}
         <div className="min-w-0 w-40 shrink-0 sm:w-52">
           <p className="truncate font-display text-[12px] text-mist">{title}</p>
           <p className="truncate font-hud text-[10px] text-muted">{artist}</p>
