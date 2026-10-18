@@ -26,6 +26,7 @@ const GROUND_Y_RATIO = 0.78;
 const PLAYER_W = 72;
 const PLAYER_H = 104;
 const SHEET_SRC = "/art/bodega/runner-sheet.png";
+const SKYLINE_SRC = "/art/placeholders/stage-skyline.gif";
 const FRAME_W = 147;
 const FRAME_H = 212;
 const FRAME_IDLE = 0;
@@ -80,6 +81,13 @@ export function BodegaRun() {
     let sheetReady = false;
     sheet.onload = () => {
       sheetReady = true;
+    };
+
+    const skyline = new Image();
+    skyline.src = SKYLINE_SRC;
+    let skylineReady = false;
+    skyline.onload = () => {
+      skylineReady = true;
     };
 
     const player = {
@@ -191,25 +199,37 @@ export function BodegaRun() {
 
     const drawBg = () => {
       const g = ctx.createLinearGradient(0, 0, 0, H);
-      g.addColorStop(0, "#1a0f33");
-      g.addColorStop(0.55, "#120a22");
+      g.addColorStop(0, "#05040a");
+      g.addColorStop(0.45, "#12081f");
       g.addColorStop(1, "#0a0614");
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, W, H);
 
-      // distant buildings
-      const scroll = world * 0.25;
-      for (let i = 0; i < 12; i++) {
-        const bw = 70 + ((i * 37) % 50);
-        const bh = 80 + ((i * 53) % 140);
-        const bx = ((i * 110 - scroll) % (W + 140)) - 70;
-        ctx.fillStyle = i % 2 ? "#1e1438" : "#26184a";
-        ctx.fillRect(bx, groundY - bh - 8, bw, bh);
-        ctx.fillStyle = "rgba(255, 220, 120, 0.35)";
-        for (let wy = groundY - bh + 12; wy < groundY - 20; wy += 18) {
-          for (let wx = bx + 8; wx < bx + bw - 10; wx += 14) {
-            if ((wx + wy + i) % 5 !== 0) ctx.fillRect(wx, wy, 5, 7);
-          }
+      // Skyline parallax (far layer) — oversized so the city fills the frame
+      if (skylineReady && skyline.naturalWidth > 0) {
+        const drawH = H * 1.85;
+        const drawW = drawH * (skyline.naturalWidth / skyline.naturalHeight);
+        const scroll = (world * 0.035) % drawW;
+        // Sit the silhouette near the sidewalk; crop top overflow
+        const drawY = groundY - drawH * 0.78;
+        ctx.imageSmoothingEnabled = false;
+        for (let x = -scroll; x < W; x += drawW) {
+          ctx.drawImage(skyline, x, drawY, drawW, drawH);
+        }
+        // Soft blend into sidewalk so the silhouette reads as distance
+        const fade = ctx.createLinearGradient(0, groundY - 56, 0, groundY + 4);
+        fade.addColorStop(0, "rgba(10, 6, 20, 0)");
+        fade.addColorStop(1, "rgba(10, 6, 20, 0.5)");
+        ctx.fillStyle = fade;
+        ctx.fillRect(0, groundY - 56, W, 60);
+      } else {
+        const scroll = world * 0.25;
+        for (let i = 0; i < 12; i++) {
+          const bw = 70 + ((i * 37) % 50);
+          const bh = 80 + ((i * 53) % 140);
+          const bx = ((i * 110 - scroll) % (W + 140)) - 70;
+          ctx.fillStyle = i % 2 ? "#1e1438" : "#26184a";
+          ctx.fillRect(bx, groundY - bh - 8, bw, bh);
         }
       }
 

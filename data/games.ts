@@ -5,7 +5,7 @@ export const games: GameRecord[] = [
     id: "game-bodega-run",
     slug: "bodega-run",
     name: "BODEGA RUN",
-    thumbnail: "/art/placeholders/stage-el-train.gif",
+    thumbnail: "/art/placeholders/stage-skyline.gif",
     description:
       "Grab the sandwich from the deli and run the New York sidewalk. Jump hydrants, trash bags, and street clutter in this endless side-scroller.",
     soundtrack: "flatbed-freestyle",

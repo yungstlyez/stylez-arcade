@@ -245,7 +245,7 @@ export function HomeHub() {
               <Link href={`/play/${game.slug}`} className="hud-lift group relative overflow-hidden rounded-2xl border border-lime/35">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={CITY_SCENE}
+                  src={game.thumbnail || CITY_SCENE}
                   alt={game.name}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
