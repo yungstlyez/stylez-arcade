@@ -16,19 +16,16 @@ import {
   getFeaturedRelease,
   getLatestSpotifyRelease,
   getReleases,
-  getTrackQueue,
   listenHref,
   releaseToTrack,
 } from "@/lib/content";
 import { CITY_SCENE } from "@/lib/placeholders";
 import { useChronicles } from "@/components/chronicles/ChronicleProvider";
-import { useAudio } from "@/components/audio/AudioProvider";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export function HomeHub() {
   const { latest: chronicle } = useChronicles();
-  const { playTrack } = useAudio();
   const featured = getFeaturedRelease();
   const featuredListen = listenHref(featured);
   const soundcloudUrl = site.soundcloud;
@@ -43,9 +40,9 @@ export function HomeHub() {
   }, []);
 
   const playSpotify = () => {
-    if (!spotifyUrl || !spotifyTrack) return;
+    if (!spotifyUrl) return;
     cueUiSound("press");
-    playTrack(spotifyTrack, getTrackQueue());
+    // Spotify stays independent — only open the track; embed handles its own transport.
     window.open(spotifyUrl, "_blank", "noopener,noreferrer");
   };
 

@@ -25,6 +25,11 @@ export type ExternalPlayer = {
   /** SoundCloud playlist/user widgets */
   next?: () => void;
   prev?: () => void;
+  /**
+   * Independent embeds (Spotify) are pauseable by the global player,
+   * but never own the bottom-bar transport or now-playing state.
+   */
+  independent?: boolean;
 };
 
 type AudioContextValue = {
@@ -51,6 +56,8 @@ type AudioContextValue = {
   reportExternalPause: (trackId: string) => void;
   reportExternalProgress: (trackId: string, progress: number, duration: number) => void;
   reportExternalEnded: (trackId: string) => void;
+  /** Pause global/SC transport because an independent embed (Spotify) started. */
+  pauseGlobalForForeign: (exceptId?: string) => void;
 };
 
 const AudioCtx = createContext<AudioContextValue | null>(null);
@@ -408,16 +415,34 @@ export function AudioProvider({
   const resolveExternal = useCallback(() => {
     const now = currentRef.current;
     if (now && externalsRef.current.has(now.id)) {
-      return { id: now.id, player: externalsRef.current.get(now.id)! };
+      const player = externalsRef.current.get(now.id)!;
+      if (!player.independent) return { id: now.id, player };
     }
     if (externalsRef.current.has(SC_CATALOG_ID)) {
       return { id: SC_CATALOG_ID, player: externalsRef.current.get(SC_CATALOG_ID)! };
     }
-    const first = externalsRef.current.entries().next().value as
-      | [string, ExternalPlayer]
-      | undefined;
-    return first ? { id: first[0], player: first[1] } : null;
+    for (const [id, player] of externalsRef.current) {
+      if (player.independent) continue;
+      return { id, player };
+    }
+    return null;
   }, []);
+
+  const pauseGlobalForForeign = useCallback(
+    (exceptId?: string) => {
+      handoffRef.current = true;
+      pauseHtml5();
+      pauseExternals(exceptId);
+      window.clearTimeout(pauseRetryRef.current);
+      pauseRetryRef.current = window.setTimeout(() => pauseExternals(exceptId), 160);
+      isPlayingRef.current = false;
+      setIsPlaying(false);
+      window.setTimeout(() => {
+        handoffRef.current = false;
+      }, 220);
+    },
+    [pauseExternals, pauseHtml5],
+  );
 
   const toggle = useCallback(() => {
     const now = currentRef.current;
@@ -594,6 +619,11 @@ export function AudioProvider({
 
   const reportExternalPlay = useCallback(
     (track: Track) => {
+      // Independent embeds must not steal the bottom bar — they call pauseGlobalForForeign.
+      if (externalsRef.current.get(track.id)?.independent) {
+        pauseGlobalForForeign(track.id);
+        return;
+      }
       const prev = currentRef.current;
       const already =
         engineRef.current === "external" &&
@@ -621,7 +651,7 @@ export function AudioProvider({
       setIsPlaying(true);
       onListenRef.current?.(track.slug);
     },
-    [takeExclusive],
+    [pauseGlobalForForeign, takeExclusive],
   );
 
   const reportExternalPause = useCallback((trackId: string) => {
@@ -692,6 +722,7 @@ export function AudioProvider({
       reportExternalPause,
       reportExternalProgress,
       reportExternalEnded,
+      pauseGlobalForForeign,
     }),
     [
       adoptExternal,
@@ -701,6 +732,7 @@ export function AudioProvider({
       isPlaying,
       muffled,
       next,
+      pauseGlobalForForeign,
       playTrack,
       prev,
       progress,

@@ -90,8 +90,6 @@ export function SpotifyEmbed({
   const audio = useAudio();
   const audioRef = useRef(audio);
   audioRef.current = audio;
-  const trackRef = useRef(track);
-  trackRef.current = track;
   const autoPlayRef = useRef(autoPlay);
   autoPlayRef.current = autoPlay;
   const trackId = track?.id;
@@ -128,14 +126,15 @@ export function SpotifyEmbed({
         controller = next;
         controllerRef.current = next;
         pausedRef.current = true;
+        // Independent: pauseable when SC/global plays, but never owns the bottom bar.
         const nextPlayer: ExternalPlayer = {
           play: () => kickPlay(next),
           pause: () => next.pause(),
           seek: (seconds) => next.seek(seconds),
+          independent: true,
         };
         player = nextPlayer;
         audioRef.current.registerExternal(trackId, nextPlayer);
-        if (trackRef.current) audioRef.current.adoptExternal(trackRef.current);
         next.addListener("ready", () => {
           if (cancelled) return;
           if (autoPlayRef.current) {
@@ -145,22 +144,15 @@ export function SpotifyEmbed({
           }
         });
         next.addListener("playback_started", () => {
-          if (trackRef.current) audioRef.current.reportExternalPlay(trackRef.current);
+          audioRef.current.pauseGlobalForForeign(trackId);
         });
         next.addListener("playback_update", (event) => {
-          const paused = Boolean(event.data.isPaused);
-          const position = (event.data.position ?? 0) / 1000;
-          const duration = (event.data.duration ?? 0) / 1000;
-          audioRef.current.reportExternalProgress(trackId, position, duration);
           if (event.data.isBuffering) return;
+          const paused = Boolean(event.data.isPaused);
           const wasPaused = pausedRef.current;
           pausedRef.current = paused;
-          if (!paused && wasPaused && trackRef.current) {
-            audioRef.current.reportExternalPlay(trackRef.current);
-          }
-          if (paused && !wasPaused) {
-            if (duration && position >= duration - 0.35) audioRef.current.reportExternalEnded(trackId);
-            else audioRef.current.reportExternalPause(trackId);
+          if (!paused && wasPaused) {
+            audioRef.current.pauseGlobalForForeign(trackId);
           }
         });
         if (autoPlayRef.current) {
