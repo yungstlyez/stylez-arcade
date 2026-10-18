@@ -43,11 +43,6 @@ export function HomeHub() {
     return () => window.clearTimeout(id);
   }, []);
 
-  useEffect(() => {
-    if (!spotifyReady || !spotifyTrack) return;
-    playTrack(spotifyTrack, getTrackQueue());
-  }, [playTrack, spotifyReady, spotifyTrack?.id]);
-
   const playSpotify = () => {
     if (!spotifyUrl || !spotifyTrack) return;
     cueUiSound("press");
@@ -80,7 +75,6 @@ export function HomeHub() {
                 url={spotifyUrl}
                 title={latestSpotify.title}
                 track={spotifyTrack ?? undefined}
-                autoPlay
                 className="absolute inset-0 size-full"
               />
             ) : (

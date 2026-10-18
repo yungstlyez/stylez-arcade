@@ -4,20 +4,18 @@ import { LogoMark } from "@/components/game-ui/LogoMark";
 import { PixelLogo } from "@/components/game-ui/PixelLogo";
 import { useAudio } from "@/components/audio/AudioProvider";
 import { site } from "@/data/site";
-import { getFeaturedRelease, releaseToTrack } from "@/lib/content";
 import { STAGE_EL_TRAIN } from "@/lib/placeholders";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect } from "react";
 
 export function PressStartScreen({ onStart, hidden = false }: { onStart: () => void; hidden?: boolean }) {
   const reduce = useReducedMotion();
-  const { setMuffled, bootTitleTrack } = useAudio();
+  const { setMuffled } = useAudio();
 
   useEffect(() => {
-    const next = releaseToTrack(getFeaturedRelease());
+    // Title screen: muffle only — do not start or switch tracks.
     setMuffled(true, 0);
-    bootTitleTrack(next);
-  }, [bootTitleTrack, setMuffled]);
+  }, [setMuffled]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {

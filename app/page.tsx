@@ -5,13 +5,12 @@ import { LoadingScreen } from "@/components/game-ui/LoadingScreen";
 import { PressStartScreen } from "@/components/game-ui/PressStartScreen";
 import { useAudio } from "@/components/audio/AudioProvider";
 import { usePlayer } from "@/components/player/PlayerProvider";
-import { getFeaturedRelease, getLatestSpotifyRelease, getTrackQueue, releaseToTrack } from "@/lib/content";
 import { useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
 export default function HomePage() {
   const { save, ready, enterWorld } = usePlayer();
-  const { setMuffled, playTrack, current } = useAudio();
+  const { setMuffled } = useAudio();
   const reduce = useReducedMotion();
   const [booting, setBooting] = useState(false);
 
@@ -25,12 +24,8 @@ export default function HomePage() {
         <PressStartScreen
           hidden={booting}
           onStart={() => {
+            // Unmute only — keep whatever is already playing.
             setMuffled(false, reduce ? 0.18 : 1.15);
-            const spotify = getLatestSpotifyRelease();
-            const next = spotify
-              ? releaseToTrack(spotify)
-              : (current ?? releaseToTrack(getFeaturedRelease()));
-            playTrack(next, getTrackQueue());
             setBooting(true);
             window.setTimeout(
               () => {
