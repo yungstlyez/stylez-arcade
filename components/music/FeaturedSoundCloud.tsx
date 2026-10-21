@@ -7,6 +7,7 @@ import { useChronicles } from "@/components/chronicles/ChronicleProvider";
 import { usePlayer } from "@/components/player/PlayerProvider";
 import { SC_CATALOG_ID } from "@/components/audio/AudioProvider";
 import { site } from "@/data/site";
+import { getRelease } from "@/lib/content";
 import type { Track } from "@/types";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useMemo, useRef } from "react";
@@ -15,18 +16,6 @@ export const FEATURED_SC_SLOT_ID = "featured-sc-slot";
 
 const PARKED =
   "position:fixed;left:-10000px;top:0;width:320px;height:166px;opacity:0;pointer-events:none;z-index:0;overflow:hidden;";
-
-/** Stable host for the artist-page widget — SoundCloud owns track-to-track advance. */
-export const SOUNDCLOUD_CATALOG_TRACK: Track = {
-  id: SC_CATALOG_ID,
-  title: `${site.artist} · SoundCloud`,
-  artist: site.artist,
-  cover: site.portrait,
-  src: "",
-  slug: "soundcloud",
-  preferExternal: true,
-  soundcloudUrl: site.soundcloud,
-};
 
 export function FeaturedSoundCloudSlot({ className }: { className?: string }) {
   return <div id={FEATURED_SC_SLOT_ID} className={className} />;
@@ -40,7 +29,21 @@ export function FeaturedSoundCloudLayer() {
   const { terminalOpen, reading } = useChronicles();
   const { save, ready } = usePlayer();
   const url = site.soundcloud;
-  const track = useMemo(() => SOUNDCLOUD_CATALOG_TRACK, []);
+  const startRelease = getRelease(site.soundcloudStartSlug);
+  const startPermalink = startRelease?.streamingLinks.soundcloud;
+  const track = useMemo<Track>(
+    () => ({
+      id: SC_CATALOG_ID,
+      title: startRelease?.title ?? `${site.artist} · SoundCloud`,
+      artist: site.artist,
+      cover: startRelease?.cover ?? site.portrait,
+      src: "",
+      slug: "soundcloud",
+      preferExternal: true,
+      soundcloudUrl: site.soundcloud,
+    }),
+    [startRelease?.cover, startRelease?.title],
+  );
   const showOnHome =
     ready &&
     save.started &&
@@ -101,6 +104,7 @@ export function FeaturedSoundCloudLayer() {
         track={track}
         autoPlay
         advanceOnEnd={false}
+        startPermalink={startPermalink}
         visual={false}
         className="size-full"
       />

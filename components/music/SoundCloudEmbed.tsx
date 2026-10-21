@@ -9,6 +9,7 @@ type SoundCloudSound = {
   title?: string;
   artwork_url?: string;
   duration?: number;
+  permalink_url?: string;
 };
 
 type SoundCloudWidget = {
@@ -19,11 +20,13 @@ type SoundCloudWidget = {
   toggle: () => void;
   next: () => void;
   prev: () => void;
+  skip: (index: number) => void;
   seekTo: (ms: number) => void;
   setVolume: (volume: number) => void;
   getDuration: (cb: (ms: number) => void) => void;
   getPosition: (cb: (ms: number) => void) => void;
   getCurrentSound: (cb: (sound: SoundCloudSound | null) => void) => void;
+  getSounds: (cb: (sounds: SoundCloudSound[]) => void) => void;
 };
 
 type SoundCloudAPI = {
@@ -92,6 +95,8 @@ export function SoundCloudEmbed({
   autoPlay = false,
   /** When false, FINISH stays inside SoundCloud (artist/playlist widgets). */
   advanceOnEnd = true,
+  /** Jump to this permalink inside a user/playlist widget before first play. */
+  startPermalink,
   visual = true,
   className,
 }: {
@@ -100,6 +105,7 @@ export function SoundCloudEmbed({
   track?: Track;
   autoPlay?: boolean;
   advanceOnEnd?: boolean;
+  startPermalink?: string;
   visual?: boolean;
   className?: string;
 }) {
@@ -109,7 +115,10 @@ export function SoundCloudEmbed({
   autoPlayRef.current = autoPlay;
   const advanceOnEndRef = useRef(advanceOnEnd);
   advanceOnEndRef.current = advanceOnEnd;
-  const initialAutoPlay = useRef(autoPlay);
+  const startPermalinkRef = useRef(startPermalink);
+  startPermalinkRef.current = startPermalink;
+  // When we need to skip to a start cut, keep iframe auto_play off until after skip.
+  const initialAutoPlay = useRef(Boolean(autoPlay && !startPermalink));
   const audio = useAudio();
   const audioRef = useRef(audio);
   audioRef.current = audio;
@@ -141,6 +150,33 @@ export function SoundCloudEmbed({
       if (durationSec) audioRef.current.adoptExternal(live, durationSec);
     };
 
+    const beginPlayback = (next: SoundCloudWidget) => {
+      const start = startPermalinkRef.current?.replace(/\/$/, "").toLowerCase();
+      const playNow = () => {
+        if (cancelled) return;
+        if (autoPlayRef.current) next.play();
+      };
+      if (!start) {
+        playNow();
+        return;
+      }
+      next.getSounds((sounds) => {
+        if (cancelled) return;
+        const index = sounds.findIndex((sound) => {
+          const permalink = (sound.permalink_url || "").replace(/\/$/, "").toLowerCase();
+          return permalink === start || permalink.endsWith(`/${start.split("/").pop()}`);
+        });
+        if (index >= 0) {
+          try {
+            next.skip(index);
+          } catch {
+            /* widget may not support skip on this payload */
+          }
+        }
+        playNow();
+      });
+    };
+
     void loadSoundCloudApi().then((api) => {
       if (cancelled || !iframeRef.current) return;
       widget = api.Widget(iframeRef.current);
@@ -163,7 +199,7 @@ export function SoundCloudEmbed({
         };
         playerRef.current = player;
         audioRef.current.registerExternal(trackId, player);
-        if (autoPlayRef.current) widget.play();
+        beginPlayback(widget);
       });
       widget.bind(events.PLAY, () => {
         widget?.getCurrentSound((sound) => {

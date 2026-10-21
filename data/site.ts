@@ -8,7 +8,7 @@ export const site = {
   twitch: "@stylezflew",
   tiktok: "@notcallmestylez",
   chronicleHandle: "@stylezchroniclez",
-  featuredReleaseSlug: "body-by-raven",
+  featuredReleaseSlug: "che-og-ginobli-stylezmix",
   latestSpotifySlug: "gl0ckianna",
   featuredGameSlug: "bodega-run",
   featuredLocationSlug: "southside",
@@ -17,6 +17,8 @@ export const site = {
   youtubeChannel: "https://www.youtube.com/@Stylezwillsaveus",
   /** Full catalog player — SoundCloud advances tracks inside the widget. */
   soundcloud: "https://soundcloud.com/user-363377229",
+  /** First cut the artist-page widget should land on. */
+  soundcloudStartSlug: "rotisserie",
   title: "STYLEZ ARCADE",
   logo: "/art/logo-primary.png",
   portrait: "/art/portrait-stylez.png",
