@@ -1,0 +1,47 @@
+name: Update music catalogue
+
+on:
+  schedule:
+    # Mondays 14:00 UTC (~10:00 ET)
+    - cron: "0 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh catalogue
+        run: python scripts/update-catalog.py
+
+      - name: Open PR if changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: weekly music catalogue refresh"
+          title: "Weekly music catalogue refresh"
+          body: |
+            Automated SoundCloud/Spotify catalogue sync from `scripts/update-catalog.py`.
+
+            - Adds any new SoundCloud exclusives at the top of the feed
+            - Discovers new Spotify cuts (artist embed + iTunes) and inserts or attaches them
+            - Refreshes Spotify covers when available
+            - Points featured / SC start / latest Spotify slugs at the newest cuts
+          branch: chore/weekly-catalog-refresh
+          delete-branch: true
+          add-paths: |
+            data/releases.ts
+            data/site.ts
+            data/characters.ts
+            public/art/covers/**
+            scripts/dsp-refresh.json
