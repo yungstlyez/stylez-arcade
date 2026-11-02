@@ -9,13 +9,13 @@
     "gl0ckianna": {
       "title": "!!gl0ckiana**",
       "id": "00dJvtrSXwzK76NEMa98pR",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ea3f94c1937ebd7750df98a1",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ea3f94c1937ebd7750df98a1",
       "spotify": "https://open.spotify.com/track/00dJvtrSXwzK76NEMa98pR"
     },
     "jesus-piece-rockin": {
       "title": "jesus piece rockin\u2019",
       "id": "5lC6GRzgSS4YZ4S4pv5Ib0",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0297bee067ffc9db2649321bb1",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0297bee067ffc9db2649321bb1",
       "spotify": "https://open.spotify.com/track/5lC6GRzgSS4YZ4S4pv5Ib0"
     },
     "drake-timing": {
@@ -69,13 +69,13 @@
     "my-darkest-thoughts": {
       "title": "my darkest thoughts",
       "id": "4QBxMyyDtLLqc3AvVCioMZ",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
       "spotify": "https://open.spotify.com/track/4QBxMyyDtLLqc3AvVCioMZ"
     },
     "boyz-n-the-hood": {
       "title": "boyz n the hood",
       "id": "6QHT0PkAWOlkOzTBRZXJQc",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
       "spotify": "https://open.spotify.com/track/6QHT0PkAWOlkOzTBRZXJQc"
     },
     "roses-in-the-concrete": {
@@ -99,19 +99,19 @@
     "raps-funeral": {
       "title": "rap's funeral",
       "id": "53uOvljb0DUCNrATLwNk80",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020960c38f99d97b4e61fdf4f4",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0236c2e239883498ed41e71ba5",
       "spotify": "https://open.spotify.com/track/53uOvljb0DUCNrATLwNk80"
     },
     "2025-intro": {
       "title": "2025 intro",
       "id": "1xztYAooTystoau47lANpK",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02107df48ba2e72a84dc9fb924",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02107df48ba2e72a84dc9fb924",
       "spotify": "https://open.spotify.com/track/1xztYAooTystoau47lANpK"
     },
     "i-wanna-buy-a-gun": {
       "title": "i wanna buy a gun",
       "id": "6UI0gKh2J8FIZuOEvslMbn",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cbe90e2bed146626e389f76d",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02cbe90e2bed146626e389f76d",
       "spotify": "https://open.spotify.com/track/6UI0gKh2J8FIZuOEvslMbn"
     },
     "ilovewomen": {
@@ -129,7 +129,7 @@
     "the-delancey": {
       "title": "the delancey",
       "id": "5jwZqi7CJcM5zsBaEd2y0N",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b6ac1099b3f114bd58fcb872",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d65077d4eeac75f875360af1",
       "spotify": "https://open.spotify.com/track/5jwZqi7CJcM5zsBaEd2y0N"
     },
     "e30": {
@@ -147,12 +147,7 @@
   },
   "missing_sc": [],
   "new_spotify": [],
-  "attached_spotify": [
-    [
-      "5-in-singles",
-      "https://open.spotify.com/track/44njVxp37vNFDHF7TIdqOV"
-    ]
-  ],
+  "attached_spotify": [],
   "sc_all": [
     {
       "title": "onwardd <\\3",
