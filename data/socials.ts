@@ -4,17 +4,9 @@ export const socials: SocialNetwork[] = [
   {
     id: "instagram",
     label: "Instagram",
-    handle: "@stylezflew",
-    href: "https://instagram.com/stylezflew",
+    handle: "@nonchalantrapper",
+    href: "https://instagram.com/nonchalantrapper",
     network: "FIELD CAM",
-    signal: "LIVE",
-  },
-  {
-    id: "twitch",
-    label: "Twitch",
-    handle: "@stylezflew",
-    href: "https://twitch.tv/stylezflew",
-    network: "NIGHT STREAM",
     signal: "LIVE",
   },
   {
@@ -71,12 +63,9 @@ export const hubSocials = [
   },
   {
     id: "main",
-    title: "Instagram / Twitch",
-    handle: "@stylezflew",
-    links: [
-      { label: "Instagram", href: "https://instagram.com/stylezflew" },
-      { label: "Twitch", href: "https://twitch.tv/stylezflew" },
-    ],
+    title: "Instagram",
+    handle: "@nonchalantrapper",
+    links: [{ label: "Instagram", href: "https://instagram.com/nonchalantrapper" }],
   },
   {
     id: "tiktok",

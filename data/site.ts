@@ -4,11 +4,10 @@ export const site = {
   chris: "Chris",
   phrase: "STYLEZ WILL SAVE US",
   byline: "BY CALLMESTYLEZ",
-  instagram: "@stylezflew",
-  twitch: "@stylezflew",
+  instagram: "@nonchalantrapper",
   tiktok: "@notcallmestylez",
   chronicleHandle: "@stylezchroniclez",
-  featuredReleaseSlug: "onwardd-3",
+  featuredReleaseSlug: "different-onee-prod-129jayy",
   latestSpotifySlug: "5-in-singles",
   featuredGameSlug: "bodega-run",
   featuredLocationSlug: "southside",
@@ -18,7 +17,7 @@ export const site = {
   /** Full catalog player — SoundCloud advances tracks inside the widget. */
   soundcloud: "https://soundcloud.com/user-363377229",
   /** First cut the artist-page widget should land on. */
-  soundcloudStartSlug: "onwardd-3",
+  soundcloudStartSlug: "different-onee-prod-129jayy",
   title: "STYLEZ ARCADE",
   logo: "/art/logo-primary.png",
   portrait: "/art/portrait-stylez.png",

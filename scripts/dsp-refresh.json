@@ -9,7 +9,7 @@
     "gl0ckianna": {
       "title": "!!gl0ckiana**",
       "id": "00dJvtrSXwzK76NEMa98pR",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ea3f94c1937ebd7750df98a1",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ea3f94c1937ebd7750df98a1",
       "spotify": "https://open.spotify.com/track/00dJvtrSXwzK76NEMa98pR"
     },
     "jesus-piece-rockin": {
@@ -27,19 +27,19 @@
     "casually-flexing": {
       "title": "casually flexing",
       "id": "3kAV79hqBdeKR2EECkNsz8",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02528b9f466ae2b292e4c4fca3",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02528b9f466ae2b292e4c4fca3",
       "spotify": "https://open.spotify.com/track/3kAV79hqBdeKR2EECkNsz8"
     },
     "stylez-be": {
       "title": "stylez be",
       "id": "20RbaHgNisFO2YNSwxIzX6",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025a41fc935886a2098fffed6d",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025a41fc935886a2098fffed6d",
       "spotify": "https://open.spotify.com/track/20RbaHgNisFO2YNSwxIzX6"
     },
     "flyest-inna-room": {
       "title": "flyest inna room",
       "id": "2lxq7iPmcOrLkHtDFi4Uwj",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e020414fbff62fdd8b2f48cc727",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020414fbff62fdd8b2f48cc727",
       "spotify": "https://open.spotify.com/track/2lxq7iPmcOrLkHtDFi4Uwj"
     },
     "different-cloth": {
@@ -51,7 +51,7 @@
     "when-the-dust-settles-acoustic": {
       "title": "when the dust settles (acoustic)",
       "id": "7sK3LGERh5YpZV2vB6quwo",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0268abd7a44c0826c4cf806d19",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0268abd7a44c0826c4cf806d19",
       "spotify": "https://open.spotify.com/track/7sK3LGERh5YpZV2vB6quwo"
     },
     "badu-freestyle": {
@@ -81,7 +81,7 @@
     "roses-in-the-concrete": {
       "title": "roses in the concrete",
       "id": "4WSTYQQXteZQrSdz9XZn4u",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
       "spotify": "https://open.spotify.com/track/4WSTYQQXteZQrSdz9XZn4u"
     },
     "this-wat-a-rave-sounds-like": {
@@ -99,7 +99,7 @@
     "raps-funeral": {
       "title": "rap's funeral",
       "id": "53uOvljb0DUCNrATLwNk80",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020960c38f99d97b4e61fdf4f4",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0236c2e239883498ed41e71ba5",
       "spotify": "https://open.spotify.com/track/53uOvljb0DUCNrATLwNk80"
     },
     "2025-intro": {
@@ -111,7 +111,7 @@
     "i-wanna-buy-a-gun": {
       "title": "i wanna buy a gun",
       "id": "6UI0gKh2J8FIZuOEvslMbn",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cbe90e2bed146626e389f76d",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02cbe90e2bed146626e389f76d",
       "spotify": "https://open.spotify.com/track/6UI0gKh2J8FIZuOEvslMbn"
     },
     "ilovewomen": {
@@ -129,7 +129,7 @@
     "the-delancey": {
       "title": "the delancey",
       "id": "5jwZqi7CJcM5zsBaEd2y0N",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b6ac1099b3f114bd58fcb872",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d65077d4eeac75f875360af1",
       "spotify": "https://open.spotify.com/track/5jwZqi7CJcM5zsBaEd2y0N"
     },
     "e30": {
@@ -145,15 +145,27 @@
       "spotify": "https://open.spotify.com/track/4axsAtdelU3rX8n2tXIjHM"
     }
   },
-  "missing_sc": [],
-  "new_spotify": [],
-  "attached_spotify": [
-    [
-      "5-in-singles",
-      "https://open.spotify.com/track/44njVxp37vNFDHF7TIdqOV"
-    ]
+  "missing_sc": [
+    {
+      "title": "different onee >:) prod. 129jayy",
+      "permalink": "different-onee-prod-129jayy",
+      "url": "https://soundcloud.com/user-363377229/different-onee-prod-129jayy",
+      "created": "2026-11-06",
+      "artwork": "https://i1.sndcdn.com/artworks-X5NG57y1ovxPC7zA-spUXtA-t500x500.jpg",
+      "slug": "different-onee-prod-129jayy"
+    }
   ],
+  "new_spotify": [],
+  "attached_spotify": [],
   "sc_all": [
+    {
+      "title": "different onee >:) prod. 129jayy",
+      "permalink": "different-onee-prod-129jayy",
+      "url": "https://soundcloud.com/user-363377229/different-onee-prod-129jayy",
+      "created": "2026-11-06",
+      "artwork": "https://i1.sndcdn.com/artworks-X5NG57y1ovxPC7zA-spUXtA-t500x500.jpg",
+      "slug": "different-onee-prod-129jayy"
+    },
     {
       "title": "onwardd <\\3",
       "permalink": "onwardd-3",
@@ -683,5 +695,7 @@
       "slug": "raining-outside-mp3-mp3"
     }
   ],
-  "added": []
+  "added": [
+    "different-onee-prod-129jayy"
+  ]
 }

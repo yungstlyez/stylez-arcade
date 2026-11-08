@@ -2,16 +2,36 @@ import type { Release } from "@/types";
 
 export const releases: Release[] = [
   {
-    id: "rel-onwardd-3",
-    slug: "onwardd-3",
-    title: "onwardd <3",
+    id: "rel-different-onee-prod-129jayy",
+    slug: "different-onee-prod-129jayy",
+    title: "different onee >:) prod. 129jayy",
     subtitle: "Latest file",
     year: 2026,
-    cover: "/art/covers/onwardd-3.jpg",
+    cover: "/art/covers/different-onee-prod-129jayy.jpg",
     audio: "/audio/flatbed-freestyle.wav",
     featured: true,
     soundcloudOnly: true,
     rarity: "Featured",
+    type: "Single",
+    era: "Southside Chronicles",
+    description:
+      "SoundCloud exclusive from the live Callmestylez feed.",
+    credits: [{ role: "Artist", name: "Callmestylez" }],
+    streamingLinks: {
+      soundcloud: "https://soundcloud.com/user-363377229/different-onee-prod-129jayy",
+    },
+    characters: ["stylez"],
+    locations: ["southside", "the-city"],
+    chronicles: ["the-world-comes-online"],
+  },
+  {
+    id: "rel-onwardd-3",
+    slug: "onwardd-3",
+    title: "onwardd <3",
+    year: 2026,
+    cover: "/art/covers/onwardd-3.jpg",
+    audio: "/audio/flatbed-freestyle.wav",
+    soundcloudOnly: true,
     type: "Single",
     era: "Southside Chronicles",
     description:
