@@ -23,12 +23,11 @@ import { useEffect, useState, type ReactNode } from "react";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const { save, ready, visit } = usePlayer();
+  const { visit } = usePlayer();
   const [menuOpen, setMenuOpen] = useState(false);
   const [hudOpen, setHudOpen] = useState(false);
   const [menuPath, setMenuPath] = useState(pathname);
   const [hudPath, setHudPath] = useState(pathname);
-  const titleScreen = pathname === "/" && (!ready || !save.started);
   const isMenuOpen = menuOpen && menuPath === pathname;
   const isHudOpen = hudOpen && hudPath === pathname;
   const isHub = pathname === "/";
@@ -39,13 +38,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
   }, [pathname, visit]);
 
   useEffect(() => {
-    if (titleScreen) {
-      setFxReady(false);
-      return;
-    }
     const id = window.setTimeout(() => setFxReady(true), 350);
     return () => window.clearTimeout(id);
-  }, [titleScreen]);
+  }, []);
 
   return (
     <>
@@ -60,63 +55,57 @@ export function SiteShell({ children }: { children: ReactNode }) {
       {fxReady ? <CrtOverlay /> : null}
       <UnlockToasts />
 
-      {!titleScreen ? (
-        <div className="app-shell">
-          <aside className="shell-rail relative z-50 hidden h-full w-56 shrink-0 flex-col xl:w-64 lg:flex">
-            <BrandLockup />
-            <div className="min-h-0 flex-1 overflow-auto px-2 pb-2">
-              <GameMenu />
-            </div>
-            <div className="p-2">
-              <PlayerHud />
-            </div>
-          </aside>
-
-          <div className="relative flex min-h-0 min-w-0 flex-1 flex-col">
-            <TopBar
-              menuOpen={isMenuOpen}
-              hudOpen={isHudOpen}
-              onMenu={() => {
-                setMenuPath(pathname);
-                setHudOpen(false);
-                setMenuOpen((open) => !(open && menuPath === pathname));
-              }}
-              onHud={() => {
-                setHudPath(pathname);
-                setMenuOpen(false);
-                setHudOpen((open) => !(open && hudPath === pathname));
-              }}
-            />
-            <SocialsBanner />
-            {isMenuOpen ? (
-              <div id="mobile-menu" className="shell-chrome border-b p-3 lg:hidden">
-                <GameMenu onNavigate={() => setMenuOpen(false)} />
-              </div>
-            ) : null}
-            <main
-              id="main"
-              className={cn(
-                "page-pad relative flex w-full flex-1 flex-col px-3 py-3 sm:px-4 lg:px-5",
-                isHub ? "min-h-0 lg:overflow-hidden lg:py-3" : "min-h-0 overflow-auto",
-              )}
-            >
-              {children}
-            </main>
-            <LibraryOverlay />
-            <ComingSoonOverlay />
-            <ChronicleReader />
-            <ChronicleTerminal />
+      <div className="app-shell">
+        <aside className="shell-rail relative z-50 hidden h-full w-56 shrink-0 flex-col xl:w-64 lg:flex">
+          <BrandLockup />
+          <div className="min-h-0 flex-1 overflow-auto px-2 pb-2">
+            <GameMenu />
           </div>
-        </div>
-      ) : (
-        <main id="main" className="relative z-10">
-          {children}
-        </main>
-      )}
+          <div className="p-2">
+            <PlayerHud />
+          </div>
+        </aside>
 
-      <HudDrawer open={isHudOpen && !titleScreen} onClose={() => setHudOpen(false)} />
-      <GlobalAudioPlayer visible={!titleScreen} />
-      {!titleScreen ? <BottomNav /> : null}
+        <div className="relative flex min-h-0 min-w-0 flex-1 flex-col">
+          <TopBar
+            menuOpen={isMenuOpen}
+            hudOpen={isHudOpen}
+            onMenu={() => {
+              setMenuPath(pathname);
+              setHudOpen(false);
+              setMenuOpen((open) => !(open && menuPath === pathname));
+            }}
+            onHud={() => {
+              setHudPath(pathname);
+              setMenuOpen(false);
+              setHudOpen((open) => !(open && hudPath === pathname));
+            }}
+          />
+          <SocialsBanner />
+          {isMenuOpen ? (
+            <div id="mobile-menu" className="shell-chrome border-b p-3 lg:hidden">
+              <GameMenu onNavigate={() => setMenuOpen(false)} />
+            </div>
+          ) : null}
+          <main
+            id="main"
+            className={cn(
+              "page-pad relative flex w-full flex-1 flex-col px-3 py-3 sm:px-4 lg:px-5",
+              isHub ? "min-h-0 lg:overflow-hidden lg:py-3" : "min-h-0 overflow-auto",
+            )}
+          >
+            {children}
+          </main>
+          <LibraryOverlay />
+          <ComingSoonOverlay />
+          <ChronicleReader />
+          <ChronicleTerminal />
+        </div>
+      </div>
+
+      <HudDrawer open={isHudOpen} onClose={() => setHudOpen(false)} />
+      <GlobalAudioPlayer visible />
+      <BottomNav />
     </>
   );
 }

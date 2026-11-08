@@ -27,7 +27,7 @@ export function FeaturedSoundCloudLayer() {
   const { open: libraryOpen } = useLibrary();
   const { open: comingSoonOpen } = useComingSoon();
   const { terminalOpen, reading } = useChronicles();
-  const { save, ready } = usePlayer();
+  const { ready } = usePlayer();
   const url = site.soundcloud;
   const startRelease = getRelease(site.soundcloudStartSlug);
   const startPermalink = startRelease?.streamingLinks.soundcloud;
@@ -46,7 +46,6 @@ export function FeaturedSoundCloudLayer() {
   );
   const showOnHome =
     ready &&
-    save.started &&
     pathname === "/" &&
     !libraryOpen &&
     !comingSoonOpen &&
