@@ -3,13 +3,13 @@
     "5-in-singles": {
       "title": "5 in singles",
       "id": "44njVxp37vNFDHF7TIdqOV",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e022454ff9162d52016c698a417",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e022454ff9162d52016c698a417",
       "spotify": "https://open.spotify.com/track/44njVxp37vNFDHF7TIdqOV"
     },
     "gl0ckianna": {
       "title": "!!gl0ckiana**",
       "id": "00dJvtrSXwzK76NEMa98pR",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ea3f94c1937ebd7750df98a1",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ea3f94c1937ebd7750df98a1",
       "spotify": "https://open.spotify.com/track/00dJvtrSXwzK76NEMa98pR"
     },
     "jesus-piece-rockin": {
@@ -33,7 +33,7 @@
     "stylez-be": {
       "title": "stylez be",
       "id": "20RbaHgNisFO2YNSwxIzX6",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025a41fc935886a2098fffed6d",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025a41fc935886a2098fffed6d",
       "spotify": "https://open.spotify.com/track/20RbaHgNisFO2YNSwxIzX6"
     },
     "flyest-inna-room": {
@@ -51,7 +51,7 @@
     "when-the-dust-settles-acoustic": {
       "title": "when the dust settles (acoustic)",
       "id": "7sK3LGERh5YpZV2vB6quwo",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0268abd7a44c0826c4cf806d19",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0268abd7a44c0826c4cf806d19",
       "spotify": "https://open.spotify.com/track/7sK3LGERh5YpZV2vB6quwo"
     },
     "badu-freestyle": {
@@ -63,7 +63,7 @@
     "genesis": {
       "title": "genesis",
       "id": "3IBEy1p4xHvSK46QfnbfWK",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
       "spotify": "https://open.spotify.com/track/3IBEy1p4xHvSK46QfnbfWK"
     },
     "my-darkest-thoughts": {
@@ -75,13 +75,13 @@
     "boyz-n-the-hood": {
       "title": "boyz n the hood",
       "id": "6QHT0PkAWOlkOzTBRZXJQc",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
       "spotify": "https://open.spotify.com/track/6QHT0PkAWOlkOzTBRZXJQc"
     },
     "roses-in-the-concrete": {
       "title": "roses in the concrete",
       "id": "4WSTYQQXteZQrSdz9XZn4u",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024487366e5a75eb1a00b209cd",
       "spotify": "https://open.spotify.com/track/4WSTYQQXteZQrSdz9XZn4u"
     },
     "this-wat-a-rave-sounds-like": {
@@ -129,13 +129,13 @@
     "the-delancey": {
       "title": "the delancey",
       "id": "5jwZqi7CJcM5zsBaEd2y0N",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d65077d4eeac75f875360af1",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d65077d4eeac75f875360af1",
       "spotify": "https://open.spotify.com/track/5jwZqi7CJcM5zsBaEd2y0N"
     },
     "e30": {
       "title": "e30",
       "id": "57swigrOXM78IazvSGtuN3",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026353c2792332d877dafc0cd5",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026353c2792332d877dafc0cd5",
       "spotify": "https://open.spotify.com/track/57swigrOXM78IazvSGtuN3"
     },
     "glad-you-came": {
@@ -145,16 +145,7 @@
       "spotify": "https://open.spotify.com/track/4axsAtdelU3rX8n2tXIjHM"
     }
   },
-  "missing_sc": [
-    {
-      "title": "different onee >:) prod. 129jayy",
-      "permalink": "different-onee-prod-129jayy",
-      "url": "https://soundcloud.com/user-363377229/different-onee-prod-129jayy",
-      "created": "2026-11-06",
-      "artwork": "https://i1.sndcdn.com/artworks-X5NG57y1ovxPC7zA-spUXtA-t500x500.jpg",
-      "slug": "different-onee-prod-129jayy"
-    }
-  ],
+  "missing_sc": [],
   "new_spotify": [],
   "attached_spotify": [],
   "sc_all": [
@@ -695,7 +686,5 @@
       "slug": "raining-outside-mp3-mp3"
     }
   ],
-  "added": [
-    "different-onee-prod-129jayy"
-  ]
+  "added": []
 }
